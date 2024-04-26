@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Mall</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .searchBox {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .searchBox input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    flex-grow: 1;
+  }
+
+  .searchBox button {
+    padding: 10px 20px;
+    background-color: #5c5c5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .categoryList {
+    margin-top: 20px;
+  }
+
+  .categoryTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .categoryList table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .categoryList th, .categoryList td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .categoryList th {
+    background-color: #f2f2f2;
+  }
+
+  .categoryList td {
+    background-color: #ffffff;
+  }
+
+  .categoryList tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+  }
+
+  @media (max-width: 768px) {
+    .searchBox input, .searchBox button {
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    .searchBox {
+      flex-direction: column;
+    }
+
+    .categoryTitle {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Safe Mall</h1>
+    <div class="searchBox">
+      <input type="text" placeholder="Search">
+      <button>Search</button>
+    </div>
+    <div class="categoryList">
+      <div class="categoryTitle">
+        <span>🚨피해 다발 사이트</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>쇼핑몰명</th>
+            <th>취급품목</th>
+            <th>총 접수건</th>
+            <th>미처리건</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>웁스(WHOOPS)</td>
+            <td>식품, 건강식품,...</td>
+            <td>503</td>
+            <td>83</td>
+          </tr>
+          <tr>
+            <td>캐쉬메이커</td>
+            <td>유튜브 프리미엄...</td>
+            <td>114</td>
+            <td>109</td>
+          </tr>
+          <tr>
+            <td>슈즈오페라</td>
+            <td>운동화 등</td>
+            <td>253</td>
+            <td>253</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

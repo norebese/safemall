@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제보 작성 Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.form-body {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.form-button {
+    padding: 10px 20px;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #e2e2e2;
+}
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>제보 작성 Form</h2>
+        <div class="form-header">
+            <h2>제보 게시판</h2>
+            <div class="form-meta">
+                <span>등록일: 2024년 4월 26일</span>
+                <span>조회수: 109</span>
+            </div>
+        </div>
+        <div class="form-body">
+            <label for="shopName" class="form-label">쇼핑몰 이름</label>
+            <input type="text" id="shopName" class="form-input">
+            <label for="domainName" class="form-label">도메인 이름</label>
+            <input type="text" id="domainName" class="form-input">
+            <label for="productDetail" class="form-label">상세 설명</label>
+            <textarea id="productDetail" class="form-textarea"></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="form-button">목록</button>
+        </div>
+    </div>
+</body>
+</html>

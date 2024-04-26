@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>대처법 페이지</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .card {
+  font-family: 'Arial', sans-serif;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #0067a3;
+  padding: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.card-body {
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 10px 0;
+}
+
+.info-title {
+  font-weight: bold;
+}
+
+.info-content {
+  color: #555;
+}
+
+.card-footer {
+  padding: 10px;
+  text-align: right;
+}
+
+.link-button {
+  background-color: #004b8d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+  background-color: #003b6f;
+}
+
+</style>
+</head>
+<body>
+    <div>
+      <h2>대처법 페이지</h2>
+      <div class="card">
+        <div class="card-header">
+          <img src="./top_logo.png" alt="Logo" class="logo"/>
+        </div>
+        <div class="card-body">
+          <div class="info-row">
+            <span class="info-title">상담신청: </span>
+            <span class="info-content">https://ecc.seoul.go.kr/DR3001/FN3001HM.jsp</span>
+          </div>
+          <div class="info-row">
+            <span class="info-title">전화번호: </span>
+            <span class="info-content">02) 2133-4891~6</span>
+          </div>
+          <div class="info-row">
+            <span class="info-title">주소: </span>
+            <span class="info-content">서울특별시 중구 동호로지 15 서울특별시 청소년 상담복지센터 1동 14층</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="link-button">바로가기</button>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
