@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Detail Page</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body {
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 20px;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: grey;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.site-info {
+  color: black;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+</style>
+</head>
+<body>
+  <div>
+    <h2>조회 실패 페이지</h2>
+    <div class="search-bar">
+      <input type="text" class="input-box" placeholder="url">
+      <button class="search-button">검색</button>
+    </div>
+
+    <div class="content">
+      <h1>조회에 실패했습니다.</h1>
+      <div class="action-buttons">
+        <button class="button">대처방안 알아보기</button>
+        <button class="button">피드백 남기기</button>
+      </div>
+    </div>
+
+    <div class="site-info">
+      <table>
+        <caption>최근 등록된 사기 사이트</caption>
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>쇼핑몰명</th>
+            <th>도메인명</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-04-25</td>
+            <td>네이빙</td>
+            <td>www.naving.com</td>
+          </tr>
+          <tr>
+            <td>2024-04-25</td>
+            <td>키카오</td>
+            <td>www.keykao.com</td>
+          </tr>
+          <tr>
+            <td>2024-04-25</td>
+            <td>쿠핑</td>
+            <td>www.couping.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
