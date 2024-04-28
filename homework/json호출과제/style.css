@@ -18,24 +18,23 @@ body {
     height: auto;
 }
 
-/* 목 서식*/
+/* 제목 서식*/
 h2 {
     font-size: 30px;
+    font-weight: bold;
     margin-top: 50px;
     text-align: center;
 }
-header{
-    text-align: center;
-    margin-bottom: 20px;
-}
+
 
 /* 검색창 서식*/
 header > input {
-    width: 120px;
-    height: 20px;
-    padding: 5px;
-    float: left;    
-    margin-left: 550px;
+    font-size: 20px;
+    width: 200px;
+    height: 40px;
+    padding: 5px; 
+    float: left;
+    margin-left: 600px;
     margin-right: 5px;
     margin-bottom: 20px;
 }
@@ -49,13 +48,21 @@ header > input:hover {
 /* 돋보기 이미지에 마우스 올렸을 때 효과 주기*/
 header > img {
     border: 1px solid black;
-    width: 30px;
+    width: 50px;
     float: left;
 }
 header > img:hover {
     background-color: gray;
     opacity: 0.3;
   }
+
+header > select {
+    margin-left: 40px;
+    float: right;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 20px;
+}
 
 /* 표 서식*/
 table {
@@ -65,7 +72,7 @@ table {
 
 th, td {
     border: 1px solid black;
-    padding: 8px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -77,4 +84,21 @@ th {
 /* 본문 행에 마우스 올렸을 때 색 효과*/
 tr:hover {
     background-color: lightgoldenrodyellow;
+}
+
+#btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#btn > button {
+    margin: 0 2px;
+    font-size: 20px ;
+    color: black;
+    background-color: transparent;
+    border: 0;
+}
+
+#btn > button:hover {
+    background-color: lightgray;
 }

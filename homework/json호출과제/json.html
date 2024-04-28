@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>json호출 과제</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    
 </head>
 <body>
   <h2>인터넷 쇼핑몰 현황 리스트</h2>
@@ -13,9 +13,13 @@
     <!-- 1.검색할 행 수 입력하는 칸 만들기-->
     <!-- 2.돋보기 이미지 버튼을 누르면 검색을 하는 함수 실행-->
     <header>
-      <input type="text" id="searchKeyword" placeholder="검색어를 입력하세요">
-
-        <img src="./search.png" id="search" onclick="search()">
+      <input type="text" id="searchKeyword" placeholder="검색어를 입력하세요.">
+      <img src="./search.png" id="search" onclick="search()">
+      <select name="viewCount">
+          <option value="5">5개씩</option>
+          <option value="10">10개씩</option>
+          <option value="20">20개씩</option>
+      </select> 
     </header>
     <!-- 3.열 변수명 만들기-->
     <!-- 4.행 데이터는 id='getdata'를 통해 DB에서 연결-->
@@ -35,8 +39,27 @@
         <tbody id="getdata">   <!--테이블 본문 행-->
         </tbody>
     </table>
+    <footer>
+      <div id="btn">
+        <button><<</button>
+        <button style="margin-right: 15px;"><</button>
+        <button>1</button>
+        <button onclick="btn2()">2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>10</button>
+        <button style="margin-left: 15px;" onclick="nextbtn()">></button>
+        <button>>></button>
+      </div>
+    
+    </footer>
   </div>
     
-      
+  <script src="./script.js"></script>   
 </body>
 </html>
