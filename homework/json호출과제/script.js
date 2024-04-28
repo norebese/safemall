@@ -28,7 +28,6 @@ function displayPosts(data) {
     const tableBody = document.getElementById('getdata');
     tableBody.innerHTML = '';    // tableBody 초기화
   
-    // Create and append post elements
     data.ServiceInternetShopInfo.row.forEach((value, index) => {
       const row = document.createElement('tr');
       row.innerHTML = `
