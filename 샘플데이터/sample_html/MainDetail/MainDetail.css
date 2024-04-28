@@ -1,0 +1,185 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+.navbar {
+    background-color: #343a40; color: white; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;
+}
+.navbar a, .navbar span {
+    color: white; text-decoration: none; margin-right: 10px; padding: 5px; }
+
+.navbar a.navbar-brand{
+    font-size: 25px;
+    margin-left: 30px;
+}
+.navbar-brand { font-weight: bold; margin-right: auto; }
+.nav-item { display: inline-block; }
+.nav-link { color: white; }
+.nav-dropdown { position: relative; display: inline-block; }
+.dropdown-content {
+    display: none; position: absolute; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;
+}
+
+.dropdown-content a {
+    color: black; padding: 12px 16px; text-decoration: none; display: block;
+}
+  
+.dropdown-content a:hover { background-color: #f1f1f1; }
+.nav-dropdown:hover .dropdown-content { display: block; }
+.search-bar { display: flex; margin-bottom: 0; }
+.search-input { padding: 5px; }
+.search-button { border: none; background-color: transparent; color: white; cursor: pointer; padding: 5px; }
+.nav-right { display: flex; align-items: center; }
+
+
+.searchBox {
+    display: flex;
+    justify-content: center;
+    margin: 20px 150px;
+}
+
+.searchBox input {
+    height: 50px;
+    padding: 10px;
+    font-size: 25px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.searchBox input:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.searchBox button {
+    padding: 10px 20px;
+    background-color: #5c5c5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.shopInfo {
+    margin-left: 150px;
+    width: 40%;
+    height: auto;
+    border: 2px solid black;
+    float: left;
+    border-radius: 20px;
+}
+
+.shopInfo > h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.shopInfo > ul > li {
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.score {
+    margin-right: 150px;
+    width: 35%;
+    height: 190px;
+    border: 2px solid black;
+    float: right;
+    border-radius: 20px;
+}
+
+.score > h2 {
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+.score > p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: brown;
+}
+
+.scoreDetail1 {
+    text-align: center;
+    border: 2px solid black;
+    float: right;
+    margin-top: 15px;
+    margin-right: 150px;
+    width: 35%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.scoreDetail2 {
+    border: 2px dotted black;
+    border-radius: 20px;
+    width: 35%;
+    height: auto;
+    margin-right: 150px;
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.scoreDetail2 > ul > li {
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.scoreDetail3 {
+    margin-left: 150px;
+    margin-top: 10px;
+    width: 1125px;
+    float: left;
+    border: 2px dotted black;
+    border-radius: 20px;
+}
+
+.scoreDetail3 > h2 {
+    margin: 10px 20px;
+}
+
+.scoreDetail3 > ul > li {
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.categoryList {
+    float: left;
+    margin-left: 150px;
+    margin-top: 50px;
+    width: 1125px;
+}
+
+.categoryTitle {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.categoryList table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.categoryList th, .categoryList td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.categoryList th {
+    background-color: #f2f2f2;
+}
+
+.categoryList td {
+    background-color: #ffffff;
+}
+
+.categoryList tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+}
+

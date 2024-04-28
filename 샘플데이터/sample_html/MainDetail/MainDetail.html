@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세페이지</title>
+    <link rel="stylesheet" href="./MainDetail.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="navbar-brand">세이프몰</a>
+        <div class="nav-dropdown">
+          <span>메인</span>
+          <div class="dropdown-content">
+            <a href="/">메인</a>
+            <a href="/searchDetail">조회 상세 정보 페이지</a>
+          </div>
+        </div>
+        <a href="/intro" class="nav-link">소개</a>
+        <div class="nav-dropdown">
+          <span>공지사항</span>
+          <div class="dropdown-content">
+            <a href="/notice">공지사항</a>
+            <a href="/coping">대처법</a>
+            <a href="/report">제보</a>
+          </div>
+        </div>
+        <form class="search-bar">
+          <input type="search" placeholder="search" aria-label="Search" class="search-input">
+          <button class="search-button">🔍︎</button>
+        </form>
+        <a href="/sign" class="nav-link">로그인</a>
+    </div>
+    <div class="container">
+        <div class="searchBox">
+          <input type="text" placeholder="상호명 또는 URL 입력">
+          <button>Search</button>
+        </div>
+
+        <div class="shopInfo">
+            <h2>쇼핑몰정보</h2>
+            <hr>
+            <ul>
+                <li>상호 : <input type="text"></li>
+                <li>쇼핑몰명 : <input type="text"> </li>
+                <li>전화번호 : <input type="text"></li>
+                <li>운영자이메일 : <input type="text"></li>
+                <li>영업형태 : <input type="text"></li>
+                <li>회사주소 : <input type="text"></li>
+                <li>최초신고일자 : <input type="text"></li>
+            </ul>
+        </div>
+        <div class="score">
+            <h2>평가점수</h2>
+            <hr>
+            <p>6.5 / 10</p>
+        </div>
+
+        <div class="scoreDetail1">
+            <h1>점수 기준 ▾</h1>
+        </div>
+        <div class="scoreDetail2">
+            <ul>
+                <li>사업자표시정보평가 : </li>
+                <li>청약철회평가 : </li>
+                <li>결제방법평가 : </li>
+                <li>이용약관평가 : </li>
+                <li>개인정보보안평가 : </li>
+            </ul>
+        </div>
+
+        <div class="scoreDetail3">
+            <h2>상세지표</h2>
+            <hr>
+            <ul>
+                <li>구매안전서비스 : </li>
+                <li>고객불만게시판여부 : </li>
+                <li>개인정보취급방식 : </li>
+                <li>철회시배송비부담여부 : </li>
+            </ul>
+        </div>
+        <div class="categoryList">
+            <div class="categoryTitle">
+              <span>🚨피해 다발 사이트</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>쇼핑몰명</th>
+                  <th>취급품목</th>
+                  <th>총 접수건</th>
+                  <th>미처리건</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>웁스(WHOOPS)</td>
+                  <td>식품, 건강식품,...</td>
+                  <td>503</td>
+                  <td>83</td>
+                </tr>
+                <tr>
+                  <td>캐쉬메이커</td>
+                  <td>유튜브 프리미엄...</td>
+                  <td>114</td>
+                  <td>109</td>
+                </tr>
+                <tr>
+                  <td>슈즈오페라</td>
+                  <td>운동화 등</td>
+                  <td>253</td>
+                  <td>253</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+    
+</body>
+</html>

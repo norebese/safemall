@@ -1,0 +1,121 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+.navbar {
+  background-color: #343a40; color: white; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;
+}
+.navbar a, .navbar span { color: white; text-decoration: none; margin-right: 10px; padding: 5px; }
+.navbar a.navbar-brand{
+    font-size: 25px;
+    margin-left: 30px;
+}
+.navbar-brand { font-weight: bold; margin-right: auto; }
+.nav-item { display: inline-block; }
+.nav-link { color: white; }
+.nav-dropdown { position: relative; display: inline-block; }
+.dropdown-content {
+  display: none; position: absolute; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;
+}
+
+.dropdown-content a {
+  color: black; padding: 12px 16px; text-decoration: none; display: block;
+}
+
+.dropdown-content a:hover { background-color: #f1f1f1; }
+.nav-dropdown:hover .dropdown-content { display: block; }
+.search-bar { display: flex; margin-bottom: 0; }
+.search-input { padding: 5px; }
+.search-button { border: none; background-color: transparent; color: white; cursor: pointer; padding: 5px; }
+.nav-right { display: flex; align-items: center; }
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.searchBox {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.searchBox input {
+    height: 50px;
+    padding: 10px;
+    font-size: 25px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.searchBox input:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.serachBox p {
+    
+}
+
+.searchBox button {
+    padding: 10px 20px;
+    background-color: #5c5c5c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.categoryList {
+    margin-top: 60px;
+}
+
+.categoryTitle {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.categoryList table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.categoryList th, .categoryList td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.categoryList th {
+    background-color: #f2f2f2;
+}
+
+.categoryList td {
+    background-color: #ffffff;
+}
+
+.categoryList tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    .searchBox input, .searchBox button {
+    width: 100%;
+    margin: 5px 0;
+    }
+
+    .searchBox {
+    flex-direction: column;
+    }
+
+    .categoryTitle {
+    flex-direction: column;
+    }
+}
