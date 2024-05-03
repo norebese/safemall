@@ -1,0 +1,138 @@
+body{
+    margin: 0;
+}
+#container {
+    margin: 0;
+    width: 768px;
+    height: auto;
+    border: 2px solid black;
+}
+
+#top {
+    border: 2px solid red;
+    height: 70px;
+}
+
+
+#search{
+    width: 80%;
+    height: 60px;
+    margin: 5% auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+#search > input{
+    font-size: 40px;
+    width: auto;
+    flex: 1;
+    padding: 10px;
+}
+
+#search > button {
+    font-size: 38px;
+    padding: 8px;
+    width: 15%;
+    background-color: white;
+    border: 1px solid black;
+}
+#search > button:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+
+#score{
+    padding: 5%;
+    text-align: center;
+    border-radius: 50px;
+    width: 40%;
+    height: 150px;
+    border: 2px solid black;
+    margin: 10% auto;
+    font-size: 350%
+}
+
+#score > hr{
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-bottom: 8%;
+}
+
+#tab {
+    text-align: center;
+    margin: 0px;
+}
+
+#menu1, #menu2, #menu3 {
+    border: 2px solid black;
+    margin: 0 1.5%;
+    padding: 2% 4%;
+    border-radius: 50px;
+    font-size: 200%;
+    background-color: lightgray;
+}
+
+#menu1:hover, #menu2:hover, #menu3:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+#content1, #content2, #content3 {
+    border: 1px solid black;
+    margin: 3% 10%;
+    margin-bottom: 10%;
+    font-size: 180%;
+    width: 80%;
+}
+
+
+
+#content1 > table, #content2 > table, #content3 > table {
+    border-collapse: collapse;
+}
+
+#content1 .col, #content2 .col, #content3 .col {
+    padding: 20px;
+    width: 160px;
+    text-align: center;
+    background-color: lightgray;
+}
+
+#content2 .col {
+    width: 50%;
+}
+
+#content3 .col{
+    width: 40%;
+}
+
+#content1 .row, #content2 .row, #content3 .row{
+    width: 400px;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+#content2 .row {
+    text-align: center;
+}
+
+
+#more {
+    margin: 0 auto;
+    margin-bottom: 5%;
+    width: 30%;
+    text-align: center;
+}
+
+#more > button {
+    text-align: center;
+    font-size: 200%;
+    width: 200px;
+}
+
+#bottom {
+    height: 75px;
+    border: 2px solid red;
+}

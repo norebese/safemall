@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조회성공페이지</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./script.js"></script>
+</head>
+<body>
+    <div id="container">
+        <!-- 상단바 -->
+        <div id="top">
+        
+        </div>
+
+        <!-- 제목, 검색창 -->
+        <div id="title">
+          <form action="#">
+              <div id="search" >
+                  <input type="text" placeholder="상호명 또는 URL 입력">
+                  <button type="submit">🔍</button>
+              </div>
+          </form>
+        </div>
+
+        <div id="score">
+          <span>평가점수</span>
+          <hr>
+          <span style="color: red;">7 / 10</span>
+        </div>
+
+        <!--쇼핑몰 정보-->
+        <div id="tab">
+          <button id="menu1" onclick="menu1(), menu1color()">쇼핑몰 정보</button>
+          <button id="menu2" onclick="menu2(), menu2color()">점수기준</button>
+          <button id="menu3" onclick="menu3(), menu3color()">상세지표</button>
+        </div>
+        <div id="content1" style="display: block;">
+            <table border="1">
+                <tr>
+                    <td class="col">쇼핑몰명</td>
+                    <td class="row">eleparts / 엘레파츠</td>
+                </tr>
+                <tr>
+                    <td class="col">도메인명</td>
+                    <td class="row">eleparts.co.kr</td>
+                </tr>
+                <tr>
+                    <td class="col">최초신고일자</td>
+                    <td class="row">2013-11-25</td>
+                </tr>
+
+                <tr>
+                  <td class="col">영업형태</td>
+                  <td class="row"> 일반쇼핑몰</td>
+                </tr>
+
+                <tr>
+                  <td class="col">취급품목</td>
+                  <td class="row" >컴퓨터 및 주변기기 / 소프트웨어 가전용전기제품/영상, 생활 카메라 가구/생활/주방 서적/음반/악기 사무용전기제품/사무용기기 자동차/자동차용품 기타</td>
+                </tr>
+
+                <tr>
+                  <td class="col">업소상태</td>
+                  <td class="row">영업중</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="content2" style="display: none;">
+          <table border="1">
+              <tr>
+                  <td class="col">사업자정보표시평가</td>
+                  <td class="row">2</td>
+              </tr>
+              <tr>
+                  <td class="col">청약철회평가</td>
+                  <td class="row">3</td>
+              </tr>
+              <tr>
+                  <td class="col">결제방법평가</td>
+                  <td class="row">3</td>
+              </tr>
+
+              <tr>
+                <td class="col">개인정보보안평가</td>
+                <td class="row">1</td>
+              </tr>
+          </table>
+      </div>
+
+      <div id="content3" style="display: none;">
+        <table border="1">
+            <tr>
+                <td class="col">모니터링</td>
+                <td class="row">2024-03-29</td>
+            </tr>
+            <tr>
+                <td class="col">사이트개설년도</td>
+                <td class="row">알수없음</td>
+            </tr>
+            <tr>
+                <td class="col">청약철회가능여부</td>
+                <td class="row">가능하나 일부품목제외, 기간축소</td>
+            </tr>
+
+            <tr>
+              <td class="col">결제방법</td>
+              <td class="row">현금입금(무통장,계좌이체등) 신용카드 간편결제 휴대폰 기타</td>
+            </tr>
+
+            <tr>
+              <td class="col">이용약관준수도</td>
+              <td class="row" >자체약관 사용</td>
+            </tr>
+
+            <tr>
+              <td class="col">개인정보취급방침</td>
+              <td class="row">초기화면표시</td>
+            </tr>
+
+            <tr>
+              <td class="col">회원탈퇴방법</td>
+              <td class="row">회원탈퇴 가능</td>
+            </tr>
+
+            <tr>
+              <td class="col">구매안전서비스</td>
+              <td class="row">에스크로제도</td>
+            </tr>
+        </table>
+    </div>
+        <!-- 하단바 -->
+        <div id="bottom">
+        </div>
+    </div>
+    
+</body>
+</html>
