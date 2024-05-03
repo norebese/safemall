@@ -1,0 +1,151 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 768px;
+    box-sizing: border-box;
+}
+
+.report-container {
+    margin: 0 auto;
+}
+
+.inner-container {
+    background-color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.report-header {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 48px;
+    border-bottom: 1px solid gray;
+}
+
+.title {
+    text-align: center;
+    font-size: 48px;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.main-title {
+    color: #000;
+    font-size: 70px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.date-info {
+    color: #666;
+    margin-left: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.date-info span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#date{
+    padding-right: 10px;
+    border-right: 1px solid #666;
+}
+
+#writer{
+    padding-left: 10px;
+}
+
+#viewCount{
+    float: right;
+}
+
+.body-content{
+    padding: 20px 0;
+    margin: 0px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.content-title {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 40px;
+}
+
+.content-content{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: #F1F3F5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 32px;
+    color: #6A6A6A;
+}
+
+#answer{
+    line-height: 200%;
+}
+
+.button-area{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.button {
+    height: 70px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 32px;
+}
+
+#answer-btn{
+    border-bottom: 1px solid #ddd;
+}
+
+#answer-btn>button{
+    background-color: #0D6EFD;
+    color: white;
+    border: none;
+}
+
+#answer-container{
+    padding: 20px 0;
+    margin: 0px 20px;
+}
+
+#answer-title{
+    display: block;
+    margin-bottom: 5px;
+    color: red;
+    font-size: 40px;
+}
+
+#write-answer{
+    padding: 20px 0;
+    margin: 0px 20px;
+}
+
+#write-answer>textarea{
+    margin-top: 20px;
+    resize: none;
+    width: 100%;
+    font-size: 32px;
+    height: 282px;
+    background-color: #F1F3F5;
+    border: none;
+}
+
+::-webkit-textarea-placeholder{
+    font-size: 32px;
+    vertical-align: middle;
+    line-height: 100%;
+}

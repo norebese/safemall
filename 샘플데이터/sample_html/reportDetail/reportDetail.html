@@ -3,97 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제보 작성 Form</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-      .form-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.form-header {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 5px;
-}
-
-.form-body {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.form-textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.form-actions {
-    text-align: center;
-}
-
-.form-button {
-    padding: 10px 20px;
-    background-color: #f3f3f3;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form-button:hover {
-    background-color: #e2e2e2;
-}
-
-    </style>
+    <title>reportDetail</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
 </head>
 <body>
-    <div class="form-container">
-        <h2>제보 작성 Form</h2>
-        <div class="form-header">
-            <h2>제보 게시판</h2>
-            <div class="form-meta">
-                <span>등록일: 2024년 4월 26일</span>
-                <span>조회수: 109</span>
+    <div class="report-container">
+        <div class="report-header">
+            <div>제보 게시판</div>
+        </div>
+        <div class="inner-container">
+            <div class="main-title">제보 게시물 제목입니다</div>
+            <div class="date-info">
+                <span id="date">2024.4.26</span>
+                <span id="writer">작성자: 홍길동</span>
+                <span id="viewCount">조회수: 111</span>
             </div>
-        </div>
-        <div class="form-body">
-            <label for="shopName" class="form-label">쇼핑몰 이름</label>
-            <input type="text" id="shopName" class="form-input">
-            <label for="domainName" class="form-label">도메인 이름</label>
-            <input type="text" id="domainName" class="form-input">
-            <label for="productDetail" class="form-label">상세 설명</label>
-            <textarea id="productDetail" class="form-textarea"></textarea>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="form-button">목록</button>
-        </div>
+            <div class="body-content">
+                <div class="content-title">쇼핑몰 명</div>
+                <div class="content-content">eleparts / 엘레파츠</div>
+            </div>
+            <div class="body-content">
+                <div class="content-title">도메인 주소</div>
+                <div class="content-content">eleparts.co.kr</div>
+            </div>
+            <div class="body-content">
+                <div class="content-title">사업자 명</div>
+                <div class="content-content">홍길동</div>
+            </div>
+            <div class="body-content">
+                <div class="content-title">기타사항</div>
+                <div class="content-content">
+                    일반쇼핑몰이며 현재 영업중이지 않습니다일반쇼핑몰이며 현재 영업중이지 않습니다
+                    일반쇼핑몰이며 현재 영업중이지 않습니다일반쇼핑몰이며 현재 영업중이지 않습니다
+                </div>
+            </div>
+            <div id="manager-area">
+                <div class="button-area" id="answer-btn">
+                    <button type="button" class="button" onclick="answertab()">답변하기</button>
+                </div>
+            </div>
+
+            <div id="answer-container">
+                <div id="answer-title">관리자 답변:</div>
+                <div id="answer" class="content-content">
+                    안녕하세요 ㅇㅇㅇ 관리자입니다.제보하신 ㅇㅇㅇ 사항이 처리되었습니다.
+                    제보해주셔서 감사합니다.
+                </div>
+            </div>
+            <div class="button-area">
+                <button class="button">목록</button>
+            </div>
     </div>
 </body>
 </html>
