@@ -8,9 +8,7 @@ body, html {
 
 .container {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    
+    flex-direction: column;    
 }
 
 #pageTitle{
@@ -28,19 +26,25 @@ body, html {
 .page-title {
     text-align: center;
     font-size: 48px;
-    margin: 15px 0;
+    margin: 20px 0;
     font-weight: 600;
 }
 
 .note-editable{
     background-color: #F1F3F5;
+    font-size: 32px;
+}
+
+.note-placeholder{
+    font-size: 32px;
 }
 
 #input-title{
-    padding: 20px 10px 10px 10px;
+    padding: 50px 30px 10px 30px;
 }
 
 #input-title>input{
+    height: 75px;
     border: none;
     background-color: #F1F3F5;
     width: 100%;
@@ -51,15 +55,20 @@ body, html {
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: 50px;
     padding: 20px 0;
 }
 
 .button {
-    height: 70px;
-    width: 250px;
+    height: 80px;
+    width: 360px;
     padding: 10px;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 40px;
+}
+
+#editor{
+    padding: 10px 30px 10px 30px;
 }

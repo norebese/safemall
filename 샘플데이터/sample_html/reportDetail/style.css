@@ -33,7 +33,7 @@ body{
     color: #000;
     font-size: 70px;
     font-weight: 500;
-    margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
 .date-info {
@@ -72,6 +72,7 @@ body{
     margin-bottom: 5px;
     color: #333;
     font-size: 40px;
+    padding-left: 5px;
 }
 
 .content-content{
@@ -98,17 +99,42 @@ body{
 }
 
 .button {
-    height: 70px;
-    width: 250px;
+    height: 80px;
+    width: 360px;
     padding: 10px;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 40px;
 }
 
 #answer-btn{
     border-bottom: 1px solid #ddd;
+}
+
+#answer-btn-manager{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#answer-btn-manager button{
+    height: 50px;
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+#edit{
+    margin-right: 20px;
+    background-color: #0D6EFD;
+}
+
+#del{
+    background-color: red;
 }
 
 #answer-btn>button{
@@ -118,7 +144,7 @@ body{
 }
 
 #answer-container{
-    padding: 20px 0;
+    padding: 30px 10px 0px 10px;
     margin: 0px 20px;
 }
 
@@ -127,6 +153,8 @@ body{
     margin-bottom: 5px;
     color: red;
     font-size: 40px;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 #write-answer{

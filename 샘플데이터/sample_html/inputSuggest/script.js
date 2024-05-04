@@ -5,17 +5,16 @@ $('#summernote').summernote({
     height: 120,
     toolbar: [
     //   ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
+      // ['font', ['bold', 'underline', 'clear']],
+      // ['color', ['color']],
+      // ['para', ['ul', 'ol', 'paragraph']],
     ],
-    height: 300,                 // set editor height
-    minHeight: 500,             // set minimum height of editor
+    minHeight: 700,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
     focus: true,
     disableResizeEditor: true,
     disableDragAndDrop: true,
     lang: 'ko-KR',
-    airMode: true
+    // airMode: true
     
   });

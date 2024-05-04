@@ -9,8 +9,6 @@ body, html {
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    
 }
 
 #pageTitle{
@@ -29,7 +27,6 @@ body, html {
     text-align: center;
     font-size: 48px;
     margin: 15px 0;
-    font-weight: 600;
 }
 
 .main-title {
@@ -37,6 +34,7 @@ body, html {
     font-size: 70px;
     font-weight: 500;
     margin-bottom: 20px;
+    padding: 10px 20px;
 }
 
 .date-info {
@@ -66,7 +64,7 @@ body, html {
 
 .content {
     border-bottom: 1px solid #ddd;
-    padding: 20px 30px;
+    padding: 20px 40px;
     margin: 20px 0;
     text-align: left;
     font-size: 48px;
@@ -77,14 +75,15 @@ body, html {
     width: 100%;
     justify-content: center;
     padding: 20px 0;
+    margin-top: 50px;
 }
 
 .button {
-    height: 70px;
-    width: 250px;
+    height: 80px;
+    width: 360px;
     padding: 10px;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 40px;
 }
