@@ -1,6 +1,15 @@
-body{
-    margin: 0;
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+body {
+    margin: 0;
+    font-family: 'IBMPlexSansKR-Regular';
+}
+
 #container {
     margin: 0;
     width: 768px;
@@ -17,11 +26,11 @@ body{
     text-align: center;
     margin: 0 auto;
     margin-top: 10%;
-    padding: 3% 0%;
+    padding: 3% 5%;
     width: 55%;
     border: 6px double black;
     border-radius: 100px;
-    font-size: 500%;
+    font-size: 80px;
 }
 
 #search{
@@ -37,16 +46,19 @@ body{
 #search > input{
     font-size: 40px;
     width: auto;
+    height: auto;
     flex: 1;
     padding: 10px;
 }
 #search > button {
+    height: auto;
     font-size: 38px;
     padding: 8px;
     width: 15%;
     background-color: white;
     border: 1px solid black;
 }
+
 #search > button:hover{
     cursor: pointer;
     background-color: lightgray;
@@ -54,13 +66,14 @@ body{
 
 .site {
     margin-left: 10%;
-    font-size: 160%;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 #listcard1, #listcard2, #listcard3 {
     border: 1px solid black;
     margin: 2% 10%;
-    font-size: 170%;
+    font-size: 25px;
     padding: 2% 4%;
     border-radius: 2cqw;
     line-height: 1.5;
@@ -76,29 +89,6 @@ body{
     background-color: lightgray;
 }
 
-#content {
-    border: 2px solid black;
-    margin: 3% 10%;
-    font-size: 180%;
-    width: 80%;
-}
-
-#content > table {
-    border-collapse: collapse;
-}
-
-#content .col {
-    padding: 20px;
-    width: 150px;
-    text-align: center;
-    background-color: lightgray;
-}
-
-#content .row {
-    width: 400px;
-    padding: 20px;
-}
-
 
 #more {
     margin: 0 auto;
@@ -109,7 +99,7 @@ body{
 
 #more > button {
     text-align: center;
-    font-size: 200%;
+    font-size: 30px;
     width: 200px;
 }
 
