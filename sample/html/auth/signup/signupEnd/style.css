@@ -1,0 +1,29 @@
+body, html{
+    padding: 0;
+    margin: 0;
+    width: 768px;
+    height: 1300px;
+}
+#container{
+    width: 100%;
+    text-align: center;
+}
+h2{
+    margin-top: 150px;
+    font-size: 64px;
+}
+
+.returnpagebtn{
+    width: 320px;
+    height: 80px;
+    font-size: 32px;
+    margin-top: 100px;
+    background-color: rgba(250, 250, 250, 1);
+    color: black;
+    margin-bottom: 500px;
+    border-radius: 15px;
+
+}
+
+
+
