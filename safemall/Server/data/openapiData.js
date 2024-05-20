@@ -29,6 +29,17 @@ function transformData(row, no) {
       shopNameEng = row.SHOP_NAME.trim();
     }
   }
+  // mainItems 공백 제거
+  let mainItems = row.SERVICE.split('/')
+  mainItems.map((v,i)=>{
+    mainItems[i] = v.trim()
+  })
+  // detailPayment 첫번쨰 배열 공백 제거
+  let detailPayment = row.GYULJE.split(' ')
+  if(detailPayment[0] == '') detailPayment = detailPayment.slice(1);
+  // detailInitScreen 첫번쨰 배열 공백 제거
+  let detailInitScreen = row.CHOGI.split(' ')
+  if(detailInitScreen[0] == '') detailInitScreen = detailInitScreen.slice(1);
 
   return {
     no: no, // 순번
@@ -42,7 +53,7 @@ function transformData(row, no) {
     dateInit: new Date(row.FIRST_HEO_DATE),
     comAddress: row.COM_ADDR,
     businessType: row.YPFORM,
-    mainItems: row.SERVICE.split('/'),
+    mainItems: mainItems,
     businessState: row.STAT_NM,
     scoreTotal: parseInt(row.TOT_RATINGPOINT),
     scoreBusinessInfo: parseInt(row.CHOGI_RATINGPOINT),
@@ -53,7 +64,7 @@ function transformData(row, no) {
     dateMonitoring: new Date(row.REG_DATE),
     dateSiteOpen: new Date(row.KAESOL_YEAR),
     possibleSW: row.CHUNG,
-    detailPayment: row.GYULJE.split(' '),
+    detailPayment: detailPayment,
     detailTermUse: row.PYOJUN,
     detailPIS: row.P_INFO_CARE,
     detailStandardTerm: row.PER_INFO,
@@ -64,7 +75,7 @@ function transformData(row, no) {
     detailDeliveryDate: row.BAESONG_YEJEONG,
     detailShippingCost: row.BAESONG,
     detailReportBoard: row.CLIENT_BBS,
-    detailInitScreen: row.CHOGI.split(' ')
+    detailInitScreen: detailInitScreen
   };
 }
 
