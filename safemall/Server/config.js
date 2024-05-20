@@ -32,9 +32,6 @@ export const config = {
   },
   mongoDB:{
     host: required("MONGODB_DB_HOST")
-  },
-  openapi:{
-    api_key: required('OPENAPI_KEY')
   }
 }
 
