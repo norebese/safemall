@@ -30,7 +30,7 @@ function ReportList() {
 
   return (
     <div className="report-list-container">
-      {reportList.length === 0 ? (
+      {!reportList ? (
         <div className='noData'>
           <p>등록된 제보가 없습니다.</p>
           <Link to="/report/create" className="write-button">작성하기</Link>
