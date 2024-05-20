@@ -5,18 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  width: 768px;
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-  width: 768px;
-  box-sizing: border-box;
 }
 
 .form-container {
@@ -427,45 +423,6 @@ body{
   line-height: 100%;
 }
 
-.bg-body-tertiary {
-  background: linear-gradient(to right, #1A2042, #1A2042);
-}
-
-.navbar-brand, .navbar-toggler {
-  font-size: 36px;
-  color: white !important;
-}
-.navbar-brand{
-  margin-left: 20px;
-}
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
-}
-.offcanvas-header{
-  background-color: #1A2042;
-}
-.btn-close{
-  background-color: white;
-  font-size: 48px;
-  margin-right: 20px!important;
-}
-.offcanvas {
-  width: 80% !important; /* 화면 전체 너비를 강제 적용 */
-}
-.offcanvas-title{
-  margin-left: 20px;
-  font-size: 48px;
-  color: white;
-}
-.offcanvas-body {
-  background-color: #E8E9EB;
-}
-.navbar.fixed-top {
-  height: 70px;
-}
-.navbar .container-fluid {
-  align-items: center; /* Center the contents vertically */
-}
 .btn{
   margin: 20px auto 0 10px;
   background-color:rgba(81, 80, 118, 1);
