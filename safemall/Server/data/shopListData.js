@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import fs from "fs/promises";
 import { useVirtualId } from "../db/database.js"
 
 const shopSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const shopSchema = new mongoose.Schema({
   company: { type: String, required: true, default: '' }, // 상호
   shopNameKor: { type: String, required: true, default: '' }, // 쇼핑몰명(국문)
   shopNameEng: { type: String, required: true, default: '' }, // 쇼핑몰명(영문)
-  domainName: { type: String, required: true, unique: true }, // 도메인명
+  domainName: { type: String, required: true, default: '' }, // 도메인명
   tel: { type: String, required: true, default: '' }, // 전화번호
   email: { type: String, required: true, default: '' }, // 운영자이메일
   mailOrderNum: { type: String, required: true, default: '' }, // 통신판매번호
@@ -38,49 +39,32 @@ const shopSchema = new mongoose.Schema({
   detailInitScreen: { type: [String], required: true, default: [] } // 초기화면필수항목중표시사항
 }, { timestamps: true });
 
-const ref = {
-  "COMPANY": "주식회사 위메프",
-  "SHOP_NAME": "위메프/wemakeprice",
-  "DOMAIN_NAME": "www.wemakeprice.com",
-  "TEL": "1588-4763/1661-4764",
-  "EMAIL": "customerservice@wemakeprice.com",
-  "UPJONG_NBR": "",
-  "YPFORM": " 중개",
-  "FIRST_HEO_DATE": "2019-08-06",
-  "COM_ADDR": "서울특별시 강남구 영동대로 502 위메프빌딩",
-  "STAT_NM": "영업중",
-  "TOT_RATINGPOINT": "3",
-  "CHOGI_RATINGPOINT": "2",
-  "CHUNG_RATINGPOINT": "3",
-  "DEAL_RATINGPOINT": "3",
-  "PYOJUN_RATINGPOINT": "3",
-  "SECURITY_RATINGPOINT": "3",
-  "SERVICE": " 컴퓨터 및 주변기기 / 소프트웨어 가전용전기제품/영상, 생활 휴대폰 카메라 의류 신발/가방/패션잡화/귀금속 화장품/향수 가구/생활/주방 출산/유아동/완구 식품 건강용퓸/의료기기 서적/음반/악기 레져/문화 사무용전기제품/사무용기기 유가증권 자동차/자동차용품 기타 예매.예약서비스",
-  "CHUNG": "가능",
-  "CHOGI": " 상호 대표자 소재지 전화번호 전자우편주소 사업자등록번호 사이버몰이용약관 통신판매신고번호",
-  "GYULJE": " 현금입금(무통장,계좌이체등) 신용카드 간편결제 휴대폰 기타",
-  "PYOJUN": "표준약관 사용",
-  "P_INFO_CARE": "초기화면표시",
-  "PER_INFO": "",
-  "DEAL_CARE": "에스크로제도",
-  "SSL_YN": "",
-  "INJEUNG": "",
-  "BAESONG_YEJEONG": "있다",
-  "BAESONG": "소비자(반품택배비만 부담)",
-  "CLIENT_BBS": "있다(공개)",
-  "LEAVE": "회원탈퇴 가능",
-  "KAESOL_YEAR": "",
-  "REG_DATE": "2024-04-30"
-}
-
-
 useVirtualId(shopSchema)
 const Shop = mongoose.model('shopsList', shopSchema)
 
-export async function updateDB(){
-  const data = await fetch('/apiData.json')
+export async function updateDB() {
+  try {
+    // JSON 파일에서 데이터 읽기
+    const data = await fs.readFile('data/apiData.json', 'utf-8');
+    const shops = JSON.parse(data);
+
+    // 데이터 하나씩 MongoDB에 삽입
+    for (const shop of shops) {
+      try {
+        await Shop.updateOne({ no: shop.no }, shop, { upsert: true });
+        console.log(`Shop no ${shop.no} updated successfully.`);
+      } catch (error) {
+        console.error(`Error updating shop no ${shop.no}:`, error);
+      }
+    }
+    console.log('All data has been updated to MongoDB.');
+    return true;
+  } catch (error) {
+    console.error('Error reading JSON file or updating MongoDB:', error);
+    return false;
+  }
 }
 
-export async function getByShopName(SHOP_NAME) {
-  return await Shop.find({SHOP_NAME})
+export async function getByShopName(keyword) {
+  return await Shop.find({shopNameKor:keyword})
 }

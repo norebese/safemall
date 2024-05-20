@@ -4,7 +4,7 @@ import { connectMongoDB } from "./db/database.js";
 import mainRouter from "./router/mainRouter.js";
 import adminRouter from "./router/adminRouter.js"
 
-const app = e();
+const app = e(); 
 app.use(e.json());
 
 app.use('/', mainRouter)
