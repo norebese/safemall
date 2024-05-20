@@ -42,7 +42,7 @@ function transformData(row, no) {
     dateInit: new Date(row.FIRST_HEO_DATE),
     comAddress: row.COM_ADDR,
     businessType: row.YPFORM,
-    mainItems: row.SERVICE.split(' / '),
+    mainItems: row.SERVICE.split('/'),
     businessState: row.STAT_NM,
     scoreTotal: parseInt(row.TOT_RATINGPOINT),
     scoreBusinessInfo: parseInt(row.CHOGI_RATINGPOINT),
@@ -50,7 +50,7 @@ function transformData(row, no) {
     scorePayment: parseInt(row.DEAL_RATINGPOINT),
     scoreTermUse: parseInt(row.PYOJUN_RATINGPOINT),
     scorePIS: parseInt(row.SECURITY_RATINGPOINT),
-    dateMonitoring: new Date(row.REG_DATE), // Assuming current date for monitoring
+    dateMonitoring: new Date(row.REG_DATE),
     dateSiteOpen: new Date(row.KAESOL_YEAR),
     possibleSW: row.CHUNG,
     detailPayment: row.GYULJE.split(' '),
