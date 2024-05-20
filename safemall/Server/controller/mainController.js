@@ -1,11 +1,16 @@
 import * as shopListData from '../data/shopListData.js'
+import * as warningData from '../data/warningSite.js'
 // 메인페이지 호출
-export function getMain(req, res, next){
-    const data = '테스트'
-
+export async function getMain(req, res, next){
+    const { skipCount } = req.query;
+    const data = await warningData.getList(skipCount);
     // 가져온 data를 main.html에 render 한 후에 
-
-    res.status(200).json({message:"메인 페이지", data})
+    console.log(data)
+    if(data.length > 0){
+        res.status(200).json({message:"메인 페이지", data})
+    }else{
+        res.status(404).json({message:`등록된 피해다발 사이트가 없습니다`});
+    }
 }
 
 // 서비스 소개
