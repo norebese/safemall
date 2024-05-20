@@ -1,12 +1,16 @@
-body{
+body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
     width: 768px;
     box-sizing: border-box;
 }
 
 .report-container {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin: 70px 0px 0px 0px;
+    padding: 0;
 }
 
 .inner-container {
@@ -16,7 +20,7 @@ body{
 }
 
 .report-header {
-    padding: 10px 0;
+    padding: 40px 0 30px 0;
     text-align: center;
     font-size: 48px;
     border-bottom: 1px solid gray;
@@ -31,14 +35,14 @@ body{
 
 .main-title {
     color: #000;
-    font-size: 70px;
+    font-size: 55px;
     font-weight: 500;
     padding: 10px 20px;
 }
 
 .date-info {
     color: #666;
-    margin-left: 10px;
+    margin: 0 30px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
 }
@@ -81,7 +85,7 @@ body{
     margin-bottom: 15px;
     border: none;
     background-color: #F1F3F5;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
     font-size: 32px;
     color: #6A6A6A;
@@ -96,6 +100,12 @@ body{
     width: 100%;
     justify-content: center;
     padding: 40px 0;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.button-area>svg{
+    margin-left: 15px;
 }
 
 .button {
@@ -110,6 +120,7 @@ body{
 
 #answer-btn{
     border-bottom: 1px solid #ddd;
+    margin: 0;
 }
 
 #answer-btn-manager{
@@ -148,6 +159,12 @@ body{
     margin: 0px 20px;
 }
 
+#title-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #answer-title{
     display: block;
     margin-bottom: 5px;
@@ -155,6 +172,11 @@ body{
     font-size: 40px;
     padding-left: 10px;
     margin-bottom: 10px;
+}
+
+#answer-date{
+    font-size: 20px;
+    margin-right: 10px;
 }
 
 #write-answer{
@@ -176,4 +198,72 @@ body{
     font-size: 32px;
     vertical-align: middle;
     line-height: 100%;
+}
+
+.bg-body-tertiary {
+    background: linear-gradient(to right, #1A2042, #1A2042);
+}
+
+.navbar-brand, .navbar-toggler {
+    font-size: 36px;
+    color: white !important;
+}
+.navbar-brand{
+    margin-left: 20px;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+.offcanvas-header{
+    background-color: #1A2042;
+}
+.btn-close{
+    background-color: white;
+    font-size: 48px;
+    margin-right: 20px!important;
+}
+.offcanvas {
+    width: 80% !important; /* 화면 전체 너비를 강제 적용 */
+}
+.offcanvas-title{
+    margin-left: 20px;
+    font-size: 48px;
+    color: white;
+}
+.offcanvas-body {
+    background-color: #E8E9EB;
+}
+.navbar.fixed-top {
+    height: 70px;
+}
+.navbar .container-fluid {
+    align-items: center; /* Center the contents vertically */
+}
+.btn{
+    margin: 20px auto 0 10px;
+    background-color:rgba(81, 80, 118, 1);
+    color: white;
+    font-size: 36px;
+}
+.bottom-nav {
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1A2042;
+}
+.bottom-nav button {
+    background: none;
+    border: none;
+    color: white;
+}
+.nav-item{
+    font-size: 36px;
+}
+
+.btn-close{
+    background-color: white !important;
 }

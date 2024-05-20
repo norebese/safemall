@@ -6,15 +6,62 @@
     <title>reportDetail</title>
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="topnav" style="height: 70px;"></div>
     <div class="report-container">
+        <div class="topnav">
+            <nav class="navbar bg-body-tertiary fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Safe Mall</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Safe Mall</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">쇼핑몰 검색</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">서비스 소개</a>
+                                </li>
+                                <hr class="divider">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">공지사항</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">피해예방</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">대처법</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">건의사항</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">제보</a>
+                                </li>
+                                <hr class="divider">
+                                <li>
+                                    <button class="btn">로그인</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div class="report-header">
             <div>제보 게시판</div>
         </div>
         <div class="inner-container">
-            <div class="main-title">제보 게시물 제목입니다</div>
+            <div class="main-title">의심되는 사기 쇼핑몰에 대한 제보</div>
             <div class="date-info">
                 <span id="date">2024.4.26</span>
                 <span id="writer">작성자: 홍길동</span>
@@ -22,11 +69,11 @@
             </div>
             <div class="body-content">
                 <div class="content-title">쇼핑몰 명</div>
-                <div class="content-content">eleparts / 엘레파츠</div>
+                <div class="content-content">쿠핑</div>
             </div>
             <div class="body-content">
                 <div class="content-title">도메인 주소</div>
-                <div class="content-content">eleparts.co.kr</div>
+                <div class="content-content">coopping.co.kr</div>
             </div>
             <div class="body-content">
                 <div class="content-title">사업자 명</div>
@@ -35,8 +82,10 @@
             <div class="body-content">
                 <div class="content-title">기타사항</div>
                 <div class="content-content">
-                    일반쇼핑몰이며 현재 영업중이지 않습니다일반쇼핑몰이며 현재 영업중이지 않습니다
-                    일반쇼핑몰이며 현재 영업중이지 않습니다일반쇼핑몰이며 현재 영업중이지 않습니다
+                    안녕하세요. 저는 최근에 쿠핑이라는 쇼핑몰을 이용하면서 의심스러운 점을 발견했습니다.
+                    제가 주문한 제품이 배송되지 않았고, 고객센터에 연락해도 응대가 되지 않는 등,
+                    이 쇼핑몰이 사기일 가능성이 크다고 생각합니다. 다른 분들이 피해를 입지 않도록
+                    조사해 주시기 바랍니다.
                 </div>
             </div>
             <div id="manager-area">
@@ -46,19 +95,44 @@
             </div>
 
             <div id="answer-container">
-                <div id="answer-btn-manager">
+                <div id="title-section">
                     <div id="answer-title">관리자 답변:</div>
-                    <div><button id="edit">수정</button><button id="del">삭제</button></div>
+                    <div id="answer-btn-manager">
+                        <div id="answer-date">2024-05-06</div>
+                        <div><button id="edit">수정</button><button id="del">삭제</button></div>
+                    </div>
                 </div>
                 <div id="answer" class="content-content">
-                    안녕하세요 ㅇㅇㅇ 관리자입니다.제보하신 ㅇㅇㅇ 사항이 처리되었습니다.
-                    제보해주셔서 감사합니다.
+                    안녕하세요. 저희가 확인한 바로는 쿠핑은 온라인 상에서 상당한 의심을 불러일으키고 있습니다. <br><br>
+                    이 쇼핑몰은 현재 영업 중이지 않거나, 사기 행위를 저질러 왔을 가능성이 높습니다. <br><br>
+                    다른 쇼핑몰을 이용하시는 것이 안전할 것으로 보입니다. <br><br>
+                    소중한 제보 감사드립니다. 
                 </div>
             </div>
             <div class="button-area">
                 <button class="button">목록</button>
             </div>
+            <div class="bottomnav">
+                <nav class="navbar bg-body-tertiary fixed-bottom">
+                    <div class="bottom-nav">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-house" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
+            </div>
     </div>
-    <div class="footer" style="height: 75px;"></div>
 </body>
 </html>

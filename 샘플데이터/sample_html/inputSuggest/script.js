@@ -11,7 +11,6 @@ $('#summernote').summernote({
     ],
     minHeight: 700,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
-    focus: true,
     disableResizeEditor: true,
     disableDragAndDrop: true,
     lang: 'ko-KR',
