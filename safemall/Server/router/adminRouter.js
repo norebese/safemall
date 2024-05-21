@@ -6,7 +6,9 @@ const router = e.Router();
 // 관리자 메인페이지
 router.get('/')
 
-router.get('/updatedb', adminController.updateDB)
+router.get('/updatedbshopslist', adminController.updateDB_shopsList)
+
+router.get('/updatedbcomplaintslist', adminController.updateDB_ComplaintsList)
 
 // 관리자 게시판
 // 관리자 공지사항 목록

@@ -45,7 +45,7 @@ const Shop = mongoose.model('shopsList', shopSchema)
 export async function updateDB() {
   try {
     // JSON 파일에서 데이터 읽기
-    const data = await fs.readFile('data/apiData.json', 'utf-8');
+    const data = await fs.readFile('data/apidata/shopsList.json', 'utf-8');
     const shops = JSON.parse(data);
 
     // 데이터 하나씩 MongoDB에 삽입
