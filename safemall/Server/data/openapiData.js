@@ -41,18 +41,27 @@ function transformData(row, no) {
   let detailInitScreen = row.CHOGI.split(' ');
   if (detailInitScreen[0] == '') detailInitScreen = detailInitScreen.slice(1);
 
+  // domainName 정규식 처리
+  // replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0]
+  let domainName
+  domainName = row.DOMAIN_NAME.replace(/^(https?:\/\/)?(www\.)?/, '')
+  // businessType 전처리
+  // replace(/^\s+|\s+$/g, '' );
+  let businessType
+  businessType = row.YPFORM.replace(/^\s+|\s+$/g, '' );
+
   return {
     no: no, // 순번
     company: row.COMPANY,
     shopNameKor: shopNameKor,
     shopNameEng: shopNameEng,
-    domainName: row.DOMAIN_NAME,
+    domainName: domainName,
     tel: row.TEL,
     email: row.EMAIL,
     mailOrderNum: row.UPJONG_NBR,
     dateInit: new Date(row.FIRST_HEO_DATE),
     comAddress: row.COM_ADDR,
-    businessType: row.YPFORM,
+    businessType: businessType,
     mainItems: mainItems,
     businessState: row.STAT_NM,
     scoreTotal: parseInt(row.TOT_RATINGPOINT),
