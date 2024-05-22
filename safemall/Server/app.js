@@ -1,21 +1,27 @@
 import e from "express";
 import { config } from "./config.js";
-import { connectMongoDB } from "./db/database.js";
-import mainRouter from "./router/mainRouter.js";
-import adminRouter from "./router/adminRouter.js"
+import { connectDatabases } from "./db/database.js";
+import mainRouter from './router/mainRouter.js'
+import adminRouter from  './router/adminRouter.js'
 
-const app = e(); 
+const app = e();
+
 app.use(e.json());
 
 app.use('/', mainRouter)
 // app.use('/auth', authRouter)
 // app.use('/board', boardRouter)
 app.use('/admin', adminRouter)
-connectMongoDB().then(()=>{
-    app.listen(config.host.port,()=>{
-        console.log(`Listen http://localhost:${config.host.port}`)
-    })
-})
+
+// 데이터베이스 연결 및 서버 시작
+// connectDatabases().then(() => {
+  app.listen(config.host.port, () => {
+    console.log(`Server listening on http://localhost:${config.host.port}`);
+  });
+// }).catch(error => {
+//   console.error('Failed to start the server:', error);
+// });
+
 
 /**
  * 사용되는 페이지의 대분류

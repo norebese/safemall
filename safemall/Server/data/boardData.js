@@ -69,7 +69,7 @@ const Suggest = mongoose.model('SuggestList', suggestSchema);
 Type	Name	Optional
 Int	no	
 String	Title	제목
-String	shopName	쇼핑몰명
+String	shopName  쇼핑몰명
 String	domain	도메인명
 String	company	사업자명 상호
 String	companyNum	사업자등록번호
@@ -95,3 +95,85 @@ const reportSchema = new mongoose.Schema({
 useVirtualId(reportSchema)
 const Report = mongoose.model('ReportList', reportSchema);
 
+function isType(boardtype){
+  if(boardtype == 'Notice') return Notice;
+  else if(boardtype == 'Prevent') return Prevent;
+  else if(boardtype == 'Suggest') return Suggest;
+  else if(boardtype == 'Report') return Report;
+  else return false;
+}
+
+// 글 목록
+export async function getboardList(boardtype, lastId){
+  try{
+    const query = lastId ? { _id: { $lt: lastId } } : {};
+    return await isType(boardtype).find(query).sort({ _id: -1 }).limit(5);
+  }catch(e){
+    console.log('Error boardList: ', e);
+    return false;
+  }
+}
+
+// 글 상세
+export async function getBypostId(boardtype, postId){
+  try{
+    return await isType(boardtype).findById(postId);
+  }catch(e){
+    console.log('Error postDetail: ', e);
+    return false;
+  }
+}
+
+// 글 작성
+export async function Create(boardtype, post){
+  try{
+    return new (isType(boardtype))(post).save().then((data)=>{
+      return data.id;
+    });
+  }catch(e){
+    console.log('Error create: ', e);
+    return false;
+  }
+}
+
+// 글 수정 / 답변 수정 / 답변 삭제
+export async function Edit(boardtype, post){
+  try{
+    return await isType(boardtype).updateOne({ _id: post._id }, post);
+  }catch(e){
+    console.log('Error edit: ', e);
+    return false;
+  }
+}
+
+// 글 삭제
+export async function Deletepost(boardtype, postId){
+  try{
+    return await isType(boardtype).findByIdAndDelete(postId);
+  }catch(e){
+    console.log('Error Deletepost: ', e);
+    return false;
+  }
+}
+
+
+// 공지사항 목록
+// 공지사항 상세
+// 예방법 목록
+// 예방법 상세
+// 피해 대처법(리엑트에서 처리되는 로직)
+// 건의사항 목록
+// 건의사항 작성
+// 건의사항 상세
+// 건의사항 상세 수정
+// 건의사항 상세 삭제
+// 제보
+// 제보 작성
+// 제보 상세
+// 제보 수정
+// 제보 삭제
+// boardController
+//     게시글 목록 가져오기
+//     게시글 상세 가져오기
+//     게시글 수정 가져오기
+//     게시글 삭제 가져오기
