@@ -5,6 +5,7 @@ import mainRouter from "./router/mainRouter.js";
 import adminRouter from "./router/adminRouter.js"
 import reportRouter from './router/report.js';
 import cors from 'cors';
+import preventRouter from './router/preventRouter.js';
 
 const app = e();
 app.use(e.json());
@@ -17,6 +18,8 @@ app.use('/', mainRouter)
 app.use('/admin', adminRouter)
 
 app.use('/report', reportRouter)
+
+app.use('/prevent', preventRouter)
 
 
 connectMongoDB().then(()=>{

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReportService from '../service/report';
 import { useNavigate } from 'react-router-dom';
+import styles from "./reportForm.module.css";
 
 function ReportForm() {
   const navigate = useNavigate();
@@ -36,70 +37,70 @@ function ReportForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-header">
+      <div className={styles.formheader}>
         <div>제보하기</div>
       </div>
-      <div className="form-body">
-        <div className="body-container">
-          <label htmlFor="Title" className="form-label">제목
-            <span className="required">(필수)</span>
+      <div className={styles.formbody}>
+        <div className={styles.bodycontainer}>
+          <label htmlFor="Title" className={styles.formlabel}>제목
+            <span className={styles.required}>(필수)</span>
           </label>
           <input
             type="text"
-            id="Title"
+            id={styles.Title}
             name="Title"
-            className="form-input"
+            className={styles.forminput}
             placeholder="제목을 입력해 주세요"
             value={formData.Title}
             onChange={handleChange}
             required
           />
         </div>
-        <div className="body-container">
-          <label htmlFor="ShopName" className="form-label">쇼핑몰 명</label>
+        <div className={styles.bodycontainer}>
+          <label htmlFor="ShopName" className={styles.formlabel}>쇼핑몰 명</label>
           <input
             type="text"
-            id="ShopName"
+            id={styles.ShopName}
             name="ShopName"
-            className="form-input"
+            className={styles.forminput}
             placeholder="쇼핑몰 명을 입력해 주세요"
             value={formData.ShopName}
             onChange={handleChange}
           />
         </div>
-        <div className="body-container">
-          <label htmlFor="Domain" className="form-label">도메인 주소
-            <span className="required">(필수)</span>
+        <div className={styles.bodycontainer}>
+          <label htmlFor="Domain" className={styles.formlabel}>도메인 주소
+            <span className={styles.required}>(필수)</span>
           </label>
           <input
             type="text"
-            id="Domain"
+            id={styles.Domain}
             name="Domain"
-            className="form-input"
+            className={styles.forminput}
             placeholder="도메인 주소를 입력해 주세요"
             value={formData.Domain}
             onChange={handleChange}
             required
           />
         </div>
-        <div className="body-container">
-          <label htmlFor="Owner" className="form-label">사업자 명</label>
+        <div className={styles.bodycontainer}>
+          <label htmlFor="Owner" className={styles.formlabel}>사업자 명</label>
           <input
             type="text"
-            id="Owner"
+            id={styles.Owner}
             name="Owner"
-            className="form-input"
+            className={styles.forminput}
             placeholder="사업자 명을 입력해 주세요"
             value={formData.Owner}
             onChange={handleChange}
           />
         </div>
-        <div className="body-container">
-          <label htmlFor="Etc" className="form-label">기타사항</label>
+        <div className={styles.bodycontainer}>
+          <label htmlFor="Etc" className={styles.formlabel}>기타사항</label>
           <textarea
             name="Etc"
-            id="Etc"
-            className="form-input"
+            id={styles.Etc}
+            className={styles.forminput}
             cols="30"
             rows="10"
             placeholder="기타 사항을 입력해 주세요"
@@ -108,8 +109,8 @@ function ReportForm() {
           ></textarea>
         </div>
       </div>
-      <div className="form-actions">
-        <button type="submit" className="form-button">제출</button>
+      <div className={styles.formactions}>
+        <button type="submit" className={styles.formbutton}>제출</button>
       </div>
     </form>
   );

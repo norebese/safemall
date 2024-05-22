@@ -64,6 +64,8 @@ body {
     border-radius: 30px;
     border: none;
   }
+
+
   #search > button {
     height: auto;
     font-size: 30px;
@@ -159,3 +161,14 @@ body {
     height: 75px;
     background-color: white;
   }
+
+  .noData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    font-size: 50px;
+  }
+
+  

@@ -2,8 +2,8 @@ import * as shopListData from '../data/shopListData.js'
 import * as warningData from '../data/warningSite.js'
 // 메인페이지 호출
 export async function getMain(req, res, next){
-    const { skipCount } = req.query;
-    const data = await warningData.getList(skipCount);
+    const { count } = req.query;
+    const data = await warningData.getList(count);
     // 가져온 data를 main.html에 render 한 후에 
     console.log(data)
     if(data.length > 0){

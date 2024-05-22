@@ -1,22 +1,19 @@
 import Mongoose, { Schema, now } from 'mongoose';
 import {useVirtualId} from '../db/database.js';
 
-const reportSchema = new Mongoose.Schema({
+const preventionSchema = new Mongoose.Schema({
     Title: {type: String, require: true},
     Date: { type: Date, default: Date.now},
     Writer: {type: String, require: true},
     View: {type: Number, default: 0},
-    ShopName: {type: String, require: true},
-    Domain: {type: String, require: true},
-    Owner: {type: String, require: true},
-    Etc: {type: String, require: true}
+    Contents: {type: String, require: true}
 });
 
-useVirtualId(reportSchema);
+useVirtualId(preventionSchema);
 
-const Report = Mongoose.model('report', reportSchema);
+const Report = Mongoose.model('prevent', preventionSchema);
 
-export async function getReportList(lastId){
+export async function getPreventList(lastId){
     let query = {};
 
     if (lastId) {
@@ -30,14 +27,4 @@ export async function getReportList(lastId){
       .limit(5); // limit 개수만큼 데이터 제한
 
     return reports;
-};
-
-export async function inputReport(Title, ShopName, Domain, Owner, Etc){
-    return new Report({
-        Title, Writer:'홍길동',ShopName, Domain, Owner, Etc
-    }).save();
-};
-
-export async function getReport(id){
-    return Report.findById(id);
 };

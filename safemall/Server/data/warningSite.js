@@ -13,8 +13,8 @@ useVirtualId(warningSiteSchema);
 
 const warning = Mongoose.model('warning', warningSiteSchema);
 
-export async function getList(num){
-    const limitCount = 3 + parseInt(num);
+export async function getList(count){
+    const limitCount = 3 + parseInt(count);
     console.log(limitCount)
     return warning.find().sort({ _id: -1 }).limit(limitCount);
 };

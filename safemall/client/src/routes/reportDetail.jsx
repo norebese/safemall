@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReportService from '../service/report';
 import { useNavigate } from 'react-router-dom';
+import styles from "./reportDetail.module.css";
 
 function ReportDetail() {
   const navigate = useNavigate();
@@ -24,31 +25,31 @@ function ReportDetail() {
 
   return (
     <div>
-      <div className="report-header">
+      <div className={styles.reportheader}>
         <div>제보 게시판</div>
       </div>
-      <div className="inner-container">
-        <div className="main-title">{report.Title}</div>
-        <div className="date-info">
-          <span id="date">{report.Date}</span>
-          <span id="writer">작성자: {report.Writer}</span>
-          <span id="viewCount">조회수: {report.View}</span>
+      <div className={styles.innercontainer}>
+        <div className={styles.maintitle}>{report.Title}</div>
+        <div className={styles.dateinfo}>
+          <span id={styles.date}>{report.Date}</span>
+          <span id={styles.writer}>작성자: {report.Writer}</span>
+          <span id={styles.viewCount}>조회수: {report.View}</span>
         </div>
-        <div className="body-content">
-          <div className="content-title">쇼핑몰 명</div>
-          <div className="content-content">{report.ShopName}</div>
+        <div className={styles.bodycontent}>
+          <div className={styles.contenttitle}>쇼핑몰 명</div>
+          <div className={styles.contentcontent}>{report.ShopName}</div>
         </div>
-        <div className="body-content">
-          <div className="content-title">도메인 주소</div>
-          <div className="content-content">{report.Domain}</div>
+        <div className={styles.bodycontent}>
+          <div className={styles.contenttitle}>도메인 주소</div>
+          <div className={styles.contentcontent}>{report.Domain}</div>
         </div>
-        <div className="body-content">
-          <div className="content-title">사업자 명</div>
-          <div className="content-content">{report.Owner}</div>
+        <div className={styles.bodycontent}>
+          <div className={styles.contenttitle}>사업자 명</div>
+          <div className={styles.contentcontent}>{report.Owner}</div>
         </div>
-        <div className="body-content">
-          <div className="content-title">기타사항</div>
-          <div className="content-content">{report.Etc}</div>
+        <div className={styles.bodycontent}>
+          <div className={styles.contenttitle}>기타사항</div>
+          <div className={styles.contentcontent}>{report.Etc}</div>
         </div>
         {/* <div id="answer-container">
           <div id="title-section">
@@ -59,8 +60,8 @@ function ReportDetail() {
             {report.adminAnswer}
           </div>
         </div> */}
-        <div className="button-area">
-          <button className="button" onClick={() => navigate('/report')}>목록</button>
+        <div className={styles.buttonarea}>
+          <button className={styles.button} onClick={() => navigate('/report')}>목록</button>
         </div>
       </div>
     </div>

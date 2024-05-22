@@ -8,15 +8,17 @@ class ReportService{
         };
       }
 
-      async getReportList() {
-        const response = await fetch(`${this.baseUrl}/report`, {
+      async getReportList(lastId) {
+        console.log(lastId)
+        const queryParams = lastId ? `?lastId=${lastId}` : '';
+        const response = await fetch(`${this.baseUrl}/report${queryParams}`, {
           method: 'GET',
           headers: this.headers,
         });
         const responseData = await response.json();
         const data = responseData.data; // 실제 데이터는 response.data에 있음
       
-        console.log(data); // 데이터 확인
+        // console.log(data); // 데이터 확인
         return data;
       }
 

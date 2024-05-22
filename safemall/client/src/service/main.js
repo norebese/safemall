@@ -8,9 +8,9 @@ class MainService{
         };
       }
 
-      async getWarnList(skipCount) {
-        console.log(skipCount)
-        const queryParams = `?skipCount=${skipCount}`;
+      async getWarnList(count) {
+        console.log(count)
+        const queryParams = `?count=${count}`;
         const response = await fetch(`${this.baseUrl}${queryParams}`, {
           method: 'GET',
           headers: this.headers,
@@ -18,22 +18,9 @@ class MainService{
         const responseData = await response.json();
         const data = responseData.data; // 실제 데이터는 response.data에 있음
       
-        console.log(responseData); // 데이터 확인
+        console.log(responseData.message); 
         return data;
       }
-      
-    //   async getMoreList() {
-    //     const response = await fetch(`${this.baseUrl}`, {
-    //       method: 'GET',
-    //       headers: this.headers,
-    //     });
-    //     const responseData = await response.json();
-    //     const data = responseData.data; // 실제 데이터는 response.data에 있음
-      
-    //     console.log(responseData); // 데이터 확인
-    //     return data;
-    //   }
-
 }
 
 export default MainService;

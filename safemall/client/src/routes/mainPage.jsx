@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import MainService from '../service/main';
-import './mainPage.css'
+import styles from "./mainPage.module.css";
 
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [cards, setCards] = useState([]);
-  const [skipCount, setSkipCount] = useState(0);
+  const [count, setCount] = useState(0);
+  const [showMoreButton, setShowMoreButton] = useState(true);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -19,30 +20,35 @@ function MainPage() {
   };
 
   const handleLoadMore = () => {
-    setSkipCount(prev => prev + 3);
-    console.log('더보기 버튼 클릭 - 호출');
+    setCount(prev => prev + 3);
+  };
+
+  const getWarnList = async () => {
+    try {
+      const maintService = new MainService();
+      const fetchedData = await maintService.getWarnList(count);
+      setCards(fetchedData);
+      // console.log(fetchedData.length)
+      if (fetchedData.length % 3 !== 0) { //가져온 데이터가 3의 배수가 아니면 "더보기" 버튼을 숨김.
+        setShowMoreButton(false);
+      }
+    } catch (error) {
+      console.error('Error fetching Report list:', error);
+    }
   };
 
   useEffect(() => {
-    const fetchWarnList = async () => {
-      try {
-        const maintService = new MainService();
-        const fetchedData = await maintService.getWarnList(skipCount);
-        setCards(fetchedData);
-      } catch (error) {
-        console.error('Error fetching Report list:', error);
-      }
-    };
-    fetchWarnList();
-  }, [skipCount]); //여기에 들어가야 skipCount값이 변하면 새로운 값 로드됨
+    getWarnList();
+  }, [count]); //count값이 변하면 새로운 값 로드됨
 
   return (
-    <div id="container">
-      <div id="title">
-        <h1><img src="./cart.svg" alt="" /><br /> SAFE MALL.</h1>
+    <div id={styles.container}>
+      <div id={styles.title}>
+      
+        <h1><img src={process.env.PUBLIC_URL + '/cart.svg'} width = '300px'/><br /> SAFE MALL.</h1>
       </div>
       <form onSubmit={handleSearchSubmit}>
-        <div id="search">
+        <div id={styles.search}>
           <input
             type="text"
             placeholder="상호명 또는 URL 입력"
@@ -53,28 +59,30 @@ function MainPage() {
         </div>
       </form>
 
-      <div id="site">
-        <span className="list">🚨 피해 다발 사이트</span>
-        <span className="count">( 총 접수건 / 미처리건 )</span>
+      <div id={styles.site}>
+        <span className={styles.list}>🚨 피해 다발 사이트</span>
+        <span className={styles.count}>( 총 접수건 / 미처리건 )</span>
       </div>
 
     {!cards ? (
-        <div className='noData'>
+        <div className={styles.noData}>
             <p>등록된 사이트 없음.</p>
         </div>
     ) : (
         cards.map(card => (
-            <div key={card._id} className="listcard">
+            <div key={card._id} className={styles.listcard}>
             <span>{card.shopName}</span><span>( {card.Totalreport}/{card.Unprocess} )</span><br />
-            <span className="detail">{card.MainItems}</span>
+            <span className={styles.detail}>{card.MainItems}</span>
             </div>
         ))
     )}
 
-      <div id="more">
-        <button type="button" onClick={handleLoadMore}>더보기▾</button>
-      </div>
-      <div className='bottom'>
+      {showMoreButton && (
+        <div id={styles.more}>
+          <button type="button" onClick={handleLoadMore}>더보기▾</button>
+        </div>
+      )}
+      <div className={styles.bottom}>
 
       </div>
     </div>
