@@ -8,11 +8,13 @@ import MainPage from './routes/mainPage';
 import PreventionList from './routes/PreventionList';
 import PreventionForm from './routes/PreventionForm';
 import PreventionDetail from './routes/PreventionDetail';
+import LoginPage from './routes/loginPage';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage/>}/>
+      <Route path="/login" element={<LoginPage/>}/>
       <Route path="/report" element={<ReportList/>}/>
       <Route path="/report/create" element={<ReportForm/>}/>
       <Route path="/report/:id" element={<ReportDetail />} />

@@ -19,8 +19,8 @@ export async function getReportList(req,res,next){
 }
 
 export async function createReport(req,res,next){
-    const {Title, ShopName, Domain, Owner, Etc} = req.body;
-    const data = await reportRepository.inputReport(Title, ShopName, Domain, Owner, Etc);
+    const {Title, Writer, ShopName, Domain, Owner, Etc} = req.body;
+    const data = await reportRepository.inputReport(Title, Writer, ShopName, Domain, Owner, Etc);
     if(data){
         res.json({ message: '제보가 성공적으로 생성되었습니다.' });
     }else{

@@ -32,9 +32,9 @@ export async function getReportList(lastId){
     return reports;
 };
 
-export async function inputReport(Title, ShopName, Domain, Owner, Etc){
+export async function inputReport(Title, Writer, ShopName, Domain, Owner, Etc){
     return new Report({
-        Title, Writer:'홍길동',ShopName, Domain, Owner, Etc
+        Title, Writer,ShopName, Domain, Owner, Etc
     }).save();
 };
 

@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ReportService from '../service/report';
 import { useNavigate } from 'react-router-dom';
 import styles from "./reportForm.module.css";
+import { AuthContext } from '../context/authContext';
 
 function ReportForm() {
   const navigate = useNavigate();
+  const { isLoggedIn, nickname } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     Title: '',
+    Writer: nickname,
     ShopName: '',
     Domain: '',
     Owner: '',
     Etc: ''
   });
+
+  useEffect(() => {
+    console.log(isLoggedIn)
+    if(!isLoggedIn){
+      alert('로그인 필요')
+      navigate('/login')
+    }
+  }, []);
   
   const handleChange = (e) => {
     const { name, value } = e.target;

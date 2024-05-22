@@ -105,13 +105,13 @@ div.notices .noticeitem a {
 }
 
 /* 모든 a 태그에 대한 스타일 */
-a, a:visited {
-    color: black !important; /* 글자 색상을 검정색으로 강제 설정 */
+.content a, .content a:visited {
+    color: black ; /* 글자 색상을 검정색으로 강제 설정 */
     text-decoration: none !important; /* 밑줄 없애기 */
 }
 
 /* 호버 상태에서의 a 태그 스타일 */
-a:hover {
+.content a:hover {
     color: grey !important; /* 호버 시 색상 변경 */
     text-decoration: underline !important; /* 밑줄 표시 */
 }

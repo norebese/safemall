@@ -1,11 +1,12 @@
 import e from "express";
 import { config } from "./config.js";
-import { connectMongoDB } from "./db/database.js";
+import { connectDB  } from "./db/database.js";
 import mainRouter from "./router/mainRouter.js";
 import adminRouter from "./router/adminRouter.js"
 import reportRouter from './router/report.js';
 import cors from 'cors';
 import preventRouter from './router/preventRouter.js';
+import authRouter from './router/authRouter.js';
 
 const app = e();
 app.use(e.json());
@@ -13,7 +14,9 @@ app.use(e.json());
 app.use(cors());
 
 app.use('/', mainRouter)
-// app.use('/auth', authRouter)
+
+app.use('/auth', authRouter)
+
 // app.use('/board', boardRouter)
 app.use('/admin', adminRouter)
 
@@ -22,7 +25,7 @@ app.use('/report', reportRouter)
 app.use('/prevent', preventRouter)
 
 
-connectMongoDB().then(()=>{
+connectDB().then(()=>{
     app.listen(config.host.port,()=>{
         console.log(`Listen http://localhost:${config.host.port}`)
     })

@@ -1,4 +1,5 @@
 import e from "express";
+import * as authController from "../controller/authController.js"
 
 const router = e.Router();
 
@@ -6,9 +7,9 @@ const router = e.Router();
 router.post('/signin')
 
 // 회원 회원가입
-router.post('/signup')
+router.post('/signup', authController.createUser)
 
 // 마이페이지
-router.get('/mypage', mypageController)
+// router.get('/mypage', mypageController)
 
 export default router

@@ -7,7 +7,7 @@ function ReportList() {
   const [reportList, setReportList] = useState([]); 
   //초기에 reportList가 비어있어서 조건부 렌더링이 "등록된 제보가 없습니다." 메시지를 먼저 보여줘 깜빡임 현상 발생
   const [loading, setLoading] = useState(true); // 로딩 상태 추가하면 데이터가 로드된 후에 실제 데이터를 표시해 해결가능
-  const [lastId, setLastId] = useState(null);
+  const [lastId, setLastId] = useState(0);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
   const fetchReportList = async () => {
@@ -58,7 +58,7 @@ function ReportList() {
   return (
     <div className={styles.content}>
       <header class={styles.appheader}>
-          <h1>제보합니다</h1>
+          <h1>제보 게시판</h1>
           <div class={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
               <button className={styles.submit} type="submit">&#128269;</button>

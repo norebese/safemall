@@ -5,7 +5,7 @@ export async function getMain(req, res, next){
     const { count } = req.query;
     const data = await warningData.getList(count);
     // 가져온 data를 main.html에 render 한 후에 
-    console.log(data)
+    // console.log(data)
     if(data.length > 0){
         res.status(200).json({message:"메인 페이지", data})
     }else{

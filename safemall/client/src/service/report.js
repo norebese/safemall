@@ -18,7 +18,7 @@ class ReportService{
         const responseData = await response.json();
         const data = responseData.data; // 실제 데이터는 response.data에 있음
       
-        // console.log(data); // 데이터 확인
+        console.log(data); // 데이터 확인
         return data;
       }
 
