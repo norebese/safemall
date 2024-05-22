@@ -1,27 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import ReportService from '../service/report';
 import { useNavigate } from 'react-router-dom';
 import styles from "./reportDetail.module.css";
+import { AuthContext } from '../context/authContext';
 
 function ReportDetail() {
   const navigate = useNavigate();
-  const [report, setReport] = useState([]); //null로 하면 typeError 남
+  const { isLoggedIn, nickname } = useContext(AuthContext);
+  const [report, setReport] = useState([null]); //null로 하면 typeError 남
   const { id } = useParams(); // URL에서 id 파라미터 가져오기
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const reportService = new ReportService();
+      const response = await reportService.deleteReport(id);
+      if (response.status === 200) {
+        alert('삭제되었습니다.'); 
+        navigate('/report'); 
+      } else {
+        console.error('삭제 실패:', response.statusText);
+        alert('삭제를 실패했습니다. 잠시 후 다시 시도해주세요.');
+      }
+    } catch (error) {
+      console.error('Error submitting report:', error);
+    }
+  };
+  
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchReportDetail = async () => {
       try {
         const reportService = new ReportService();
         const fetchedData = await reportService.getReportDetail(id);
         setReport(fetchedData);
+        
       } catch (error) {
         console.error('Error fetching Report list:', error);
       }
     };
 
     fetchReportDetail();
-  }, [id]); // id가 변경될 때마다 useEffect 다시 실행
+  }, []); // id가 변경될 때마다 useEffect 다시 실행
 
   return (
     <div>
@@ -63,6 +84,12 @@ function ReportDetail() {
         <div className={styles.buttonarea}>
           <button className={styles.button} onClick={() => navigate('/report')}>목록</button>
         </div>
+        {isLoggedIn && nickname === report.Writer && (
+          <div className={styles.buttonarea}>
+              <button className={styles.button} onClick={() => navigate(`/report/edit/${id}`)}>수정하기</button>
+              <button className={styles.button} onClick={handleDelete}>삭제하기</button>
+          </div>
+        )}
       </div>
     </div>
   );

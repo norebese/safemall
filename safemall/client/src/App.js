@@ -9,6 +9,7 @@ import PreventionList from './routes/PreventionList';
 import PreventionForm from './routes/PreventionForm';
 import PreventionDetail from './routes/PreventionDetail';
 import LoginPage from './routes/loginPage';
+import ReportEditForm from './routes/reportEditForm';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/report" element={<ReportList/>}/>
       <Route path="/report/create" element={<ReportForm/>}/>
       <Route path="/report/:id" element={<ReportDetail />} />
+      <Route path="/report/edit/:id" element={<ReportEditForm/>} />
       <Route path="/prevent" element={<PreventionList />} />
       <Route path="/prevent/create" element={<PreventionForm />} />
       <Route path="/prevent/edit/:id" element={<PreventionForm />} />

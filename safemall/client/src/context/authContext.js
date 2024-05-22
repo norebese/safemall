@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
 
         console.log('로그인 성공:', { token, nickname: data.Nickname });
         setIsLoggedIn(true);
+        setNickname(sessionStorage.getItem('nickname'));
     };
 
     const logout = () => {

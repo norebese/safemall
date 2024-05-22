@@ -14,4 +14,10 @@ router.post('/createReport', reportController.createReport);
 //http://localhost:8080/report/id:
 router.get('/:id', reportController.reportDetail);
 
+//http://localhost:8080/report/id:
+router.delete('/:id', reportController.deleteReport);
+
+//http://localhost:8080/report/id:
+router.put('/:id', reportController.editReport);
+
 export default router;

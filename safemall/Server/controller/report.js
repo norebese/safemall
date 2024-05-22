@@ -39,3 +39,24 @@ export async function reportDetail(req,res,next){
         res.status(404).json({message:`입력 실패`});
     }
 }
+
+export async function deleteReport(req,res,next){
+    const id = req.params.id;
+    const data = await reportRepository.deleteReport(id);
+    if(data){
+        res.status(200).json({data});
+    }else{
+        res.status(404).json({message:`입력 실패`});
+    }
+}
+
+export async function editReport(req,res,next){
+    const id = req.params.id;
+    const {Title, Writer, ShopName, Domain, Owner, Etc} = req.body;
+    const data = await reportRepository.editReport(id, {Title, Writer, ShopName, Domain, Owner, Etc});
+    if(data){
+        res.json({data});
+    }else{
+        res.status(404).json({message:`입력 실패`});
+    }
+}

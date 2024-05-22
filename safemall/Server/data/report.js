@@ -41,3 +41,11 @@ export async function inputReport(Title, Writer, ShopName, Domain, Owner, Etc){
 export async function getReport(id){
     return Report.findById(id);
 };
+
+export async function deleteReport(id){
+    return Report.findByIdAndDelete(id);
+};
+
+export async function editReport( id, {Title, Writer, ShopName, Domain, Owner, Etc}){
+    return Report.findByIdAndUpdate(id, {Title, Writer, ShopName, Domain, Owner, Etc}, {returnDocument: "after"});
+}

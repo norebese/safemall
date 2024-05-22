@@ -47,6 +47,30 @@ class ReportService{
         console.log(data); // 데이터 확인
         return data;
       }
+
+      async deleteReport(id) {
+        try {
+            const response = await fetch(`${this.baseUrl}/report/${id}`, {
+                method: 'DELETE', // DELETE 메서드 사용
+                headers: this.headers, // 필요한 헤더 추가
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response
+        } catch (error) {
+            console.error('Error deleting report:', error);
+        }
+    }
+
+    async editReport(formData, id) {
+      const response = await fetch(`${this.baseUrl}/report/${id}`, {
+        method: 'PUT',
+        headers: this.headers,
+        body: JSON.stringify(formData)
+      });
+      return response;
+    }
 };
 
 export default ReportService;
