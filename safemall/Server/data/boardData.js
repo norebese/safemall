@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { useVirtualId } from "../db/database.js"
+import { useVirtualId, useLocalTimeStamps } from "../db/database.js"
 
 // 공지사항 스키마
 /*
@@ -14,11 +14,13 @@ Bool	HotTopic	중요공지여부
 const noticeSchema = new mongoose.Schema({
   no: { type: Number, required: true, unique: true }, // 순번
   Title: {type:String, required: true}, // 글 제목
+  Author: {type:String, required: true}, // 작성자
   View: {type:Number, required: true, default:0}, // 조회수
-  Contents: {type:String, required:true, default:''}, // 글 내용
-  HotTopic: {type:Boolean, required:true, default:0} // 중요공지 여부 기본값은 false 0
+  Contents: {type:String, required:true}, // 글 내용
+  HotTopic: {type:Boolean, required:true, default:false} // 중요공지 여부 기본값은 false 0
 }, { timestamps: true })
 useVirtualId(noticeSchema)
+useLocalTimeStamps(noticeSchema)
 const Notice = mongoose.model('NoticeList', noticeSchema);
 
 // 예방법 스키마
@@ -34,11 +36,14 @@ Bool	HotTopic	중요예방법 여부
 const preventSchema = new mongoose.Schema({
   no: { type: Number, required: true, unique: true }, // 순번
   Title: {type:String, required: true}, // 글 제목
+  Author: {type:String, required: true}, // 작성자
   View: {type:Number, required: true, default:0}, // 조회수
-  Contents: {type:String, required:true, default:''}, // 글 내용
+  Contents: {type:String, required:true}, // 글 내용
+  ImageURL: {type:[String], default:[]}, // 글 첨부 이미지
   HotTopic: {type:Boolean, required:true, default:0} // 중요예방법 여부 기본값은 false 0
 }, { timestamps: true })
 useVirtualId(preventSchema)
+useLocalTimeStamps(preventSchema)
 const Prevent = mongoose.model('PreventList', preventSchema);
 
 // 건의사항 스키마
@@ -57,11 +62,12 @@ const suggestSchema = new mongoose.Schema({
   Title: {type:String, required: true}, // 글제목
   Author: {type:String, required: true}, // 작성자
   View: {type:Number, required: true, default:0}, // 조회수
-  Contents: {type:String, required:true, default:''}, // 글 내용
+  Contents: {type:String, required:true}, // 글 내용
   State: {type:Number, required: true, default:0}, // 처리여부 기본값 0(미완료), 1(처리중), 2(완료)
-  Comments: {type:String, required: true, default: ''} // 답변
+  Comments: {type:String, default:''} // 답변
 }, { timestamps: true })
 useVirtualId(suggestSchema)
+useLocalTimeStamps(suggestSchema);
 const Suggest = mongoose.model('SuggestList', suggestSchema);
 
 // 제보 스키마
@@ -83,16 +89,17 @@ const reportSchema = new mongoose.Schema({
   no: { type: Number, required: true, unique: true }, // 순번
   Title: {type:String, required: true}, // 글제목
   Author: {type:String, required: true}, // 작성자
-  shopName: {type:String, required: true, default:''}, // 쇼핑몰명
-  domainName: {type:String, required: true, default:''}, // 도메인명
-  company: {type:String, required: true, default:''}, // 사업자명(상호)
-  companyNum: {type:String, required: true, default:''}, // 사업자등록번호
-  Other: {type:String, required: true, default:''}, // 기타사항
+  shopName: {type:String, default:''}, // 쇼핑몰명
+  domainName: {type:String, default:''}, // 도메인명
+  company: {type:String, default:''}, // 사업자명(상호)
+  companyNum: {type:String, default:''}, // 사업자등록번호
+  Other: {type:String, default:''}, // 기타사항
   View: {type:Number, required: true, default:0}, // 조회수
   State: {type:Number, required: true, default:0}, // 처리여부 기본값 0(미완료), 1(처리중), 2(완료)
-  Comments: {type:String, required: true, default: ''} // 답변
+  Comments: {type:String, default: ''} // 답변
 }, { timestamps: true })
 useVirtualId(reportSchema)
+useLocalTimeStamps(reportSchema)
 const Report = mongoose.model('ReportList', reportSchema);
 
 function isType(boardtype){
@@ -104,11 +111,23 @@ function isType(boardtype){
 }
 
 // 글 목록
-export async function getboardList(boardtype, lastId){
-  try{
-    const query = lastId ? { _id: { $lt: lastId } } : {};
-    return await isType(boardtype).find(query).sort({ _id: -1 }).limit(5);
-  }catch(e){
+export async function getboardList(boardtype, lastNo) {
+  try {
+    const model = isType(boardtype);
+    let query = {};
+    // lastNo가 0일 경우, 가장 최신 게시글의 no를 할당
+    if (lastNo === 0) {
+      const latestPost = await model.findOne().sort({ no: -1 });
+      if (latestPost) {
+        lastNo = latestPost.no + 1;  // 현재 최신 게시글도 포함해야 하므로 +1
+      } else {
+        return [];  // 게시글이 하나도 없을 경우 빈 배열 반환
+      }
+    }
+    // lastNo가 0이 아닌 경우, 해당 no보다 작은 게시글들을 조회
+    query = { no: { $lt: lastNo } };
+    return await model.find(query).sort({ no: -1 }).limit(5);
+  } catch (e) {
     console.log('Error boardList: ', e);
     return false;
   }
@@ -117,16 +136,31 @@ export async function getboardList(boardtype, lastId){
 // 글 상세
 export async function getBypostId(boardtype, postId){
   try{
-    return await isType(boardtype).findById(postId);
+    const post = await isType(boardtype).findById(postId);
+    if (post) {
+      post.View += 1; // 조회수 증가
+      await post.save(); // 변경된 조회수 저장
+    }
+    return post;
   }catch(e){
     console.log('Error postDetail: ', e);
     return false;
   }
 }
 
+// 새로운 문서의 순번을 찾는 함수
+async function getNextSequenceValue(boardtype) {
+  const model = isType(boardtype);
+  const lastDocument = await model.findOne().sort({ no: -1 });
+  return lastDocument ? lastDocument.no + 1 : 1;
+}
+
 // 글 작성
 export async function Create(boardtype, post){
   try{
+    const no = await getNextSequenceValue(boardtype);
+    post.no = no;
+    console.log(post)
     return new (isType(boardtype))(post).save().then((data)=>{
       return data.id;
     });
@@ -139,7 +173,7 @@ export async function Create(boardtype, post){
 // 글 수정 / 답변 수정 / 답변 삭제
 export async function Edit(boardtype, post){
   try{
-    return await isType(boardtype).updateOne({ _id: post._id }, post);
+    return await isType(boardtype).updateOne({ _id: post._id }, { $set: post });
   }catch(e){
     console.log('Error edit: ', e);
     return false;
@@ -155,7 +189,6 @@ export async function Deletepost(boardtype, postId){
     return false;
   }
 }
-
 
 // 공지사항 목록
 // 공지사항 상세

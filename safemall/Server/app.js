@@ -3,6 +3,7 @@ import { config } from "./config.js";
 import { connectDatabases } from "./db/database.js";
 import mainRouter from './router/mainRouter.js'
 import adminRouter from  './router/adminRouter.js'
+import boardRouter from './router/boardRouter.js'
 
 const app = e();
 
@@ -10,17 +11,17 @@ app.use(e.json());
 
 app.use('/', mainRouter)
 // app.use('/auth', authRouter)
-// app.use('/board', boardRouter)
+app.use('/board', boardRouter)
 app.use('/admin', adminRouter)
 
 // 데이터베이스 연결 및 서버 시작
-// connectDatabases().then(() => {
+connectDatabases().then(() => {
   app.listen(config.host.port, () => {
     console.log(`Server listening on http://localhost:${config.host.port}`);
   });
-// }).catch(error => {
-//   console.error('Failed to start the server:', error);
-// });
+}).catch(error => {
+  console.error('Failed to start the server:', error);
+});
 
 
 /**
