@@ -48,3 +48,16 @@ export async function updateDB() {
     return false;
   }
 }
+
+export async function getAll(count){
+  // const limitCount = 3 + parseInt(count);
+  const parsedCount = parseInt(count, 10);
+  let limitCount;
+
+  if (isNaN(parsedCount) || parsedCount === 0) {
+    limitCount = 3;
+  } else {
+    limitCount = 3 + parsedCount;
+  }
+  return Shop.find().sort({ _id: -1 }).limit(limitCount);
+}

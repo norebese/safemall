@@ -1,4 +1,5 @@
 import e from "express";
+import cors from 'cors';
 import { config } from "./config.js";
 import { connectDatabases } from "./db/database.js";
 import mainRouter from './router/mainRouter.js'
@@ -9,6 +10,7 @@ import authRouter from './router/authRouter.js'
 const app = e();
 
 app.use(e.json());
+app.use(cors());
 
 app.use('/', mainRouter)
 app.use('/auth', authRouter)

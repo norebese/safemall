@@ -66,5 +66,13 @@ export async function updateDB() {
 }
 
 export async function getByShopName(keyword) {
-  return await Shop.find({shopNameKor:keyword})
+  return await Shop.find({shopNameKor: { $regex: keyword } })
+}
+
+export async function getByDomainName(domain){
+  return Shop.find({ domainName:domain})
+}
+
+export async function getDetail(id) {
+  return await Shop.findById(id)
 }
