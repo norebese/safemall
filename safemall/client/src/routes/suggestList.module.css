@@ -56,7 +56,10 @@
     text-align: center;
     /* margin-bottom: 40px; */
 }
-
+.noData {
+    text-align: center;
+    font-size: 40px
+}
 .notices {
     width: 100%;
     margin-top: 20px;
@@ -66,11 +69,13 @@
 
 .noticeheader, .noticeitem {
     display: grid;
-    grid-template-columns: 0.5fr 3fr 2fr 1fr; /* Adjust column ratios */
+    grid-template-columns: 0.5fr 3fr 2fr 1fr 1fr;
     gap: 10px; /* Gap between grid items */
     padding: 10px 20px;
     align-items: center;
     border-bottom: 1px solid #ccc;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .noticeheader {
@@ -106,7 +111,7 @@ div.notices .noticeitem a {
 
 /* 모든 a 태그에 대한 스타일 */
 .content a, .content a:visited {
-    color: black ; /* 글자 색상을 검정색으로 강제 설정 */
+    color: black !important; /* 글자 색상을 검정색으로 강제 설정 */
     text-decoration: none !important; /* 밑줄 없애기 */
 }
 
@@ -116,10 +121,6 @@ div.notices .noticeitem a {
     text-decoration: underline !important; /* 밑줄 표시 */
 }
 
-.createBtnArea{
-    display: flex;
-    justify-content: right;
-}
 
 .loadmore {
     text-align: center;
@@ -164,11 +165,11 @@ div.notices .noticeitem a {
     background-color: #357ABD; /* Darker shade on hover */
 }
 
-.noData {
-    text-align: center;
-    font-size: 40px
-}
-
 .noticeheader span:not(:last-child) {
     border-right: 1px solid black;
   }
+
+.createBtnArea{
+    display: flex;
+    justify-content: right;
+}

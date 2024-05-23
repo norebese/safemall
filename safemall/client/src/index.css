@@ -21,6 +21,10 @@ code {
   background: linear-gradient(to right, #1A2042, #1A2042);
 }
 
+.topnav{
+  height: 75px;
+}
+
 .navbar-brand, .navbar-toggler {
   font-size: 36px;
   color: white !important;

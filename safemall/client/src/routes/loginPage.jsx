@@ -1,17 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styles from "./loginPage.module.css";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
 function LoginPage() {
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext); // 로그인 함수 사용
+    const { login, isLoggedIn } = useContext(AuthContext); // 로그인 함수 사용
     const [formData, setFormData] = useState({
         Email: '',
         Password: '',
-        Nickname: ''
+        Nickname: '',
+        isAdmin: false
     });
-    const [loginCheck, setLoginCheck] = useState(false); // 로그인 상태 체크
+
+    useEffect(() => { //로그인되어 있으면(isLoggedIn이 true일 때) 메인 페이지(/)로 자동으로 리다이렉트
+        if (isLoggedIn) {
+            navigate('/');
+        }
+    }, [isLoggedIn, navigate]);
 
     const handleGoogleLogin = () => {
         // Google 로그인 로직 추가
@@ -29,18 +35,18 @@ function LoginPage() {
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, checked } = e.target;
+        const val = name === 'isAdmin' ? checked : value;  // isAdmin 필드일 경우 checked 값을 사용
         setFormData(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: val
         }));
     };
 
     const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await login(formData); // 실제 로그인 서비스 사용 시
-        // login(formData); // 로그인 함수 호출
+        const response = await login(formData); 
         navigate('/');
     } catch (error) {
         console.error('Error submitting report:', error);
@@ -94,6 +100,15 @@ function LoginPage() {
                         onChange={handleChange}
                         required
                     />
+                    <label htmlFor="isAdmin" className={styles.formlabel}>
+                        관리자 모드: 
+                        <input
+                            type="checkbox"
+                            name="isAdmin"
+                            checked={formData.isAdmin}
+                            onChange={handleChange}
+                        />
+                    </label>
                     <div className={styles.formactions}>
                         <button type="submit" className={styles.formbutton}>제출</button>
                     </div> 

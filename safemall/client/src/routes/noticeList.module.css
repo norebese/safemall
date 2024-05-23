@@ -80,6 +80,10 @@
     font-size: 24px; /* 폰트 크기 조정 */
 }
 
+.noticeheader span:not(:last-child) {
+    border-right: 1px solid black;
+  }
+
 .noticeitem {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -94,6 +98,11 @@
     background-color: #f0f0f0; /* Change background color on hover */
 }
 
+.createBtnArea{
+    display: flex;
+    justify-content: right;
+}
+
 
 
 /* 상위 요소를 포함하여 특이성 높이기 */
@@ -106,7 +115,7 @@ div.notices .noticeitem a {
 
 /* 모든 a 태그에 대한 스타일 */
 .content a, .content a:visited {
-    color: black ; /* 글자 색상을 검정색으로 강제 설정 */
+    color: black !important; /* 글자 색상을 검정색으로 강제 설정 */
     text-decoration: none !important; /* 밑줄 없애기 */
 }
 
@@ -116,10 +125,6 @@ div.notices .noticeitem a {
     text-decoration: underline !important; /* 밑줄 표시 */
 }
 
-.createBtnArea{
-    display: flex;
-    justify-content: right;
-}
 
 .loadmore {
     text-align: center;
@@ -168,7 +173,3 @@ div.notices .noticeitem a {
     text-align: center;
     font-size: 40px
 }
-
-.noticeheader span:not(:last-child) {
-    border-right: 1px solid black;
-  }

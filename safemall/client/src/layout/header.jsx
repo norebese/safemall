@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Offcanvas } from 'bootstrap';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
+import Navbar from '../components/navbar'
 
 const Header = () => {
     const navigate = useNavigate();
@@ -10,45 +11,46 @@ const Header = () => {
     const [offcanvasInstance, setOffcanvasInstance] = useState(null);
     const [offcanvasOpen, setOffcanvasOpen] = useState(false);
 
-    useEffect(() => {
-        const offcanvasElement = document.getElementById('offcanvasNavbar');
-        const offcanvas = new Offcanvas(offcanvasElement);
-        setOffcanvasInstance(offcanvas);
+    // useEffect(() => {
+    //     const offcanvasElement = document.getElementById('offcanvasNavbar');
+    //     const offcanvas = new Offcanvas(offcanvasElement);
+    //     setOffcanvasInstance(offcanvas);
 
-        const handleToggleOffcanvas = () => {
-            setOffcanvasOpen(!offcanvasOpen);
-        };
+    //     const handleToggleOffcanvas = () => {
+    //         setOffcanvasOpen(!offcanvasOpen);
+    //     };
 
-        offcanvasElement.addEventListener('hidden.bs.offcanvas', () => {
-            setOffcanvasOpen(false);
-        });
+    //     offcanvasElement.addEventListener('hidden.bs.offcanvas', () => {
+    //         setOffcanvasOpen(false);
+    //     });
 
-        document.getElementById('navbar-toggler-button').addEventListener('click', handleToggleOffcanvas);
+    //     document.getElementById('navbar-toggler-button').addEventListener('click', handleToggleOffcanvas);
 
-        return () => {
-            document.getElementById('navbar-toggler-button').removeEventListener('click', handleToggleOffcanvas);
-            offcanvas.dispose();
-        };
-    }, [offcanvasOpen]);
+    //     return () => {
+    //         document.getElementById('navbar-toggler-button').removeEventListener('click', handleToggleOffcanvas);
+    //         offcanvas.dispose();
+    //     };
+    // }, [offcanvasOpen]);
 
-    const handleAuthButtonClick = () => {
-        if (isLoggedIn) {
-            logout();
-            navigate('/');
-        } else {
-            navigate('/login');
-        }
-    };
+    // const handleAuthButtonClick = () => {
+    //     if (isLoggedIn) {
+    //         logout();
+    //         navigate('/');
+    //     } else {
+    //         navigate('/login');
+    //     }
+    // };
 
-    useEffect(() => {
-        if (offcanvasInstance && offcanvasInstance.isShown) {
-            offcanvasInstance.hide();
-        }
-    }, [location.pathname, offcanvasInstance]);
+    // useEffect(() => {
+    //     if (offcanvasInstance && offcanvasInstance.isShown) {
+    //         offcanvasInstance.hide();
+    //     }
+    // }, [location.pathname, offcanvasInstance]);
 
     return (
         <div className="topnav">
-            <nav className="navbar bg-body-tertiary fixed-top">
+            <Navbar/>
+            {/* <nav className="navbar bg-body-tertiary fixed-top">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand">Safe Mall</Link>
                     <button id="navbar-toggler-button" className="navbar-toggler" type="button">
@@ -62,14 +64,14 @@ const Header = () => {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li className="nav-item">
-                                    <Link to="/" className="nav-link active" aria-current="page">쇼핑몰 검색</Link>
+                                    <Link to="/" className="nav-link active" aria-current="page" onClick={() => setOffcanvasOpen(false)}>쇼핑몰 검색</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/services" className="nav-link">서비스 소개</Link>
                                 </li>
                                 <hr className="divider" />
                                 <li className="nav-item">
-                                    <Link to="/notices" className="nav-link">공지사항</Link>
+                                    <Link to="/notice" className="nav-link">공지사항</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/prevention" className="nav-link">피해예방</Link>
@@ -78,10 +80,10 @@ const Header = () => {
                                     <Link to="/countermeasure" className="nav-link">대처법</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/suggestions" className="nav-link">건의사항</Link>
+                                    <Link to="/suggest" className="nav-link">건의사항</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/report" className="nav-link">제보</Link>
+                                    <Link to="/report" className="nav-link" onClick={() => setOffcanvasOpen(false)}>제보</Link>
                                 </li>
                                 <hr className="divider" />
                                 <li>
@@ -93,7 +95,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
         </div>
     );
 };

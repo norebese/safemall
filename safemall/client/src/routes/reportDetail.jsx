@@ -8,7 +8,7 @@ import { AuthContext } from '../context/authContext';
 function ReportDetail() {
   const navigate = useNavigate();
   const { isLoggedIn, nickname } = useContext(AuthContext);
-  const [report, setReport] = useState([null]); //null로 하면 typeError 남
+  const [report, setReport] = useState([null]); 
   const { id } = useParams(); // URL에서 id 파라미터 가져오기
 
   const handleDelete = async (e) => {
@@ -42,7 +42,7 @@ function ReportDetail() {
     };
 
     fetchReportDetail();
-  }, []); // id가 변경될 때마다 useEffect 다시 실행
+  }, []); 
 
   return (
     <div>

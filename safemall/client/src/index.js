@@ -7,11 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from "./layout/header.jsx";
 import Footer from './layout/footer.jsx';
 import { AuthProvider } from './context/authContext.js';
+import TokenStorage from './db/token.js';
+import AuthService from './service/authService.js';
+
+const tokenStorage = new TokenStorage();
+const authService = new AuthService(tokenStorage);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <AuthProvider>
+    <AuthProvider authService={authService}>
       <Header/>
       <link
         rel="stylesheet"

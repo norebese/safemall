@@ -10,7 +10,6 @@ function MainPage() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // 여기서 검색을 실행하거나 필요한 로직을 수행합니다.
     console.log('검색어:', searchQuery);
     // 예시로 콘솔에 검색어를 출력하고 나중에 실제 검색 기능을 추가할 수 있습니다.
   };

@@ -2,8 +2,9 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const AuthProvider = ({authService, children }) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(undefined);
+    const [isAdmin, setisAdmin] = useState(false);
     const [nickname, setNickname] = useState('');
 
     useEffect(() => {
@@ -20,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             setIsLoggedIn(false);
             setNickname('');
         }
-    }, []);
+    }, [authService]);
 
     const login = (data) => {
         console.log(data)
@@ -31,6 +32,7 @@ export const AuthProvider = ({ children }) => {
         sessionStorage.setItem('jwt', token);
         sessionStorage.setItem('nickname', data.Nickname);
 
+        if(data.isAdmin) setisAdmin(true)
         console.log('로그인 성공:', { token, nickname: data.Nickname });
         setIsLoggedIn(true);
         setNickname(sessionStorage.getItem('nickname'));
@@ -45,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, login, logout, nickname }}>
+        <AuthContext.Provider value={{ isLoggedIn, login, logout, nickname, isAdmin }}>
             {children}
         </AuthContext.Provider>
     );

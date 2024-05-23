@@ -10,6 +10,12 @@ import PreventionForm from './routes/PreventionForm';
 import PreventionDetail from './routes/PreventionDetail';
 import LoginPage from './routes/loginPage';
 import ReportEditForm from './routes/reportEditForm';
+import NoticeList from './routes/noticeList';
+import NoticeForm from './routes/noticeForm';
+import NoticeDetail from './routes/noticeDetail';
+import SuggestList from './routes/suggestList';
+import SuggestForm from './routes/suggestForm';
+import SuggestDetail from './routes/suggestDetail';
 
 function App() {
   return (
@@ -24,6 +30,12 @@ function App() {
       <Route path="/prevent/create" element={<PreventionForm />} />
       <Route path="/prevent/edit/:id" element={<PreventionForm />} />
       <Route path="/prevent/prevention/:id" element={<PreventionDetail />} />
+      <Route path="/notice" element={<NoticeList />} />
+      <Route path="/notice/create" element={<NoticeForm />} />
+      <Route path="/notice/detail" element={<NoticeDetail />} />
+      <Route path="/suggest" element={<SuggestList />} />
+      <Route path="/notice/create" element={<SuggestForm />} />
+      <Route path="/notice/detail" element={<SuggestDetail />} />
     </Routes>
   );
 }
