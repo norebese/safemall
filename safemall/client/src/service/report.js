@@ -8,6 +8,7 @@ class ReportService{
         };
       }
 
+      // 제보 게시판 리스트 불러오기
       async getReportList(lastId) {
         console.log(lastId)
         const queryParams = lastId ? `?lastId=${lastId}` : '';
@@ -22,6 +23,7 @@ class ReportService{
         return data;
       }
 
+      // 제보 작성
       async submitReport(formData) {
         const response = await fetch(`${this.baseUrl}/report/createReport`, {
           method: 'post',
@@ -35,6 +37,7 @@ class ReportService{
         return data;
       }
 
+      //제보 게시글 상세페이지
       async getReportDetail(id) {
         console.log(id)
         const response = await fetch(`${this.baseUrl}/report/${id}`, {
@@ -48,6 +51,7 @@ class ReportService{
         return data;
       }
 
+      // 제보게시글 삭제
       async deleteReport(id) {
         try {
             const response = await fetch(`${this.baseUrl}/report/${id}`, {
@@ -63,6 +67,7 @@ class ReportService{
         }
     }
 
+    // 제보게시글 수정
     async editReport(formData, id) {
       const response = await fetch(`${this.baseUrl}/report/${id}`, {
         method: 'PUT',

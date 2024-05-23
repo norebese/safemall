@@ -18,6 +18,7 @@ function MainPage() {
     if (fetchedData.length === 0) {
       alert('검색 결과가 없습니다.');
     } else {
+      // 검색 결과를 service에서 받아와 검색결과페이지로 넘김(데이터는 state담아서 같이 넘김)
       navigate('/search/result', { state: { searchResults: fetchedData } });
     }
   };

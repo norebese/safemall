@@ -8,20 +8,21 @@ class NoticeService{
         };
       }
 
+      // 공지 리스트 불러오기
       async getNoticeList(lastId) {
-        console.log(lastId)
+        // 마지막 게시글 id를 보내고, 최초 한번은 빈값을 보낸다
         const queryParams = lastId ? `?lastId=${lastId}` : '';
         const response = await fetch(`${this.baseUrl}/notice${queryParams}`, {
           method: 'GET',
           headers: this.headers,
         });
         const responseData = await response.json();
-        const data = responseData.data; // 실제 데이터는 response.data에 있음
+        const data = responseData.data; 
       
-        // console.log(data); // 데이터 확인
         return data;
       }
 
+      // 공지 작성
       async submitNotice(formData) {
         const response = await fetch(`${this.baseUrl}/notice/createNotice`, {
           method: 'post',
@@ -35,6 +36,7 @@ class NoticeService{
         return data;
       }
 
+      // 공지 상세페이지
       async getNoticeDetail(id) {
         console.log(id)
         const response = await fetch(`${this.baseUrl}/notice/${id}`, {

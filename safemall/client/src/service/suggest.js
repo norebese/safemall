@@ -8,6 +8,7 @@ class SuggestService{
       };
     }
 
+    // 건의사항 게시판 리스트
     async getSuggestList(lastId) {
       console.log(lastId)
       const queryParams = lastId ? `?lastId=${lastId}` : '';
@@ -22,6 +23,7 @@ class SuggestService{
       return data;
     }
 
+    // 건의사항 작성
     async submitSuggest(formData) {
       const response = await fetch(`${this.baseUrl}/Suggest/createSuggest`, {
         method: 'post',
@@ -35,6 +37,7 @@ class SuggestService{
       return data;
     }
 
+    // 건의사항 게시글 상세정보
     async getSuggestDetail(id) {
       console.log(id)
       const response = await fetch(`${this.baseUrl}/Suggest/${id}`, {
