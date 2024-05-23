@@ -1,4 +1,5 @@
 import * as boardData from '../data/boardData.js'
+import * as userData from '../data/userData.js'
 
 // 공지사항 목록
 export async function getNoticeList(req, res){
@@ -18,7 +19,7 @@ export async function getNoticeList(req, res){
 // 공지사항 상세
 export async function getNoticeDetail(req, res){
   try {
-    const data = await boardData.getBypostId('Notice', req.params.id);
+    const data = await boardData.getBypostId('Notice', req.params.no);
     if (data) {
       res.status(200).json(data);
     } else {
@@ -47,7 +48,7 @@ export async function getPreventList(req, res){
 // 예방법 상세
 export async function getPreventDetail(req, res){
   try {
-    const data = await boardData.getBypostId('Prevent', req.params.id);
+    const data = await boardData.getBypostId('Prevent', req.params.no);
     if (data) {
       res.status(200).json(data);
     } else {
@@ -77,10 +78,23 @@ export async function getSuggestList(req, res){
 export async function createSuggest(req, res){
   try {
     // jwt 토큰에서 nickname 값을 추출
-    const nickname = '관리자'
+    const nickname = req.user
     req.body.Author = nickname
-    const postId = await boardData.Create('Suggest', req.body);
-    res.status(201).json({ id: postId });
+    // boardData.Create 로직 실행
+    const postNo = await boardData.Create('Suggest', req.body);
+    // userData.editUser 로직 실행 => contents_id 배열에 {게시판, 글번호} 추가
+    const user = await userData.getByNickName(nickname);
+    console.log(`user:${user}`)
+    user.contentsId.push({boardType:'Suggest',postNo:postNo})
+    console.log(user.contentsId)
+    const updatedUser = {
+      contentsId: user.contentsId
+    };
+    const result = await userData.editUser(nickname, updatedUser)
+    console.log(result)
+    if(!result)
+      throw new Error;
+    res.status(201).redirect(`/board/suggest/${postNo}`);
   } catch (e) {
     res.status(500).json({ message: 'Internal Server Error',e });
   }
@@ -89,7 +103,9 @@ export async function createSuggest(req, res){
 // 건의사항 상세
 export async function getSuggestDetail(req, res){
   try {
-    const data = await boardData.getBypostId('Suggest', req.params.id);
+    if(!req.params.no)
+      res.status(304).json({message:"Post Number plz"})
+    const data = await boardData.getBypostId('Suggest', req.params.no);
     if (data) {
       res.status(200).json(data);
     } else {
@@ -103,9 +119,9 @@ export async function getSuggestDetail(req, res){
 // 건의사항 수정
 export async function editSuggest(req, res){
   try {
-    const result = await boardData.Edit('Suggest', req.body);
+    const result = await boardData.Edit('Suggest', req.params.no, req.body);
     if (result.nModified > 0) {
-      res.status(200).json({ message: 'Suggestion updated' });
+      res.status(200).redirect(`/board/suggest/${result.no}`);
     } else {
       res.status(404).json({ message: 'Suggestion not found' });
     }
@@ -117,12 +133,13 @@ export async function editSuggest(req, res){
 // 건의사항 삭제
 export async function deleteSuggest(req, res){
   try {
-    const result = await boardData.Deletepost('Suggest', req.params.id);
-    if (result) {
-      res.status(200).json({ message: 'Suggestion deleted' });
-    } else {
+    console.log('건의사항 삭제 호출')
+    const result = await boardData.Deletepost('Suggest', req.params.no);
+    if (!result) 
       res.status(404).json({ message: 'Suggestion not found' });
-    }
+    // users db의 
+
+    res.status(200).redirect(`/board/suggest`);
   } catch (e) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -146,8 +163,8 @@ export async function getReportList(req, res){
 // 제보 작성
 export async function createReport(req, res){
   try {
-    const postId = await boardData.Create('Report', req.body);
-    res.status(201).json({ id: postId });
+    const postNo = await boardData.Create('Report', req.body);
+    res.status(201).redirect(`/board/report/${postNo}`);
   } catch (e) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -170,9 +187,9 @@ export async function getReportDetail(req, res){
 // 제보 수정
 export async function editReport(req, res){
   try {
-    const result = await boardData.Edit('Report', req.body);
+    const result = await boardData.Edit('Report', req.params.no, req.body);
     if (result.nModified > 0) {
-      res.status(200).json({ message: 'Report updated' });
+      res.status(200).redirect(`/board/report/${result.no}`);
     } else {
       res.status(404).json({ message: 'Report not found' });
     }
@@ -184,9 +201,9 @@ export async function editReport(req, res){
 // 제보 삭제
 export async function deleteReport(req, res){
   try {
-    const result = await boardData.Deletepost('Report', req.params.id);
+    const result = await boardData.Deletepost('Report', req.params.no);
     if (result) {
-      res.status(200).json({ message: 'Report deleted' });
+      res.status(200).redirect(`/board/report`);;
     } else {
       res.status(404).json({ message: 'Report not found' });
     }

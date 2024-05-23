@@ -4,13 +4,14 @@ import { connectDatabases } from "./db/database.js";
 import mainRouter from './router/mainRouter.js'
 import adminRouter from  './router/adminRouter.js'
 import boardRouter from './router/boardRouter.js'
+import authRouter from './router/authRouter.js'
 
 const app = e();
 
 app.use(e.json());
 
 app.use('/', mainRouter)
-// app.use('/auth', authRouter)
+app.use('/auth', authRouter)
 app.use('/board', boardRouter)
 app.use('/admin', adminRouter)
 

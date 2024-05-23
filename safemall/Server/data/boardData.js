@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { useVirtualId, useLocalTimeStamps } from "../db/database.js"
+import { where } from "sequelize";
 
 // 공지사항 스키마
 /*
@@ -134,9 +135,10 @@ export async function getboardList(boardtype, lastNo) {
 }
 
 // 글 상세
-export async function getBypostId(boardtype, postId){
+export async function getBypostId(boardtype, postNo){
   try{
-    const post = await isType(boardtype).findById(postId);
+    const post = await isType(boardtype).findOne({no:postNo});
+    console.log(post)
     if (post) {
       post.View += 1; // 조회수 증가
       await post.save(); // 변경된 조회수 저장
@@ -162,7 +164,8 @@ export async function Create(boardtype, post){
     post.no = no;
     console.log(post)
     return new (isType(boardtype))(post).save().then((data)=>{
-      return data.id;
+      console.log('글 작성 완료')
+      return data.no;
     });
   }catch(e){
     console.log('Error create: ', e);
@@ -173,7 +176,7 @@ export async function Create(boardtype, post){
 // 글 수정 / 답변 수정 / 답변 삭제
 export async function Edit(boardtype, post){
   try{
-    return await isType(boardtype).updateOne({ _id: post._id }, { $set: post });
+    return await isType(boardtype).updateOne({ no: post.no }, { $set: post });
   }catch(e){
     console.log('Error edit: ', e);
     return false;
@@ -181,9 +184,10 @@ export async function Edit(boardtype, post){
 }
 
 // 글 삭제
-export async function Deletepost(boardtype, postId){
+export async function Deletepost(boardtype, postNo){
   try{
-    return await isType(boardtype).findByIdAndDelete(postId);
+    console.log(postNo)
+    return await isType(boardtype).findOneAndDelete({no:postNo});
   }catch(e){
     console.log('Error Deletepost: ', e);
     return false;
