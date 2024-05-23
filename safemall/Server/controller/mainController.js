@@ -20,17 +20,19 @@ export function getInfo(req, res, next){
 
 // 쇼핑몰 검색
 export async function search(req, res, next){
-    const shopType = 'shopName'
+    const shopType = req.query.type
     const keyword = req.query.keyword
-    console.log(keyword)
+    console.log(shopType)
+    console.log('keyword: ',keyword)
     if(shopType == 'shopName'){
         const result = await shopListData.getByShopName(keyword)
         console.log(result)
         res.status(200).json({message:`쇼핑몰데이터 아이디(shopName): ${keyword}`,result})
     }
     else if( shopType == 'domainName'){
-        // const result =  shopListData.getByDomainName(shopType, keyword)
-        res.status(200).json({message:`쇼핑몰데이터 아이디(domainName): ${result}`})
+        const result = await shopListData.getByDomainName(keyword)
+        console.log(result)
+        res.status(200).json({message:`쇼핑몰데이터 아이디(domainName): ${keyword}`, result})
     }
     else if( shopType == 'comNum'){
         // const result =  shopListData.getByComNum(shopType, keyword)
@@ -38,5 +40,18 @@ export async function search(req, res, next){
     }
     else{
         res.status(404).json({message:"쇼핑몰데이터 없음"})
+    }
+}
+
+export async function searchDetail(req,res,next){
+    const id = req.params.id;
+    const data = await shopListData.getDetail(id);
+    console.log('data: ', data)
+    if(data){
+        const date = data.dateMonitoring.toISOString().split('T')[0];
+        const date2 = data.dateInit.toISOString().split('T')[0];
+        res.status(200).json({data: { ...data.toObject(), dateMonitoring: date , dateInit:date2}});
+    }else{
+        res.status(404).json({message:`입력 실패`});
     }
 }

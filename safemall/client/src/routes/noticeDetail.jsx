@@ -32,11 +32,10 @@ function NoticeDetail() {
         <div className={styles.maintitle}>{notice.Title}</div>
         <div className={styles.dateinfo}>
           <span id={styles.date}>{notice.Date}</span>
-          <span id={styles.writer}>작성자: {notice.Writer}</span>
+          <span id={styles.writer}>작성자: 관리자</span>
           <span id={styles.viewCount}>조회수: {notice.View}</span>
         </div>
         <div className={styles.bodycontent}>
-          <div className={styles.contenttitle}>내용</div>
           <div className={styles.contentcontent}>{notice.Contents}</div>
         </div>
         {/* <div id="answer-container">

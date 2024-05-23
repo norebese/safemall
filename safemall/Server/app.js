@@ -7,6 +7,8 @@ import reportRouter from './router/report.js';
 import cors from 'cors';
 import preventRouter from './router/preventRouter.js';
 import authRouter from './router/authRouter.js';
+import noticeRouter from './router/notice.js';
+import suggestRouter from './router/suggestRouter.js';
 
 const app = e();
 app.use(e.json());
@@ -17,12 +19,15 @@ app.use('/', mainRouter)
 
 app.use('/auth', authRouter)
 
-// app.use('/board', boardRouter)
 app.use('/admin', adminRouter)
 
 app.use('/report', reportRouter)
 
 app.use('/prevent', preventRouter)
+
+app.use('/notice', noticeRouter)
+
+app.use('/suggest', suggestRouter)
 
 
 connectDB().then(()=>{

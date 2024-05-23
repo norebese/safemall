@@ -115,7 +115,7 @@ div.notices .noticeitem a {
 
 /* 모든 a 태그에 대한 스타일 */
 .content a, .content a:visited {
-    color: black !important; /* 글자 색상을 검정색으로 강제 설정 */
+    color: black; /* 글자 색상을 검정색으로 강제 설정 */
     text-decoration: none !important; /* 밑줄 없애기 */
 }
 

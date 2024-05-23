@@ -16,6 +16,8 @@ import NoticeDetail from './routes/noticeDetail';
 import SuggestList from './routes/suggestList';
 import SuggestForm from './routes/suggestForm';
 import SuggestDetail from './routes/suggestDetail';
+import SearchDetail from './routes/search';
+import SearchResultList from './routes/searchResultList';
 
 function App() {
   return (
@@ -32,10 +34,12 @@ function App() {
       <Route path="/prevent/prevention/:id" element={<PreventionDetail />} />
       <Route path="/notice" element={<NoticeList />} />
       <Route path="/notice/create" element={<NoticeForm />} />
-      <Route path="/notice/detail" element={<NoticeDetail />} />
+      <Route path="/notice/:id" element={<NoticeDetail />} />
       <Route path="/suggest" element={<SuggestList />} />
-      <Route path="/notice/create" element={<SuggestForm />} />
-      <Route path="/notice/detail" element={<SuggestDetail />} />
+      <Route path="/suggest/create" element={<SuggestForm />} />
+      <Route path="/suggest/:id" element={<SuggestDetail />} />
+      <Route path="/search/detail/:id" element={<SearchDetail />} />
+      <Route path="/search/result" element={<SearchResultList />} />
     </Routes>
   );
 }

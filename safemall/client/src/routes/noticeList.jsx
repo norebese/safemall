@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NoticeService from '../service/notice';
+import NoticeService from '../service/notice.js';
 import styles from "./noticeList.module.css";
 
 function NoticeList() {
@@ -85,7 +85,7 @@ function NoticeList() {
                   <span>no</span>
                   <span>{notice.Title}</span>
                   <span>{notice.Date}</span>
-                  <span>{notice.Writer}</span>
+                  <span>관리자</span>
                 </Link>
               ))}
           {showMoreButton && (

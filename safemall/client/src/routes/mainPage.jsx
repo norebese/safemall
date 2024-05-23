@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import MainService from '../service/main';
 import styles from "./mainPage.module.css";
+import { useNavigate } from 'react-router-dom';
 
 function MainPage() {
+  const navigate  = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [cards, setCards] = useState([]);
   const [count, setCount] = useState(0);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
     console.log('검색어:', searchQuery);
-    // 예시로 콘솔에 검색어를 출력하고 나중에 실제 검색 기능을 추가할 수 있습니다.
+    const maintService = new MainService();
+    const fetchedData = await maintService.getSearchResult(searchQuery);
+    if (fetchedData.length === 0) {
+      alert('검색 결과가 없습니다.');
+    } else {
+      navigate('/search/result', { state: { searchResults: fetchedData } });
+    }
   };
 
   const handleInputChange = (e) => {

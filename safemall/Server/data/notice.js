@@ -10,53 +10,28 @@ const noticeSchema = new Mongoose.Schema({
     HotTopic: {type: Boolean}
 });
 
-const apiSchema = new Mongoose.Schema({
-    COMPANY: {type: String},
-    SHOP_NAME: {type: String},
-    DOMAIN_NAME: {type: String},
-    TEL: {type: String},
-    EMAIL: {type: String},
-    UPJONG_NBR: {type: String},
-    YPFORM: {type: String},
-    FIRST_HEO_DATE: {type: String},
-    COM_ADDR: {type: String},
-    STAT_NM: {type: String},
-    TOT_RATINGPOINT: {type: String},
-    CHOGI_RATINGPOINT: {type: String},
-    CHUNG_RATINGPOINT: {type: String},
-    DEAL_RATINGPOINT: {type: String},
-    PYOJUN_RATINGPOINT: {type: String},
-    SECURITY_RATINGPOINT: {type: String},
-    SERVICE: {type: String},
-    CHUNG: {type: String},
-    CHOGI: {type: String},
-    GYULJE: {type: String},
-    PYOJUN: {type: String},
-    P_INFO_CARE: {type: String},
-    PER_INFO: {type: String},
-    DEAL_CARE: {type: String},
-    SSL_YN: {type: String},
-    INJEUNG: {type: String},
-    BAESONG_YEJEONG: {type: String},
-    BAESONG: {type: String},
-    CLIENT_BBS: {type: String},
-    LEAVE: {type: String},
-    KAESOL_YEAR: {type: String},
-    REG_DATE: {type: String}
-})
-
 useVirtualId(noticeSchema);
-useVirtualId(apiSchema);
 
 const Notice = Mongoose.model('Practice', noticeSchema);
-const API = Mongoose.model('API', apiSchema);
 
 // export async function getById(id){
 //     return Notice.findById(id);
 // }
 
-export async function getById(id){
-    return Notice.findById(id);
+export async function getNoticeList(lastId){
+    let query = {};
+
+    if (lastId) {
+      // _id가 lastId보다 작은 문서를 찾음
+      query = { _id: { $lt: lastId } };
+    }
+
+    // MongoDB에서 _id 필드를 기준으로 내림차순 정렬하여 최신 순으로 데이터 가져오기
+    const notices = await Notice.find(query)
+      .sort({ _id: -1 }) // _id 필드를 기준으로 내림차순 정렬
+      .limit(5); // limit 개수만큼 데이터 제한
+    console.log(notices)
+    return notices;
 };
 
 export async function create(Title, Contents){
@@ -65,6 +40,6 @@ export async function create(Title, Contents){
     }).save();
 };
 
-export async function inputData(items){
-    return new API(items).save();
-}
+export async function getNotice(id){
+    return Notice.findById(id);
+};

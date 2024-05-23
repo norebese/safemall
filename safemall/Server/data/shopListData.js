@@ -46,5 +46,15 @@ export async function updateDB(){
 }
 
 export async function getByShopName(SHOP_NAME) {
-  return await Shop.find({SHOP_NAME})
+  const businessState = "영업중";
+  return await Shop.find({ shopNameKor: SHOP_NAME, businessState: businessState });
+}
+
+export async function getByDomainName(domain) {
+  const businessState = "영업중";
+  return await Shop.find({ domainName: domain, businessState: businessState });
+}
+
+export async function getDetail(id) {
+  return await Shop.findById(id)
 }
