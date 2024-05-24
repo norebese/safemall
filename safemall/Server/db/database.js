@@ -20,9 +20,9 @@ async function connectDB() {
 // 공통 데이터베이스 연결 함수
 export async function connectDatabases() {
   try {
-    // await sequelize.authenticate();
-    // console.log('Sequelize MySQL connected.');
-    // await sequelize.sync();
+    await sequelize.authenticate();
+    console.log('Sequelize MySQL connected.');
+    await sequelize.sync();
     await connectDB();
     console.log('Mongoose MongoDB connected.');
   } catch (error) {
