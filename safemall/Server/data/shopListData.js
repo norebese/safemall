@@ -66,7 +66,18 @@ export async function updateDB() {
 }
 
 export async function getByShopName(keyword) {
-  return await Shop.find({shopNameKor: { $regex: keyword } })
+  // return await Shop.find({ shopNameKor: { $regex: keyword } }).sort({ businessState: -1 });
+  return await Shop.aggregate([
+    { $match: { shopNameKor: { $regex: keyword } } }, // 필터링 조건
+    {
+      $addFields: {
+        // businessState가 '영업중'인 경우 sortKey에 0을, 그렇지 않은 경우 1을 할당합니다.
+        sortKey: { $cond: { if: { $eq: ['$businessState', '영업중'] }, then: 0, else: 1 } }
+      }
+    },
+    { $sort: { sortKey: 1 } }, // sortKey를 기준으로 오름차순 정렬합니다. (0이 먼저 오도록)
+    { $unset: 'sortKey' } // sortKey 필드를 삭제하여 반환될 문서에서 제거합니다.
+  ]);
 }
 
 export async function getByDomainName(domain){

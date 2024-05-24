@@ -12,4 +12,7 @@ router.get('/info', mainController.getInfo)
 // 쇼핑몰 검색 및 상세페이지
 router.get('/search', mainController.search)
 
+router.get('/search/:id', mainController.searchDetail)
+
+
 export default router

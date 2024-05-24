@@ -1,0 +1,19 @@
+#arange{
+    display: flex;
+    align-items: center;
+}
+
+.status{
+    margin-right: 50px;
+}
+
+#width{
+    width: 80% !important;
+}
+
+.row{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
