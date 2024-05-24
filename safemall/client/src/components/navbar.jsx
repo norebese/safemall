@@ -4,8 +4,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styles from "./navbar.module.css";
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 
 function OffcanvasExample() {
+  const { isLoggedIn, logout } = useContext(AuthContext);
+  console.log('isLoggedIn:', isLoggedIn)
   return (
     <>
       {[false].map((expand) => (
@@ -33,6 +37,19 @@ function OffcanvasExample() {
                   <Nav.Link href="#action1">대처법</Nav.Link>
                   <Nav.Link href="/suggest">건의사항</Nav.Link>
                   <Nav.Link href="/report">제보</Nav.Link>
+                </Nav>
+                <br></br><br></br><br></br>
+                <Nav className="justify-content-end flex-grow-1 pe-3" id={styles.navitemB}>
+                {isLoggedIn ? (
+                    <>
+                      <Nav.Link href="/login" onClick={logout}>로그아웃</Nav.Link>
+                    </>
+                  ) : (
+                    <>
+                      <Nav.Link href="/login">로그인</Nav.Link>
+                      <Nav.Link href="/signup">회원가입</Nav.Link>
+                    </>
+                  )}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

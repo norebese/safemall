@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -23,9 +23,9 @@ root.render(
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossOrigin="anonymous"
       />
-      <Navbar/>
+      <Navbar />
       <App />
-      <Footer/>
+      <Footer />
     </AuthProvider>
   </BrowserRouter>
 );

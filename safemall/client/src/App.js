@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route, Routes, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ReportList from './routes/reportList';
 import ReportForm from './routes/reportForm';
 import ReportDetail from './routes/reportDetail';
@@ -20,6 +20,7 @@ import SearchDetail from './routes/search';
 import SearchResultList from './routes/searchResultList';
 
 function App() {
+  
   return (
     <Routes>
       <Route path="/" element={<MainPage/>}/>

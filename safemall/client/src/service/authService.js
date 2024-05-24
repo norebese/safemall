@@ -1,28 +1,32 @@
-import axios from 'axios';
 export default class AuthService {
   constructor(tokenStorage) {
-    this.http = axios.create({
-      baseURL: 'http://localhost:8080/auth',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    this.http =  'http://localhost:8080/auth';
     this.tokenStorage = tokenStorage;
   }
 
   // 사용자를 등록하는 POST 요청을 보냄
-  async signup(username, password, name, email, url) {
+  async signup(user) {
     try {
-      const response = await this.http.post('/signup', {
-        username,
-        password,
-        name,
-        email,
-        url,
+      const data = await fetch(`${this.http}/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
       });
-      const { data } = response;
-      this.tokenStorage.saveToken(data.token); // 서버에서 반환한 데이터에서 토큰을 추출하여 저장
-      return data;
+      const responseData = await data.json()
+      if(data.status == 201){
+        alert(`회원가입 완료! ${responseData.nickname}님 환영합니다.`)
+        console.log(responseData.token)
+        this.tokenStorage.saveToken(responseData); // 서버에서 반환한 데이터에서 토큰을 추출하여 저장
+        return responseData;
+      }else if(data.status == 409){
+        alert(responseData.message)
+      }
+
+      ; // 서버 응답을 JSON으로 파싱
+      // console.log(responseData.status())
+      
     } catch (error) {
       console.error('Error signing up:', error);
       throw error; // 예외를 다시 던져서 상위 컴포넌트에서 처리할 수 있도록 함

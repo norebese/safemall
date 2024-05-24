@@ -18,3 +18,7 @@
 .navbarBrand{
     font-size: 36px !important;
 }
+
+#navitemB{
+    margin-left: 5px;
+}

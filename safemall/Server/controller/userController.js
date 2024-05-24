@@ -35,14 +35,15 @@ export async function Signin(req, res, next){
 // 회원가입
 export async function SignUp(req, res, next) {
   const { email, password, nickname } = req.body;
+  console.log(req.body)
   try {
     const existingEmail = await userData.getByEmail(email);
     if (existingEmail) {
-      return res.status(409).json({ message: 'Email already exists' });
+      return res.status(409).json({ message: '이메일 중복' });
     }
     const existingNickname = await userData.getByNickName(nickname);
     if (existingNickname) {
-      return res.status(409).json({ message: 'Nickname already exists' });
+      return res.status(409).json({ message: '닉네임 중복' });
     }
     const hashedPassword = await bcrypt.hash(password, bcryptSaltRounds);
     const newUser = {
@@ -56,10 +57,12 @@ export async function SignUp(req, res, next) {
       throw new Error('User creation failed'); // 사용자 추가 실패 시 구체적인 에러 메시지 추가
     }
     const jwtToken = createJwtToken({ nickname: createdUser.nickname, isAdmin: createdUser.isAdmin });
-    res.status(200).json({ token: jwtToken, nickname: createdUser.nickname });
+    console.log(jwtToken)
+    res.status(201).json({ token: jwtToken, nickname: createdUser.nickname });
   } catch (error) {
     console.error('Error during signup:', error);
-    next(error);
+    res.status(500).json({message:"회원가입 실패",error})
+    // next(error);
   }
 }
 
