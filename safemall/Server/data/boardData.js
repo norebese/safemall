@@ -174,9 +174,9 @@ export async function Create(boardtype, post){
 }
 
 // 글 수정 / 답변 수정 / 답변 삭제
-export async function Edit(boardtype, post){
+export async function Edit(boardtype, no, post){
   try{
-    return await isType(boardtype).updateOne({ no: post.no }, { $set: post });
+    return await isType(boardtype).updateOne({ no: no }, { $set: post });
   }catch(e){
     console.log('Error edit: ', e);
     return false;

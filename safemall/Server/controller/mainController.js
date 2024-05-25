@@ -27,8 +27,11 @@ export async function search(req, res, next){
         res.status(200).json({message:`쇼핑몰데이터 아이디(shopName): ${keyword}`,result})
     }
     else if( shopType == 'domainName'){
-        const result =  shopListData.getByDomainName(shopType, keyword)
-        res.status(200).json({message:`쇼핑몰데이터 아이디(domainName): ${result}`})
+        let url = Buffer.from(keyword, 'base64').toString('utf-8');
+        console.log(url)
+        const result = await shopListData.getByDomainName(url)
+        console.log(result)
+        res.status(200).json({message:`쇼핑몰데이터 아이디(domainName): ${keyword}`, result})
     }
     else if( shopType == 'comNum'){
         // const result =  shopListData.getByComNum(shopType, keyword)

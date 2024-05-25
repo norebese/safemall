@@ -81,7 +81,11 @@ export async function getByShopName(keyword) {
 }
 
 export async function getByDomainName(domain){
-  return Shop.find({ domainName:domain})
+  console.log(domain)
+  return Shop.find({domainName:domain})
+  // return await Shop.aggregate([
+  //   { $match: { domainName:{ $regex: domain}} }, // 필터링 조건
+  // ]);
 }
 
 export async function getDetail(id) {
