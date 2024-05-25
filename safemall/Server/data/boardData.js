@@ -97,7 +97,8 @@ const reportSchema = new mongoose.Schema({
   Other: {type:String, default:''}, // 기타사항
   View: {type:Number, required: true, default:0}, // 조회수
   State: {type:Number, required: true, default:0}, // 처리여부 기본값 0(미완료), 1(처리중), 2(완료)
-  Comments: {type:String, default: ''} // 답변
+  Comments: {type:String, default: ''}, // 답변
+  updatedAt: { type: Date, default: Date.now }
 }, { timestamps: true })
 useVirtualId(reportSchema)
 useLocalTimeStamps(reportSchema)
@@ -178,9 +179,10 @@ export async function Create(boardtype, post){
 }
 
 // 글 수정 / 답변 수정 / 답변 삭제
-export async function Edit(boardtype, post){
+export async function Edit(boardtype, post, data){
+  console.log('post: ', post)
   try{
-    return await isType(boardtype).updateOne({ no: post.no }, { $set: post });
+    return await isType(boardtype).updateOne({ no: post }, { $set: data });
   }catch(e){
     console.log('Error edit: ', e);
     return false;

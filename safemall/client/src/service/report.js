@@ -58,28 +58,35 @@ class ReportService{
       }
 
       // 제보게시글 삭제
-      async deleteReport(id) {
-        try {
-            const response = await fetch(`${this.baseUrl}/report/${id}`, {
+      async deleteReport(no) {
+        tokenStorage.addTokenToHeaders(this.headers);
+        // try {
+            const response = await fetch(`${this.baseUrl}/report/${no}`, {
                 method: 'DELETE', // DELETE 메서드 사용
                 headers: this.headers, // 필요한 헤더 추가
             });
-            if (!response.ok) {
-                throw new Error('Network response was not ok.');
-            }
-            return response
-        } catch (error) {
-            console.error('Error deleting report:', error);
-        }
+            console.log(response)
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok.');
+            // }
+            const responseData = await response.json(); // 필요한 경우 응답 데이터를 JSON 형태로 파싱
+            console.log(responseData); // 응답 데이터를 로그에 출력하거나 적절히 처리
+            // window.location.href = '/board/report';
+            return responseData;
+        // } catch (error) {
+        //     console.error('Error deleting report:', error);
+        // }
     }
 
     // 제보게시글 수정
-    async editReport(formData, id) {
-      const response = await fetch(`${this.baseUrl}/report/${id}`, {
+    async editReport(formData, no) {
+      tokenStorage.addTokenToHeaders(this.headers);
+      const response = await fetch(`${this.baseUrl}/report/${no}`, {
         method: 'PUT',
         headers: this.headers,
         body: JSON.stringify(formData)
       });
+      console.log('response: ', response)
       return response;
     }
 };

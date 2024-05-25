@@ -50,6 +50,7 @@ function ReportForm() {
       if(response.message == '인증에러'){
         navigate('/login');
       }else{
+        alert('제보 작성 성공');
         navigate(`/board/report/${response.data.no}`);
       }
 

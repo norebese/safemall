@@ -208,8 +208,10 @@ export async function editReport(req, res){
 export async function deleteReport(req, res){
   try {
     const result = await boardData.Deletepost('Report', req.params.no);
+    console.log('result: ', result)
     if (result) {
-      res.status(200).redirect(`/board/report`);;
+      console.log('성공')
+      res.status(200).redirect(`/board/report`);
     } else {
       res.status(404).json({ message: 'Report not found' });
     }

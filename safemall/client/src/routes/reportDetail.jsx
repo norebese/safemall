@@ -13,19 +13,14 @@ function ReportDetail() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    try {
+    // try {
       const reportService = new ReportService();
       const response = await reportService.deleteReport(no);
-      if (response.status === 200) {
         alert('삭제되었습니다.'); 
-        navigate('/report'); 
-      } else {
-        console.error('삭제 실패:', response.statusText);
-        alert('삭제를 실패했습니다. 잠시 후 다시 시도해주세요.');
-      }
-    } catch (error) {
-      console.error('Error submitting report:', error);
-    }
+        navigate('/board/report'); 
+    // } catch (error) {
+    //   console.error('Error submitting report:', error);
+    // }
   };
   
   useEffect(() => {
@@ -84,7 +79,7 @@ function ReportDetail() {
         <div className={styles.buttonarea}>
           <button className={styles.button} onClick={() => navigate('/board/report')}>목록</button>
         </div>
-        {isLoggedIn && nickname === report.Writer && (
+        {isLoggedIn && nickname === report.Author && (
           <div className={styles.buttonarea}>
               <button className={styles.button} onClick={() => navigate(`/board/report/edit/${no}`)}>수정하기</button>
               <button className={styles.button} onClick={handleDelete}>삭제하기</button>
