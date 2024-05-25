@@ -162,11 +162,15 @@ export async function Create(boardtype, post){
   try{
     const no = await getNextSequenceValue(boardtype);
     post.no = no;
-    console.log(post)
-    return new (isType(boardtype))(post).save().then((data)=>{
-      console.log('글 작성 완료')
-      return data.no;
-    });
+    console.log('post: ', post)
+    const result = await new (isType(boardtype))(post).save();
+    console.log(result);
+
+    return result.no;
+    // return new (isType(boardtype))(post).save().then((data)=>{
+    //   console.log('글 작성 완료')
+    //   return data.no;
+    // });
   }catch(e){
     console.log('Error create: ', e);
     return false;

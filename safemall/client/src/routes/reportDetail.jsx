@@ -9,13 +9,13 @@ function ReportDetail() {
   const navigate = useNavigate();
   const { isLoggedIn, nickname } = useContext(AuthContext);
   const [report, setReport] = useState([null]); 
-  const { id } = useParams(); // URL에서 id 파라미터 가져오기
+  const { no } = useParams(); // URL에서 no 파라미터 가져오기
 
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
       const reportService = new ReportService();
-      const response = await reportService.deleteReport(id);
+      const response = await reportService.deleteReport(no);
       if (response.status === 200) {
         alert('삭제되었습니다.'); 
         navigate('/report'); 
@@ -33,9 +33,9 @@ function ReportDetail() {
     const fetchReportDetail = async () => {
       try {
         const reportService = new ReportService();
-        const fetchedData = await reportService.getReportDetail(id);
+        const fetchedData = await reportService.getReportDetail(no);
+        console.log(fetchedData)
         setReport(fetchedData);
-        
       } catch (error) {
         console.error('Error fetching Report list:', error);
       }
@@ -52,25 +52,25 @@ function ReportDetail() {
       <div className={styles.innercontainer}>
         <div className={styles.maintitle}>{report.Title}</div>
         <div className={styles.dateinfo}>
-          <span id={styles.date}>{report.Date}</span>
-          <span id={styles.writer}>작성자: {report.Writer}</span>
+          <span id={styles.date}>{report.createdAt}</span>
+          <span id={styles.writer}>작성자: {report.Author}</span>
           <span id={styles.viewCount}>조회수: {report.View}</span>
         </div>
         <div className={styles.bodycontent}>
           <div className={styles.contenttitle}>쇼핑몰 명</div>
-          <div className={styles.contentcontent}>{report.ShopName}</div>
+          <div className={styles.contentcontent}>{report.shopName}</div>
         </div>
         <div className={styles.bodycontent}>
           <div className={styles.contenttitle}>도메인 주소</div>
-          <div className={styles.contentcontent}>{report.Domain}</div>
+          <div className={styles.contentcontent}>{report.domainName}</div>
         </div>
         <div className={styles.bodycontent}>
           <div className={styles.contenttitle}>사업자 명</div>
-          <div className={styles.contentcontent}>{report.Owner}</div>
+          <div className={styles.contentcontent}>{report.company}</div>
         </div>
         <div className={styles.bodycontent}>
           <div className={styles.contenttitle}>기타사항</div>
-          <div className={styles.contentcontent}>{report.Etc}</div>
+          <div className={styles.contentcontent}>{report.Other}</div>
         </div>
         {/* <div id="answer-container">
           <div id="title-section">
@@ -82,11 +82,11 @@ function ReportDetail() {
           </div>
         </div> */}
         <div className={styles.buttonarea}>
-          <button className={styles.button} onClick={() => navigate('/report')}>목록</button>
+          <button className={styles.button} onClick={() => navigate('/board/report')}>목록</button>
         </div>
         {isLoggedIn && nickname === report.Writer && (
           <div className={styles.buttonarea}>
-              <button className={styles.button} onClick={() => navigate(`/report/edit/${id}`)}>수정하기</button>
+              <button className={styles.button} onClick={() => navigate(`/board/report/edit/${no}`)}>수정하기</button>
               <button className={styles.button} onClick={handleDelete}>삭제하기</button>
           </div>
         )}

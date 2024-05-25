@@ -1,7 +1,10 @@
+import TokenStorage from '../db/token';
+
+const tokenStorage = new TokenStorage();
 class ReportService{
     constructor() {
         // HTTP 클라이언트 설정 및 기본 URL 설정
-        this.baseUrl = 'http://localhost:8080';
+        this.baseUrl = 'http://localhost:8080/board';
         this.headers = {
           'Content-Type': 'application/json',
           // 필요에 따라 인증 헤더나 기타 헤더 추가 가능
@@ -11,7 +14,7 @@ class ReportService{
       // 제보 게시판 리스트 불러오기
       async getReportList(lastId) {
         console.log(lastId)
-        const queryParams = lastId ? `?lastId=${lastId}` : '';
+        const queryParams = lastId ? `?lastNo=${lastId}` : '';
         const response = await fetch(`${this.baseUrl}/report${queryParams}`, {
           method: 'GET',
           headers: this.headers,
@@ -19,36 +22,39 @@ class ReportService{
         const responseData = await response.json();
         const data = responseData.data; // 실제 데이터는 response.data에 있음
       
-        console.log(data); // 데이터 확인
+        console.log(responseData); // 데이터 확인
         return data;
       }
 
       // 제보 작성
       async submitReport(formData) {
-        const response = await fetch(`${this.baseUrl}/report/createReport`, {
+        // HTTP 요청 전에 헤더에 토큰 추가
+        tokenStorage.addTokenToHeaders(this.headers);
+        console.log(formData)
+        const response = await fetch(`${this.baseUrl}/report`, {
           method: 'post',
           headers: this.headers,
           body: JSON.stringify(formData)
         });
         const responseData = await response.json();
-        const data = responseData.data; // 실제 데이터는 response.data에 있음
-      
-        console.log(data); // 데이터 확인
-        return data;
+        if(response.status === 401){
+          alert(responseData.message)
+          
+        }
+        return responseData;
       }
 
       //제보 게시글 상세페이지
-      async getReportDetail(id) {
-        console.log(id)
-        const response = await fetch(`${this.baseUrl}/report/${id}`, {
+      async getReportDetail(no) {
+        console.log(no)
+        tokenStorage.addTokenToHeaders(this.headers);
+        const response = await fetch(`${this.baseUrl}/report/${no}`, {
           method: 'GET',
           headers: this.headers,
         });
-        const responseData = await response.json();
-        const data = responseData.data; // 실제 데이터는 response.data에 있음
-      
-        console.log(data); // 데이터 확인
-        return data;
+        const responseData = await response.json();      
+        console.log(responseData); // 데이터 확인
+        return responseData.data;
       }
 
       // 제보게시글 삭제

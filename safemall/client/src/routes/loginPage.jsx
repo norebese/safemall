@@ -1,128 +1,55 @@
 import React, { useState, useContext, useEffect } from 'react';
-import styles from "./loginPage.module.css";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
+import { Button } from 'react-bootstrap'; // 부트스트랩 컴포넌트 임포트
+import 'bootstrap/dist/css/bootstrap.min.css'; // 부트스트랩 CSS 파일 임포트
+import styles from "./loginPage.module.css";
+import Login from '../components/signin';
+import SignUp from '../components/signup';
 
-function LoginPage() {
-    const navigate = useNavigate();
-    const { login, isLoggedIn, signUp } = useContext(AuthContext); // 로그인 함수 사용
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        nickname: ''
-    });
+function App() {
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState('login'); // 'login' 또는 'signup'
+  const { isLoggedIn } = useContext(AuthContext); // 로그인 상태 가져오기
 
-    useEffect(() => { //로그인되어 있으면(isLoggedIn이 true일 때) 메인 페이지(/)로 자동으로 리다이렉트
-        if (isLoggedIn) {
-            navigate('/');
-        }
-    }, [isLoggedIn, navigate]);
-
-    const handleGoogleLogin = () => {
-        // Google 로그인 로직 추가
-        console.log('Google 로그인 클릭됨');
-    };
-
-    const handleNaverLogin = () => {
-        // Naver 로그인 로직 추가
-        console.log('Naver 로그인 클릭됨');
-    };
-
-    const handleNewRegistration = () => {
-        // 신규 회원가입 로직 추가
-        console.log('신규 회원가입 클릭됨');
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-          ...prevState,
-          [name]: value
-        }));
-      };
-
-    // const handleChange = (e) => {
-    //     const { name, value, checked } = e.target;
-    //     const val = name === 'isAdmin' ? checked : value;  // isAdmin 필드일 경우 checked 값을 사용
-    //     setFormData(prevState => ({
-    //         ...prevState,
-    //         [name]: val
-    //     }));
-    // };
-
-    const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-        await signUp(formData); 
-        // navigate('/');
-    } catch (error) {
-        console.error('Error submitting report:', error);
-        // 오류 처리 로직 추가 가능
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
     }
-    };
+  }, [isLoggedIn, navigate]);
 
-    return (
-        <main>
-            <div className={styles.main}>
-                <h1>회원가입</h1>
-                <div className={styles.googleAuth}>
-                    <button className={styles.googleAuthbtn} onClick={handleGoogleLogin}>
-                        <p>Sign in with Google</p>
-                    </button>
-                </div>
-                <div className={styles.naverAuth}>
-                    <button className={styles.naverAuthbtn} onClick={handleNaverLogin}>
-                        <p>네이버 로그인</p>
-                    </button>   
-                </div>
-            </div>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.testLogin}>
-                    <div>로그인 테스트 용입니다</div>
-                    <label htmlFor="email" className={styles.formlabel}>이메일: </label>
-                    <input
-                        type="email"
-                        name="email"
-                        className={styles.forminput}
-                        placeholder="이메일을 입력해 주세요"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        autoComplete="email"
-                    />
-                    <label htmlFor="password" className={styles.formlabel}>비밀번호: </label>
-                    <input
-                        type="password"
-                        name="password"
-                        className={styles.forminput}
-                        placeholder="비밀번호를 입력해 주세요"
-                        value={formData.password}
-                        onChange={handleChange}
-                        autoComplete="current-password"
-                        required
-                    />
-                    <label htmlFor="nickname" className={styles.formlabel}>닉네임: </label>
-                    <input
-                        type="text"
-                        name="nickname"
-                        className={styles.forminput}
-                        placeholder="닉네임을 입력해 주세요"
-                        value={formData.nickname}
-                        onChange={handleChange}
-                        required
-                    />
-                    <div className={styles.formactions}>
-                        <button type="submit" className={styles.formbutton}>제출</button>
-                    </div> 
-                </div>
-            </form>
-            <div className={styles.NewRegist}>
-                <button className={styles.NewRegistbtn} onClick={handleNewRegistration}>
-                    신규 회원가입
-                </button>
-            </div>
-        </main>
-    );
+  // 로그인 버튼 클릭 시 실행되는 함수
+  const handleLoginClick = () => {
+    setCurrentPage('login');
+  };
+
+  // 회원가입 버튼 클릭 시 실행되는 함수
+  const handleSignUpClick = () => {
+    setCurrentPage('signup');
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+          {/* 조건부 렌더링을 사용하여 현재 페이지에 맞는 컴포넌트를 보여줍니다. */}
+          {currentPage === 'login' ? <Login /> : <SignUp />}
+
+          {/* 로그인 및 회원가입 버튼 */}
+          <div className="mt-3" id={styles.switch}>
+            <Button
+              variant="primary"
+              className="mr-3"
+              onClick={handleLoginClick}
+            >
+              로그인
+            </Button>
+            <Button variant="secondary" onClick={handleSignUpClick}>
+              회원가입
+            </Button>
+          </div>
+      </header>
+    </div>
+  );
 }
 
-export default LoginPage;
+export default App;

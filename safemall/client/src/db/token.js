@@ -12,4 +12,11 @@ export default class TokenStorage {
   clearToken() { //로컬 스토리지에서 저장된 토큰을 제거
     sessionStorage.clear(TOKEN);
   }
+
+  addTokenToHeaders(headers) {
+    const token = this.getToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+  }
 }

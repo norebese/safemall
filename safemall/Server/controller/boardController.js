@@ -151,7 +151,11 @@ export async function getReportList(req, res){
     const lastNo = parseInt(req.query.lastNo) || 0;
     const data = await boardData.getboardList('Report', lastNo);
     if (data) {
-      res.status(200).json(data);
+      const formattedData = data.map(report => {
+        const date = report.createdAt.toISOString().split('T')[0];
+        return { ...report.toObject(), createdAt: date };
+      });
+      res.status(200).json({data:formattedData});
     } else {
       res.status(404).json({ message: 'No reports found' });
     }
@@ -163,7 +167,8 @@ export async function getReportList(req, res){
 // 제보 작성
 export async function createReport(req, res){
   try {
-    const postNo = await boardData.Create('Report', req.body);
+    const postNo = await boardData.Create('Report', req.body); 
+    console.log('postNo: ',postNo)
     res.status(201).redirect(`/board/report/${postNo}`);
   } catch (e) {
     res.status(500).json({ message: 'Internal Server Error' });
@@ -173,9 +178,10 @@ export async function createReport(req, res){
 // 제보 상세
 export async function getReportDetail(req, res){
   try {
-    const data = await boardData.getBypostId('Report', req.params.id);
+    const data = await boardData.getBypostId('Report', req.params.no);
     if (data) {
-      res.status(200).json(data);
+      const date = data.createdAt ? data.createdAt.toISOString().split('T')[0] : '';
+      res.status(200).json({data: { ...data.toObject(), createdAt: date }});
     } else {
       res.status(404).json({ message: 'Report not found' });
     }

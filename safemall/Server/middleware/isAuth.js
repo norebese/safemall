@@ -8,7 +8,7 @@ export const isAuth = async(req, res, next)=>{
   const authHeader = req.get('Authorization');
   if(!(authHeader && authHeader.startsWith('Bearer '))){
     console.log(authHeader)
-    console.log('에러!')
+    console.log('에러!!')
     return res.status(401).json(AUTH_ERROR)
   }else{
     const token = authHeader.split(' ')[1];

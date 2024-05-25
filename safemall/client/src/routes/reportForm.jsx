@@ -9,19 +9,27 @@ function ReportForm() {
   const { isLoggedIn, nickname } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     Title: '',
-    Writer: nickname,
-    ShopName: '',
-    Domain: '',
-    Owner: '',
-    Etc: ''
+    Author: '',
+    shopName: '',
+    domainName: '',
+    company: '',
+    Other: ''
   });
 
+  // nickname이 변경될 때마다 formData 업데이트
   useEffect(() => {
-    console.log(isLoggedIn)
-    if(!isLoggedIn){
-      alert('로그인 필요')
-      navigate('/login')
-    }
+    setFormData(prevState => ({
+      ...prevState,
+      Author: nickname // nickname으로 Writer 필드 업데이트
+    }));
+  }, [nickname]);
+
+  useEffect(() => {
+    // console.log(isLoggedIn)
+    // if(!isLoggedIn){
+    //   alert('로그인 필요')
+    //   navigate('/login')
+    // }
   }, []);
   
   const handleChange = (e) => {
@@ -36,10 +44,15 @@ function ReportForm() {
     e.preventDefault();
     try {
       const reportService = new ReportService();
-      await reportService.submitReport(formData);
+      const response = await reportService.submitReport(formData);
       // 제출 성공 시 사용자에게 알림 또는 리다이렉션 등 추가 작업 수행
-      alert('제출되었습니다.');
-      navigate('/report');
+      console.log(response)
+      if(response.message == '인증에러'){
+        navigate('/login');
+      }else{
+        navigate(`/board/report/${response.data.no}`);
+      }
+
     } catch (error) {
       console.error('Error submitting report:', error);
       // 오류 처리 로직 추가 가능
@@ -68,54 +81,54 @@ function ReportForm() {
           />
         </div>
         <div className={styles.bodycontainer}>
-          <label htmlFor="ShopName" className={styles.formlabel}>쇼핑몰 명</label>
+          <label htmlFor="shopName" className={styles.formlabel}>쇼핑몰 명</label>
           <input
             type="text"
             id={styles.ShopName}
-            name="ShopName"
+            name="shopName"
             className={styles.forminput}
             placeholder="쇼핑몰 명을 입력해 주세요"
-            value={formData.ShopName}
+            value={formData.shopName}
             onChange={handleChange}
           />
         </div>
         <div className={styles.bodycontainer}>
-          <label htmlFor="Domain" className={styles.formlabel}>도메인 주소
+          <label htmlFor="domainName" className={styles.formlabel}>도메인 주소
             <span className={styles.required}>(필수)</span>
           </label>
           <input
             type="text"
             id={styles.Domain}
-            name="Domain"
+            name="domainName"
             className={styles.forminput}
             placeholder="도메인 주소를 입력해 주세요"
-            value={formData.Domain}
+            value={formData.domainName}
             onChange={handleChange}
             required
           />
         </div>
         <div className={styles.bodycontainer}>
-          <label htmlFor="Owner" className={styles.formlabel}>사업자 명</label>
+          <label htmlFor="company" className={styles.formlabel}>사업자 명</label>
           <input
             type="text"
             id={styles.Owner}
-            name="Owner"
+            name="company"
             className={styles.forminput}
             placeholder="사업자 명을 입력해 주세요"
-            value={formData.Owner}
+            value={formData.company}
             onChange={handleChange}
           />
         </div>
         <div className={styles.bodycontainer}>
-          <label htmlFor="Etc" className={styles.formlabel}>기타사항</label>
+          <label htmlFor="Other" className={styles.formlabel}>기타사항</label>
           <textarea
-            name="Etc"
+            name="Other"
             id={styles.Etc}
             className={styles.forminput}
             cols="30"
             rows="10"
             placeholder="기타 사항을 입력해 주세요"
-            value={formData.Etc}
+            value={formData.Other}
             onChange={handleChange}
           ></textarea>
         </div>

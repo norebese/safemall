@@ -25,10 +25,10 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
-      <Route path="/report" element={<ReportList/>}/>
-      <Route path="/report/create" element={<ReportForm/>}/>
-      <Route path="/report/:id" element={<ReportDetail />} />
-      <Route path="/report/edit/:id" element={<ReportEditForm/>} />
+      <Route path="/board/report" element={<ReportList/>}/>
+      <Route path="/board/report/create" element={<ReportForm/>}/>
+      <Route path="/board/report/:no" element={<ReportDetail />} />
+      <Route path="/board/report/edit/:no" element={<ReportEditForm/>} />
       <Route path="/prevent" element={<PreventionList />} />
       <Route path="/prevent/create" element={<PreventionForm />} />
       <Route path="/prevent/edit/:id" element={<PreventionForm />} />

@@ -36,7 +36,7 @@ function OffcanvasExample() {
                   <Nav.Link href="#action2">피해예방</Nav.Link>
                   <Nav.Link href="#action1">대처법</Nav.Link>
                   <Nav.Link href="/suggest">건의사항</Nav.Link>
-                  <Nav.Link href="/report">제보</Nav.Link>
+                  <Nav.Link href="/board/report">제보</Nav.Link>
                 </Nav>
                 <br></br><br></br><br></br>
                 <Nav className="justify-content-end flex-grow-1 pe-3" id={styles.navitemB}>

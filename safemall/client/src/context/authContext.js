@@ -32,19 +32,13 @@ export const AuthProvider = ({authService, children }) => {
         }
     }
 
-    const login = (data) => {
-        console.log(data)
-        const generateToken = () => {
-            return Math.random().toString(36).substr(2);
-        };
-        const token = generateToken();
-        sessionStorage.setItem('jwt', token);
-        sessionStorage.setItem('nickname', data.Nickname);
-
-        if(data.isAdmin) setisAdmin(true)
-        console.log('로그인 성공:', { token, nickname: data.Nickname });
-        setIsLoggedIn(true);
-        setNickname(sessionStorage.getItem('nickname'));
+    const login = async (data) => {
+        try {
+            const user = await authService.login(data); //Promise를 반환하는 함수로 가정
+            setIsLoggedIn(user); // 사용자 정보를 받아와서 로그인 상태를 설정
+        } catch (error) {
+            console.error('Error signing up:', error);
+        }
     };
 
     const logout = () => {

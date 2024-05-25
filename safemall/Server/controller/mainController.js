@@ -38,6 +38,8 @@ export async function search(req, res, next){
         res.status(404).json({message:"쇼핑몰데이터 없음"})
     }
 }
+
+// 상세페이지
 export async function searchDetail(req,res,next){
     const id = req.params;
     console.log(id)
