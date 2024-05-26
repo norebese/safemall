@@ -24,16 +24,6 @@ class MypageService{
         const user = responseData.data
         return user
       }
-      async getPostList(list){
-        tokenStorage.addTokenToHeaders(this.headers)
-        const response = await fetch(`${this.baseUrl}auth/postlist`,{
-          method:'post',
-          headers:this.headers,
-          body: JSON.stringify(list)
-        });
-        const responseData = await response.json()
-        console.log(responseData)
-      }
 }
   
 export default MypageService;

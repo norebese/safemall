@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import styles from './myPage.module.css';
 import MypageService from '../../../service/myPage';
+import { Link } from 'react-router-dom';
 
 export default function MyPage(){
-    const [myPageList, setMypageList] = useState([]);
+    const [postlist, setPostlist] = useState([]);
     const [nickname, setNickname ] = useState('익명');
     const [date, setDate] = useState([]);
 
@@ -14,12 +15,11 @@ export default function MyPage(){
             setNickname(fetchedData.nickname);
             setDate([fetchedData.createdAt.split('T')[0], fetchedData.updatedAt.split('T')[0]])
             // const myPageList = await mypageService.getPostList(fetchedData.contentsId);
-            setMypageList(fetchedData.contentsId)
+            setPostlist(fetchedData.contentsId)
         };
         fetchData();
     }, []); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
-
-
+    console.log(postlist)
     return(
     <>
         <div className={styles.container}>
@@ -32,11 +32,13 @@ export default function MyPage(){
         </div>
     
         <div className={styles.mypageitem}>
-            {myPageList.map((mypage) => (
+            {postlist.map((post) => (
                 <div className={styles.mypageRow}>
-                    <span>{mypage.boardtype}</span>
-                    <span>{mypage.Title}</span>
-                    <span>{mypage.createdAt.split('T')[0]}</span>
+                    <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`} key={post.postNo}>
+                        <span>{post.boardTypeKor}</span>
+                        <span>{post.Title}</span>
+                        <span>{post.createdAt.split('T')[0]}</span>
+                    </Link>
                 </div>
             ))}
         </div>
