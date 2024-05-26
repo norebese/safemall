@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className={styles.Appheader}>
           {/* 조건부 렌더링을 사용하여 현재 페이지에 맞는 컴포넌트를 보여줍니다. */}
           {currentPage === 'login' ? <Login /> : <SignUp />}
 
