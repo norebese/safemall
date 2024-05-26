@@ -85,21 +85,6 @@ class ReportService{
       }
     }
 
-    async createReportAnswer(formData) {
-      tokenStorage.addTokenToHeaders(this.headers);
-      console.log('formData: ', formData)
-      try {
-        const response = await fetch(`${this.baseUrl}/report`, {
-          method: 'post',
-          headers: this.headers,
-          body: JSON.stringify(formData)
-        });
-        const responseData = await response.json();
-        return responseData;
-      } catch (error) {
-        console.error('Error creating report:', error);
-      }
-    }
 };
 
 export default ReportService;
