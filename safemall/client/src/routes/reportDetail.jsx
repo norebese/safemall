@@ -119,7 +119,7 @@ function ReportDetail() {
           </div>
         )}
 
-        {isAdmin == false && (
+        {isAdmin === 'true' && (
           <div id={styles.managerarea}>
             <div className={styles.buttonarea} id={styles.answerbtn}>
             {values.map((v, idx) => (
