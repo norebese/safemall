@@ -1,7 +1,8 @@
 class MainService{
     constructor() {
         // HTTP 클라이언트 설정 및 기본 URL 설정
-        this.baseUrl = 'http://localhost:8080';
+        // this.baseUrl = 'http://localhost:8080';
+        this.baseUrl = process.env.REACT_APP_BASEURL
         this.headers = {
           'Content-Type': 'application/json',
           // 필요에 따라 인증 헤더나 기타 헤더 추가 가능
@@ -52,7 +53,7 @@ class MainService{
         console.log('encodedKeyword: ', encodedKeyword);
         // backend에서 req.query로 keyword와 type을 가져올 수 있게 쿼리로 보네준다
         const queryParams = `?keyword=${encodedKeyword}&type=${type}`;
-        const response = await fetch(`${this.baseUrl}/search${queryParams}`, {
+        const response = await fetch(`${this.baseUrl}search${queryParams}`, {
           method: 'GET',
           headers: this.headers,
         });
@@ -65,7 +66,7 @@ class MainService{
       
       //검색결과 상세페이지, 쇼핑몰 리스트의 id값으로 가져옴
       async getSearchResultDetail(id) {
-        const response = await fetch(`${this.baseUrl}/search/${id}`, {
+        const response = await fetch(`${this.baseUrl}search/${id}`, {
           method: 'GET',
           headers: this.headers,
         });

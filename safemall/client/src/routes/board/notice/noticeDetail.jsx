@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import NoticeService from '../service/notice';
+import NoticeService from '../../../service/notice';
 import { useNavigate } from 'react-router-dom';
 import styles from "./noticeDetail.module.css";
 

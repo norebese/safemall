@@ -4,7 +4,7 @@ const tokenStorage = new TokenStorage();
 class ReportService{
     constructor() {
         // HTTP 클라이언트 설정 및 기본 URL 설정
-        this.baseUrl = 'http://localhost:8080/board';
+        this.baseUrl = process.env.REACT_APP_BASEURL;
         this.headers = {
           'Content-Type': 'application/json',
           // 필요에 따라 인증 헤더나 기타 헤더 추가 가능
@@ -15,7 +15,7 @@ class ReportService{
       async getReportList(lastNo) {
         console.log(lastNo)
         const queryParams = lastNo ? `?lastNo=${lastNo}` : '';
-        const response = await fetch(`${this.baseUrl}/report${queryParams}`, {
+        const response = await fetch(`${this.baseUrl}board/report${queryParams}`, {
           method: 'GET',
           headers: this.headers,
         });
@@ -31,7 +31,7 @@ class ReportService{
         // HTTP 요청 전에 헤더에 토큰 추가
         tokenStorage.addTokenToHeaders(this.headers);
         try {
-          const response = await fetch(`${this.baseUrl}/report`, {
+          const response = await fetch(`${this.baseUrl}board/report`, {
             method: 'post',
             headers: this.headers,
             body: JSON.stringify(formData)
@@ -47,7 +47,7 @@ class ReportService{
       async getReportDetail(no) {
         console.log(no)
         tokenStorage.addTokenToHeaders(this.headers);
-        const response = await fetch(`${this.baseUrl}/report/${no}`, {
+        const response = await fetch(`${this.baseUrl}board/report/${no}`, {
           method: 'GET',
           headers: this.headers,
         });
@@ -60,7 +60,7 @@ class ReportService{
       async deleteReport(no) {
         tokenStorage.addTokenToHeaders(this.headers);
         try {
-            const response = await fetch(`${this.baseUrl}/report/${no}`, {
+            const response = await fetch(`${this.baseUrl}board/report/${no}`, {
                 method: 'DELETE', // DELETE 메서드 사용
                 headers: this.headers, // 필요한 헤더 추가
             });
@@ -73,7 +73,7 @@ class ReportService{
     async editReport(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
       try {
-        const response = await fetch(`${this.baseUrl}/report/${no}`, {
+        const response = await fetch(`${this.baseUrl}board/report/${no}`, {
           method: 'PUT',
           headers: this.headers,
           body: JSON.stringify(formData)

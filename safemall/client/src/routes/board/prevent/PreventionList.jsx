@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getPreventions, deletePrevention } from '../service/preventionService';
-import PreventService from '../service/preventionService';
+import { getPreventions, deletePrevention } from '../../../service/preventionService';
+import PreventService from '../../../service/preventionService';
 import { Link } from 'react-router-dom';
 
 const PreventionList = () => {

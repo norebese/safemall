@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SuggestService from '../service/suggest';
+import SuggestService from '../../../service/suggest';
 import { useNavigate } from 'react-router-dom';
 import styles from './suggestForm.module.css'
 

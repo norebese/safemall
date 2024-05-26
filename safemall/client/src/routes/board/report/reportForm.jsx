@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import ReportService from '../service/report';
+// import ReportService from '../../../service/report';
+import ReportService from '../../../service/report';
 import { useNavigate } from 'react-router-dom';
 import styles from "./reportForm.module.css";
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../../../context/authContext';
 
 function ReportForm() {
   const navigate = useNavigate();

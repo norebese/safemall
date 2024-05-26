@@ -12,6 +12,6 @@ router.post('/signin', userController.Signin)
 router.post('/signup', userController.SignUp)
 
 // 마이페이지
-router.get('/mypage', isAuth ,userController.Mypage)
+router.get('/mypage', isAuth, userController.Mypage)
 
 export default router

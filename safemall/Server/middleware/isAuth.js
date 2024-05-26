@@ -27,7 +27,7 @@ export const isAuth = async(req, res, next)=>{
         req.token = authHeader
         req.user = user.nickname
         req.isAdmin = user.isAdmin
-        console.log(`token:${req.token}\nuser:${req.user}\nisAdmin:${req.isAdmin}`)
+        // console.log(`token:${req.token}\nuser:${req.user}\nisAdmin:${req.isAdmin}`)
         next();
       }
     )

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ReportService from '../service/report';
+import ReportService from '../../../service/report';
 import { useNavigate } from 'react-router-dom';
 import styles from "./reportDetail.module.css";
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../../../context/authContext';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 

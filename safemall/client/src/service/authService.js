@@ -1,13 +1,14 @@
 export default class AuthService {
   constructor(tokenStorage) {
-    this.http =  'http://localhost:8080/auth';
+    this.baseUrl = process.env.REACT_APP_BASEURL
+    // this.http = 'http://localhost:8080/auth';
     this.tokenStorage = tokenStorage;
   }
 
   // 사용자를 등록하는 POST 요청을 보냄
   async signup(user) {
     try {
-      const data = await fetch(`${this.http}/signup`, {
+      const data = await fetch(`${this.baseUrl}auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -36,7 +37,7 @@ export default class AuthService {
   // 로그인을 처리하는 HTTP POST 요청을 보냄
   async login(user) {
     try {
-      const data = await fetch(`${this.http}/signin`, {
+      const data = await fetch(`${this.baseUrl}auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,20 +55,6 @@ export default class AuthService {
       }
     } catch (error) {
       console.error('Error logging in:', error);
-      throw error; // 예외를 다시 던져서 상위 컴포넌트에서 처리할 수 있도록 함
-    }
-  }
-
-  // 현재 사용자의 정보를 가져오기 위해 인증된 GET 요청을 보냄
-  async me() {
-    try {
-      const token = this.tokenStorage.getToken();
-      const response = await this.http.get('/me', {
-        headers: { Authorization: `Bearer ${token}` }, // 인증에 필요한 토큰을 HTTP 헤더에 포함
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching user info:', error);
       throw error; // 예외를 다시 던져서 상위 컴포넌트에서 처리할 수 있도록 함
     }
   }

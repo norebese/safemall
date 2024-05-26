@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getPreventionById } from '../service/preventionService';
+import { getPreventionById } from '../../../service/preventionService';
 import { useParams } from 'react-router-dom';
+
 
 const PreventionDetail = () => {
   const [prevention, setPrevention] = useState(null);

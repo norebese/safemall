@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import SuggestService from '../service/suggest';
+import SuggestService from '../../../service/suggest';
 import styles from "./suggestList.module.css";
 
 function SuggestList() {

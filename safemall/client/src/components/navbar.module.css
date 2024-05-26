@@ -20,7 +20,13 @@
 }
 
 #navitemB{
+    margin-top: 20px;
     margin-left: 5px;
+    
+}
+#navitemB button{
+    width: 40%;
+    font-size: 30px !important;
 }
 
 #arrange{

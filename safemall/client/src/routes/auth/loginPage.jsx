@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../../context/authContext';
 import { Button } from 'react-bootstrap'; // 부트스트랩 컴포넌트 임포트
 import 'bootstrap/dist/css/bootstrap.min.css'; // 부트스트랩 CSS 파일 임포트
 import styles from "./loginPage.module.css";
-import Login from '../components/signin';
-import SignUp from '../components/signup';
+import Login from '../../components/signin'
+import SignUp from '../../components/signup';
 
 function App() {
   const navigate = useNavigate();

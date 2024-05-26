@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NoticeService from '../service/notice';
+import NoticeService from '../../../service/notice';
 import { useNavigate } from 'react-router-dom';
 import styles from "./noticeForm.module.css";
 

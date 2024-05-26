@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NoticeService from '../service/notice.js';
+import NoticeService from '../../../service/notice';
 import styles from "./noticeList.module.css";
 
 function NoticeList() {

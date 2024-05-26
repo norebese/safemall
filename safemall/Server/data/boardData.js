@@ -111,6 +111,43 @@ function isType(boardtype){
   else if(boardtype == 'Report') return Report;
   else return false;
 }
+// 글 제목 리스트
+export async function getPostList(boardtype, postNo){
+  try {
+    console.log(`PostList 호출 ${boardtype} ${postNo}`);
+    const model = isType(boardtype);
+    
+    // Use findOne instead of find to get a single document
+    const post = await model.findOne({ no: postNo });
+    
+    if (!post) {
+      console.log(`Post not found for boardtype: ${boardtype} and postNo: ${postNo}`);
+      return false;
+    }
+
+    console.log(post);
+
+    if(boardtype == 'Notice') boardtype = '공지사항'
+    else if(boardtype == 'Prevent') boardtype = '예방법'
+    else if(boardtype == 'Suggest') boardtype = '건의사항'
+    else if(boardtype == 'Report') boardtype = '제보'
+    else boardtype = '확인 불가'
+
+
+    // Ensure the document has the properties you're trying to access
+    const result = {
+      boardtype,
+      Title: post.Title,
+      createdAt: post.createdAt
+    };
+
+    return result;
+  } catch (e) {
+    console.log('Error in getPostList: ', e);
+    return false;
+  }
+}
+
 
 // 글 목록
 export async function getboardList(boardtype, lastNo) {

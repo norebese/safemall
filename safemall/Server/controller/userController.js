@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 import { config } from "../config.js";
 import jwt from 'jsonwebtoken';
 import * as userData from '../data/userData.js';
+import * as boardData from '../data/boardData.js';
 
 const secretkey = config.jwt.secretKey;
 // jwtExpiresInDays 변수를 jwtExpiresInSec로 변경하여 JWT의 만료 시간이 초 단위로 설정되도록 수정
@@ -59,7 +60,7 @@ export async function SignUp(req, res, next) {
     }
     const jwtToken = createJwtToken({ nickname: createdUser.nickname, isAdmin: createdUser.isAdmin });
     console.log(jwtToken)
-    res.status(201).json({ token: jwtToken, nickname: createdUser.nickname });
+    res.status(201).json({ token: jwtToken, nickname: createdUser.nickname, isAdmin: createdUser.isAdmin });
   } catch (error) {
     console.error('Error during signup:', error);
     res.status(500).json({message:"회원가입 실패",error})
@@ -75,7 +76,24 @@ export async function Mypage(req, res, next) {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.status(200).json({ user });
+    console.log(user.dataValues)
+
+    const postPromises = user.dataValues.contentsId.map(async (v) => {
+      return await boardData.getPostList(v.boardType, v.postNo);
+    });
+
+    const postlist = await Promise.all(postPromises);
+
+    const data = {
+      email:user.dataValues.email,
+      nickname:user.dataValues.nickname,
+      isAdmin:user.dataValues.isAdmin,
+      createdAt:user.dataValues.createdAt,
+      updatedAt:user.dataValues.updatedAt,
+      contentsId:postlist
+    }
+    console.log(data)
+    res.status(200).json({ data });
   } catch (error) {
     console.error('Error fetching user information:', error);
     next(error);
