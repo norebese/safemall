@@ -12,9 +12,9 @@ class ReportService{
       }
 
       // 제보 게시판 리스트 불러오기
-      async getReportList(lastId) {
-        console.log(lastId)
-        const queryParams = lastId ? `?lastNo=${lastId}` : '';
+      async getReportList(lastNo) {
+        console.log(lastNo)
+        const queryParams = lastNo ? `?lastNo=${lastNo}` : '';
         const response = await fetch(`${this.baseUrl}/report${queryParams}`, {
           method: 'GET',
           headers: this.headers,

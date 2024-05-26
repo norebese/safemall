@@ -9,9 +9,9 @@ class NoticeService{
       }
 
       // 공지 리스트 불러오기
-      async getNoticeList(lastId) {
+      async getNoticeList(lastNo) {
         // 마지막 게시글 id를 보내고, 최초 한번은 빈값을 보낸다
-        const queryParams = lastId ? `?lastId=${lastId}` : '';
+        const queryParams = lastNo ? `?lastNo=${lastNo}` : '';
         const response = await fetch(`${this.baseUrl}/notice${queryParams}`, {
           method: 'GET',
           headers: this.headers,

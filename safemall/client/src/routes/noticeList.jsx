@@ -57,7 +57,7 @@ function NoticeList() {
 
   return (
     <div className={styles.content}>
-      <header class={styles.appheader}>
+      <header className={styles.appheader}>
           <h1>공지사항</h1>
           <div className={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
@@ -89,7 +89,7 @@ function NoticeList() {
                 </Link>
               ))}
           {showMoreButton && (
-            <div class={styles.loadmore}>
+            <div className={styles.loadmore}>
               <button type="button" onClick={handleLoadMore}>더보기▼</button>
             </div>
           )}
