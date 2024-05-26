@@ -9,7 +9,6 @@ function ReportForm() {
   const { isLoggedIn, nickname } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     Title: '',
-    Author: '',
     shopName: '',
     domainName: '',
     company: '',
@@ -17,19 +16,19 @@ function ReportForm() {
   });
 
   // nickname이 변경될 때마다 formData 업데이트
-  useEffect(() => {
-    setFormData(prevState => ({
-      ...prevState,
-      Author: nickname // nickname으로 Writer 필드 업데이트
-    }));
-  }, [nickname]);
+  // useEffect(() => {
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     Author: nickname // nickname으로 Writer 필드 업데이트
+  //   }));
+  // }, [nickname]);
 
   useEffect(() => {
-    // console.log(isLoggedIn)
-    // if(!isLoggedIn){
-    //   alert('로그인 필요')
-    //   navigate('/login')
-    // }
+    console.log(isLoggedIn)
+    if(!isLoggedIn){
+      alert('로그인 필요')
+      navigate('/login')
+    }
   }, []);
   
   const handleChange = (e) => {
@@ -45,7 +44,7 @@ function ReportForm() {
     try {
       const reportService = new ReportService();
       const response = await reportService.submitReport(formData);
-      // 제출 성공 시 사용자에게 알림 또는 리다이렉션 등 추가 작업 수행
+      //제출 성공 시 사용자에게 알림 또는 리다이렉션 등 추가 작업 수행
       console.log(response)
       if(response.message == '인증에러'){
         navigate('/login');

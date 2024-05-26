@@ -25,7 +25,8 @@ export async function Signin(req, res, next){
       return res.status(401).json({ message: "이메일, 패스워드를 확인하세요" }); // 동일한 메시지 유지
     }
     const jwtToken = createJwtToken({ nickname: user.nickname, isAdmin: user.isAdmin });
-    res.status(201).json({ token: jwtToken, nickname: user.nickname });
+    // console.log('user: ', user)
+    res.status(201).json({ token: jwtToken, nickname: user.nickname, isAdmin: user.isAdmin });
   } catch (e) {
     console.error('Error during login:', e);
     next(e);

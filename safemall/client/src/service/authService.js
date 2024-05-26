@@ -17,7 +17,7 @@ export default class AuthService {
       const responseData = await data.json()
       if(data.status == 201){
         alert(`회원가입 완료! ${responseData.nickname}님 환영합니다.`)
-        console.log(responseData.token)
+        console.log(responseData)
         this.tokenStorage.saveToken(responseData); // 서버에서 반환한 데이터에서 토큰을 추출하여 저장
         return responseData;
       }else if(data.status == 409){
@@ -46,7 +46,7 @@ export default class AuthService {
       const responseData = await data.json()
       if(data.status == 201){
         alert(`로그인 완료! ${responseData.nickname}님 환영합니다.`)
-        console.log(responseData.token)
+        console.log(responseData)
         this.tokenStorage.saveToken(responseData); // 서버에서 반환한 데이터에서 토큰을 추출하여 저장
         return responseData;
       }else if(data.status == 401){

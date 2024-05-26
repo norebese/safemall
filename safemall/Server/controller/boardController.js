@@ -167,9 +167,23 @@ export async function getReportList(req, res){
 // 제보 작성
 export async function createReport(req, res){
   try {
+    const nickname = req.user
+    req.body.Author = nickname
     const postNo = await boardData.Create('Report', req.body); 
-    console.log('postNo: ',postNo)
-    res.status(201).redirect(`/board/report/${postNo}`);
+    //user 부분
+    const user = await userData.getByNickName(nickname);
+    console.log(`user:${user}`)
+    user.contentsId.push({boardType:'Report',postNo:postNo})
+    console.log(user.contentsId)
+    const updatedUser = {
+      contentsId: user.contentsId
+    };
+    const result = await userData.editUser(nickname, updatedUser)
+    console.log(result)
+    if(!result)
+      throw new Error;
+    res.redirect(303, `/board/report/${postNo}`);
+    
   } catch (e) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
@@ -195,7 +209,8 @@ export async function editReport(req, res){
   try {
     const result = await boardData.Edit('Report', req.params.no, req.body);
     if (result.nModified > 0) {
-      res.status(200).redirect(`/board/report/${result.no}`);
+      // res.status(200).redirect(`/board/report/${result.no}`);
+      res.redirect(303, `/board/report/${result.no}`);
     } else {
       res.status(404).json({ message: 'Report not found' });
     }
@@ -211,7 +226,7 @@ export async function deleteReport(req, res){
     console.log('result: ', result)
     if (result) {
       console.log('성공')
-      res.status(200).redirect(`/board/report`);
+      res.redirect(303, `/board/report`);
     } else {
       res.status(404).json({ message: 'Report not found' });
     }

@@ -11,11 +11,13 @@ export const AuthProvider = ({authService, children }) => {
         // 페이지 로드 시 로컬 스토리지에서 토큰과 닉네임 가져오기
         const token = sessionStorage.getItem('token');
         const storedNickname = sessionStorage.getItem('NICKNAME');
+        const storedAdmin = sessionStorage.getItem('ISADMIN');
 
         if (token && storedNickname) {
             // 로컬 스토리지에서 토큰과 닉네임이 있는 경우
             setIsLoggedIn(true);
             setNickname(storedNickname);
+            setisAdmin(storedAdmin)
         } else {
             // 로컬 스토리지에 토큰이 없는 경우
             setIsLoggedIn(false);

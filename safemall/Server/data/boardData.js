@@ -165,7 +165,6 @@ export async function Create(boardtype, post){
     post.no = no;
     console.log('post: ', post)
     const result = await new (isType(boardtype))(post).save();
-    console.log(result);
 
     return result.no;
     // return new (isType(boardtype))(post).save().then((data)=>{

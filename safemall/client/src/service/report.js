@@ -30,18 +30,17 @@ class ReportService{
       async submitReport(formData) {
         // HTTP 요청 전에 헤더에 토큰 추가
         tokenStorage.addTokenToHeaders(this.headers);
-        console.log(formData)
-        const response = await fetch(`${this.baseUrl}/report`, {
-          method: 'post',
-          headers: this.headers,
-          body: JSON.stringify(formData)
-        });
-        const responseData = await response.json();
-        if(response.status === 401){
-          alert(responseData.message)
-          
+        try {
+          const response = await fetch(`${this.baseUrl}/report`, {
+            method: 'post',
+            headers: this.headers,
+            body: JSON.stringify(formData)
+          });
+          const responseData = await response.json();
+          return responseData;
+        } catch (error) {
+          console.error('Error creating report:', error);
         }
-        return responseData;
       }
 
       //제보 게시글 상세페이지
@@ -60,34 +59,46 @@ class ReportService{
       // 제보게시글 삭제
       async deleteReport(no) {
         tokenStorage.addTokenToHeaders(this.headers);
-        // try {
+        try {
             const response = await fetch(`${this.baseUrl}/report/${no}`, {
                 method: 'DELETE', // DELETE 메서드 사용
                 headers: this.headers, // 필요한 헤더 추가
             });
-            console.log(response)
-            // if (!response.ok) {
-            //     throw new Error('Network response was not ok.');
-            // }
-            const responseData = await response.json(); // 필요한 경우 응답 데이터를 JSON 형태로 파싱
-            console.log(responseData); // 응답 데이터를 로그에 출력하거나 적절히 처리
-            // window.location.href = '/board/report';
-            return responseData;
-        // } catch (error) {
-        //     console.error('Error deleting report:', error);
-        // }
+        } catch (error) {
+            console.error('Error deleting report:', error);
+        }
     }
 
     // 제보게시글 수정
     async editReport(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
-      const response = await fetch(`${this.baseUrl}/report/${no}`, {
-        method: 'PUT',
-        headers: this.headers,
-        body: JSON.stringify(formData)
-      });
-      console.log('response: ', response)
-      return response;
+      try {
+        const response = await fetch(`${this.baseUrl}/report/${no}`, {
+          method: 'PUT',
+          headers: this.headers,
+          body: JSON.stringify(formData)
+        });
+        console.log(response)
+        return response
+      } catch (error) {
+        console.error('Error deleting report:', error);
+      }
+    }
+
+    async createReportAnswer(formData) {
+      tokenStorage.addTokenToHeaders(this.headers);
+      console.log('formData: ', formData)
+      try {
+        const response = await fetch(`${this.baseUrl}/report`, {
+          method: 'post',
+          headers: this.headers,
+          body: JSON.stringify(formData)
+        });
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        console.error('Error creating report:', error);
+      }
     }
 };
 
