@@ -93,6 +93,7 @@ function ReportDetail() {
     const fetchReportDetail = async () => {
       try {
         const reportService = new ReportService();
+        console.log(`no: ${no}`)
         const fetchedData = await reportService.getReportDetail(no);
         console.log(fetchedData)
         setReport(fetchedData);

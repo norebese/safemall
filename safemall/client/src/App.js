@@ -39,15 +39,15 @@ function App() {
       
       <Route path='/board' >
         <Route path="notice" element={<NoticeList />} />
-        <Route path="notice/:id" element={<NoticeDetail />} />
+        <Route path="notice/:no" element={<NoticeDetail />} />
 
         <Route path="prevent" element={<PreventionList />} />
-        <Route path="prevent/:id" element={<PreventionDetail />} />
+        <Route path="prevent/:no" element={<PreventionDetail />} />
 
         <Route path="suggest" element={<SuggestList />} />
         <Route path="suggest/create" element={<SuggestForm />} />
-        <Route path="suggest/edit/:id" element={<SuggestForm />} />
-        <Route path="suggest/:id" element={<SuggestDetail />} />
+        <Route path="suggest/edit/:no" element={<SuggestForm />} />
+        <Route path="suggest/:no" element={<SuggestDetail />} />
 
         <Route path="report" element={<ReportList/>}/>
         <Route path="report/create" element={<ReportForm/>}/>

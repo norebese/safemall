@@ -53,7 +53,7 @@ class SuggestService{
         });
         const responseData = await response.json();      
         console.log(responseData); // 데이터 확인
-        return responseData.data;
+        return responseData;
       }
 
       // 건의사항 게시글 삭제

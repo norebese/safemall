@@ -92,8 +92,9 @@ function SuggestDetail() {
     const fetchSuggestDetail = async () => {
       try {
         const suggestService = new SuggestService();
+        console.log(`no: ${no}`)
         const fetchedData = await suggestService.getSuggestDetail(no);
-        console.log(fetchedData)
+        console.log(`fetchedData: ${fetchedData}`)
         setSuggest(fetchedData);  
       } catch (error) {
         console.error('Error fetching suggest list:', error);
