@@ -10,13 +10,14 @@ export default function MyPage(){
     const [date, setDate] = useState([]);
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
     useEffect(() => {
         console.log(`isLoggedIn1: ${isLoggedIn}`)
         if(isLoggedIn === false){
             alert('로그인 필요')
-            navigate('/auth/login')
-        }else{
-        const fetchData = async () => {
+            navigate('/auth/login/0')
+        }else if(isLoggedIn === true){
+            const fetchData = async () => {
             const mypageService = new MypageService();
             const fetchedData = await mypageService.getMypageList();
             setNickname(fetchedData.nickname);
@@ -25,7 +26,7 @@ export default function MyPage(){
             setPostlist(fetchedData.contentsId)
         };
         fetchData();}
-    }, []); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
+    }, [isLoggedIn]); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
     console.log(postlist)
     return(
     <>
