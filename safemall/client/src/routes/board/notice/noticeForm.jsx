@@ -66,6 +66,29 @@ function NoticeForm() {
           onChange={handleChange}
         />
       </div>
+      <div>
+          <strong>중요공지 여부 : </strong>
+          <label>
+            <input
+              type="radio"
+              name="HotTopic"
+              value="true"
+              checked={formData.HotTopic === true}
+              onChange={handleChange}
+            />
+            선택
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="HotTopic"
+              value="false"
+              checked={formData.HotTopic === false}
+              onChange={handleChange}
+            />
+            선택 안함
+          </label>
+        </div>
 
       </div>
       <div className={styles.formactions}>

@@ -17,14 +17,6 @@ function SignIn() {
         }
     }, [isLoggedIn, navigate]);
 
-    const handleGoogleLogin = () => {
-        console.log('Google 로그인 클릭됨');
-    };
-
-    const handleNaverLogin = () => {
-        console.log('Naver 로그인 클릭됨');
-    };
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -46,16 +38,6 @@ function SignIn() {
         <main>
             <div className={styles.main}>
                 <h1>로그인</h1>
-                <div className={styles.googleAuth}>
-                    <button className={styles.googleAuthbtn} onClick={handleGoogleLogin}>
-                        <p>Sign in with Google</p>
-                    </button>
-                </div>
-                <div className={styles.naverAuth}>
-                    <button className={styles.naverAuthbtn} onClick={handleNaverLogin}>
-                        <p>네이버 로그인</p>
-                    </button>   
-                </div>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className={styles.testLogin}>

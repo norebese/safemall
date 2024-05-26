@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainPage from './routes/mainPage';
 import SearchDetail from './routes/search';
 import SearchResultList from './routes/searchResultList';
+import Info from './routes/info';
 
 import LoginPage from './routes/auth/loginPage';
 import MyPage from './routes/auth/mypage/myPage';
@@ -34,18 +35,19 @@ function App() {
       <Route path="/" element={<MainPage/>}/>
       <Route path="/search/:id" element={<SearchDetail />} />
       <Route path="/search/result" element={<SearchResultList />} />
+      <Route path='/info' element={<Info />} />
       
       <Route path='/board' >
         <Route path="notice" element={<NoticeList />} />
-        <Route path="notice/:id" element={<NoticeDetail />} />
+        <Route path="notice/:no" element={<NoticeDetail />} />
 
         <Route path="prevent" element={<PreventionList />} />
-        <Route path="prevent/:id" element={<PreventionDetail />} />
+        <Route path="prevent/:no" element={<PreventionDetail />} />
 
         <Route path="suggest" element={<SuggestList />} />
         <Route path="suggest/create" element={<SuggestForm />} />
-        <Route path="suggest/edit/:id" element={<SuggestForm />} />
-        <Route path="suggest/:id" element={<SuggestDetail />} />
+        <Route path="suggest/edit/:no" element={<SuggestForm />} />
+        <Route path="suggest/:no" element={<SuggestDetail />} />
 
         <Route path="report" element={<ReportList/>}/>
         <Route path="report/create" element={<ReportForm/>}/>
@@ -54,7 +56,7 @@ function App() {
       </Route>
       
       <Route path='/auth'>
-        <Route path="login" element={<LoginPage/>}/>
+        <Route path="login/:state" element={<LoginPage/>}/>
         <Route path='mypage' element={<MyPage />} />
       </Route>
       

@@ -1,14 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { AuthContext } from '../../../context/authContext';
 import styles from './myPage.module.css';
 import MypageService from '../../../service/myPage';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function MyPage(){
     const [postlist, setPostlist] = useState([]);
     const [nickname, setNickname ] = useState('익명');
     const [date, setDate] = useState([]);
-
+    const { isLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
     useEffect(() => {
+        console.log(`isLoggedIn1: ${isLoggedIn}`)
+        if(isLoggedIn === false){
+            alert('로그인 필요')
+            navigate('/auth/login')
+        }else{
         const fetchData = async () => {
             const mypageService = new MypageService();
             const fetchedData = await mypageService.getMypageList();
@@ -17,7 +24,7 @@ export default function MyPage(){
             // const myPageList = await mypageService.getPostList(fetchedData.contentsId);
             setPostlist(fetchedData.contentsId)
         };
-        fetchData();
+        fetchData();}
     }, []); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
     console.log(postlist)
     return(
@@ -33,8 +40,8 @@ export default function MyPage(){
     
         <div className={styles.mypageitem}>
             {postlist.map((post) => (
-                <div className={styles.mypageRow}>
-                    <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`} key={post.postNo}>
+                <div className={styles.mypageRow}  key={post.postNo}>
+                    <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`}>
                         <span>{post.boardTypeKor}</span>
                         <span>{post.Title}</span>
                         <span>{post.createdAt.split('T')[0]}</span>

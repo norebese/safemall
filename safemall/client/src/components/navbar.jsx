@@ -46,8 +46,8 @@ function OffcanvasExample() {
                     </>
                   ) : (
                     <>
-                      <Nav.Link href="/auth/login"><button>로그인</button></Nav.Link>
-                      <Nav.Link href="/auth/login"><button>회원가입</button></Nav.Link>
+                      <Nav.Link href="/auth/login/0"><button>로그인</button></Nav.Link>
+                      <Nav.Link href="/auth/login/1"><button>회원가입</button></Nav.Link>
                     </>
                   )}
                 </Nav>

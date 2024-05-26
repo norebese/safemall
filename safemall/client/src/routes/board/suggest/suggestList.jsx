@@ -71,7 +71,7 @@ function SuggestList() {
               <button className={styles.submit} type="submit">&#128269;</button>
           </div>
           <div className={styles.createBtnArea}>
-            <Link to="/suggest/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
+            <Link to="/board/suggest/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
           </div>
         </header>
         <div className={styles.notices}>
@@ -89,7 +89,7 @@ function SuggestList() {
           ) : (
             <>
             {suggestList.map((suggest, index) => (
-              <Link className={styles.noticeitem} to={`/board/report/${suggest.no}`} key={`${suggest.no}-${index}`}>
+              <Link className={styles.noticeitem} to={`/board/suggest/${suggest.no}`} key={`${suggest.no}-${index}`}>
                 <span>{suggest.no}</span>
                 <span>{suggest.Title}</span>
                 <span>{suggest.createdAt.split('T')[0]}</span>
