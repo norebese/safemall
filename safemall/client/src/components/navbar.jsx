@@ -42,12 +42,12 @@ function OffcanvasExample() {
                 {isLoggedIn ? (
                     <>
                       <Nav.Link href="/auth/mypage" ><button>마이페이지</button></Nav.Link>
-                      <Nav.Link href="/auth/login" onClick={logout}><button>로그아웃</button></Nav.Link>
+                      <Nav.Link href="/auth/login"><button onClick={logout}>로그아웃</button></Nav.Link>
                     </>
                   ) : (
                     <>
                       <Nav.Link href="/auth/login"><button>로그인</button></Nav.Link>
-                      <Nav.Link href="/auth/signup"><button>회원가입</button></Nav.Link>
+                      <Nav.Link href="/auth/login"><button>회원가입</button></Nav.Link>
                     </>
                   )}
                 </Nav>
