@@ -57,7 +57,7 @@ class SuggestService{
       }
 
       // 건의사항 게시글 삭제
-      async deleteReport(no) {
+      async deleteSuggest(no) {
         tokenStorage.addTokenToHeaders(this.headers);
         try {
             const response = await fetch(`${this.baseUrl}board/suggest/${no}`, {
@@ -70,7 +70,7 @@ class SuggestService{
     }
 
     // 건의사항게시글 수정
-    async editReport(formData, no) {
+    async editSuggest(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
       if (!formData.Comments) {
         formData.Comments = 0;

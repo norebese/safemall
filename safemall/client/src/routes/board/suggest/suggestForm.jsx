@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import SuggestService from '../../../service/suggest';
 import { useNavigate } from 'react-router-dom';
-import styles from './suggestForm.module.css'
+import styles from './suggestForm.module.css';
+import { AuthContext } from '../../../context/authContext';
 
 function SuggestForm() {
   const navigate = useNavigate();
+  const { isLoggedIn, nickname } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     Title: '',
     Contents: ''
   });
   
+  useEffect(() => {
+    console.log(isLoggedIn)
+    if(isLoggedIn === false){
+      alert('로그인 필요')
+      navigate('/login')
+    }
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -22,12 +32,17 @@ function SuggestForm() {
     e.preventDefault();
     try {
       const suggestService = new SuggestService();
-      await suggestService.submitSuggest(formData);
+      const response = await suggestService.submitSuggest(formData);
       // 제출 성공 시 사용자에게 알림 또는 리다이렉션 등 추가 작업 수행
-      alert('제출되었습니다.');
-      navigate('/suggest');
+      if(response.message == '인증에러'){
+        navigate('/login');
+      }else{
+        alert('건의사항 작성 성공');
+        navigate(`/board/report/${response.data.no}`);
+      }
+
     } catch (error) {
-      console.error('Error submitting suggest:', error);
+      console.error('Error submitting report:', error);
       // 오류 처리 로직 추가 가능
     }
   };
@@ -53,10 +68,10 @@ function SuggestForm() {
             onChange={handleChange}
             required
           />
-        </div>
+        </div>  
         <div className={styles.bodycontainer}>
           <label htmlFor="Content" className={styles.formlabel}>내용</label>
-          <input
+          <textarea
             type="text"
             id="Contents"
             name="Contents"

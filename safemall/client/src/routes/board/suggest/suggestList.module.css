@@ -59,6 +59,7 @@
     /* margin-bottom: 40px; */
 }
 .noData {
+    margin: 50px 0;
     text-align: center;
     font-size: 40px
 }
@@ -151,7 +152,7 @@ div.notices .noticeitem a {
 }
 
 
-.btn.createbtn {
+.btn{
     padding: 8px 16px;
     height: 50px;
     text-align: center;
@@ -167,7 +168,7 @@ div.notices .noticeitem a {
     transition: background-color 0.3s; /* Smooth background color transition */
 }
 
-.btn.createbtn:hover {
+.btn:hover {
     background-color: #357ABD; /* Darker shade on hover */
 }
 

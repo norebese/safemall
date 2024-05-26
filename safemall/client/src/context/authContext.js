@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({authService, children }) => {
@@ -9,7 +8,6 @@ export const AuthProvider = ({authService, children }) => {
     const [isAdmin, setisAdmin] = useState(false);
     const [nickname, setNickname] = useState('');
     const navigate = useNavigate();
-
     useEffect(() => {
         // 페이지 로드 시 로컬 스토리지에서 토큰과 닉네임 가져오기
         const token = sessionStorage.getItem('token');
@@ -52,7 +50,9 @@ export const AuthProvider = ({authService, children }) => {
         sessionStorage.removeItem('NICKNAME');
         setIsLoggedIn(false);
         setNickname('');
-        navigate('/auth/login/0');
+        navigate('/auth/login/1')
+        window.location.reload();
+
     };
 
     return (

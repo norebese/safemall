@@ -30,7 +30,7 @@ function SuggestDetail() {
     console.log(isLoggedIn)
     if(isLoggedIn === false){
       alert('로그인 필요')
-      navigate('/auth/login')
+      navigate('/auth/login/0')
     }
   }, [isLoggedIn]);
 
@@ -38,7 +38,7 @@ function SuggestDetail() {
     e.preventDefault();
     try {
       const suggestService = new SuggestService();
-      const response = await SuggestService.deleteSuggest(no);
+      const response = await suggestService.deleteSuggest(no);
       alert('삭제되었습니다.'); 
       navigate('/board/suggest'); 
     } catch (error) {
@@ -92,18 +92,19 @@ function SuggestDetail() {
     const fetchSuggestDetail = async () => {
       try {
         const suggestService = new SuggestService();
-        console.log(`no: ${no}`)
         const fetchedData = await suggestService.getSuggestDetail(no);
-        console.log(`fetchedData: ${fetchedData}`)
-        setSuggest(fetchedData);  
+        console.log(fetchedData)
+        setSuggest(fetchedData);
       } catch (error) {
         console.error('Error fetching suggest list:', error);
       }
+      
     };
 
     fetchSuggestDetail();
   }, []); 
 
+  
 
   return (
     <div>
@@ -181,11 +182,11 @@ function SuggestDetail() {
           </div>
         </Modal>
 
-        <div className={styles.buttonarea}>
+        <div className={styles.buttonarea1}>
           <button className={styles.button} onClick={() => navigate('/board/suggest')}>목록</button>
         </div>
         {isLoggedIn && nickname === suggest.Author && (
-          <div className={styles.buttonarea}>
+          <div className={styles.buttonarea2}>
               <button className={styles.button} onClick={() => navigate(`/board/suggest/edit/${no}`)}>수정하기</button>
               <button className={styles.button} onClick={handleDelete}>삭제하기</button>
           </div>

@@ -35,14 +35,14 @@ function App() {
       <Route path="/" element={<MainPage/>}/>
       <Route path="/search/:id" element={<SearchDetail />} />
       <Route path="/search/result" element={<SearchResultList />} />
-      <Route path='/info' element={<Info />} />
+      {/* <Route path='/info' element={<Info />} /> */}
       
       <Route path='/board' >
-        <Route path="notice" element={<NoticeList />} />
+        {/* <Route path="notice" element={<NoticeList />} />
         <Route path="notice/:no" element={<NoticeDetail />} />
 
         <Route path="prevent" element={<PreventionList />} />
-        <Route path="prevent/:no" element={<PreventionDetail />} />
+        <Route path="prevent/:no" element={<PreventionDetail />} /> */}
 
         <Route path="suggest" element={<SuggestList />} />
         <Route path="suggest/create" element={<SuggestForm />} />
@@ -59,10 +59,6 @@ function App() {
         <Route path="login/:state" element={<LoginPage/>}/>
         <Route path='mypage' element={<MyPage />} />
       </Route>
-      
-      
-      
-      
     </Routes>
   );
 }

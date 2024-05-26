@@ -71,7 +71,7 @@ function SuggestList() {
               <button className={styles.submit} type="submit">&#128269;</button>
           </div>
           <div className={styles.createBtnArea}>
-            <Link to="/board/suggest/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
+            <Link to="/board/suggest/create"><button className={styles.btn}>작성하기</button></Link>
           </div>
         </header>
         <div className={styles.notices}>
