@@ -10,7 +10,7 @@ function Footer() {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3" id={styles.navArea} style={{position: 'fixed', width:'100%', height:'auto', zIndex: 1000, bottom: 0 }}>
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3" id={styles.navArea} style={{position: 'fixed', width:'768px', height:'auto', zIndex: 1000, bottom: 0 }}>
           <Container fluid className={styles.Container} id={styles.arrange}>
             <Navbar.Brand className={styles.navbarBrand} href="/">
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" className="bi bi-search" viewBox="0 0 16 16">
