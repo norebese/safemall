@@ -195,7 +195,8 @@ export async function getReportDetail(req, res){
     const data = await boardData.getBypostId('Report', req.params.no);
     if (data) {
       const date = data.createdAt ? data.createdAt.toISOString().split('T')[0] : '';
-      res.status(200).json({data: { ...data.toObject(), createdAt: date }});
+      const update = data.updatedAt ? data.updatedAt.toISOString().split('T')[0] : '';
+      res.status(200).json({data: { ...data.toObject(), createdAt: date ,updatedAt: update }});
     } else {
       res.status(404).json({ message: 'Report not found' });
     }

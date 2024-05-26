@@ -2,15 +2,16 @@ class MainService{
     constructor() {
         // HTTP 클라이언트 설정 및 기본 URL 설정
         // this.baseUrl = 'http://localhost:8080';
-        this.baseUrl = process.env.REACT_APP_BASEURL
+        this.baseUrl = process.env.REACT_APP_BASEURL;
         this.headers = {
           'Content-Type': 'application/json',
           // 필요에 따라 인증 헤더나 기타 헤더 추가 가능
         };
       }
-
+      
       //위해 사이트 불러오기
       async getWarnList(count) {
+        console.log(this.baseUrl)
         // DB에서 가져올 데이터의 limit값을 정해주기 위한 count
         // 더보기 버튼을 누를때마다 limit에 3을 더해 한번에 불러오는 데이터 갯수를 정해준다
         const queryParams = `?count=${count}`;

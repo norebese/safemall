@@ -25,6 +25,14 @@ function ReportDetail() {
     setShow(true);
   }
 
+  useEffect(() => {
+    console.log(isLoggedIn)
+    if(!isLoggedIn){
+      alert('로그인 필요')
+      navigate('/auth/login')
+    }
+  }, [isLoggedIn]);
+
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
@@ -111,7 +119,8 @@ function ReportDetail() {
           <div id={styles.answercontainer}>
             <div id={styles.titlesection}>
               <div id={styles.answertitle}>관리자 답변:</div>
-              <div id={styles.answerdate}>{report.answerDate}</div>
+              <div id={styles.answerdate}>{report.updatedAt}</div>
+              <div><button id={styles.AuthContextedit}>수정</button><button id="del">삭제</button></div>
             </div>
             <div id={styles.answer} className={styles.contentcontent}>
               {report.Comments}
