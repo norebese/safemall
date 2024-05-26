@@ -72,6 +72,11 @@ class ReportService{
     // 제보게시글 수정
     async editReport(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
+      if (!formData.Comments) {
+        formData.State = 0;
+      }else if(formData.Comments){
+        formData.State = 1;
+      }
       try {
         const response = await fetch(`${this.baseUrl}board/report/${no}`, {
           method: 'PUT',

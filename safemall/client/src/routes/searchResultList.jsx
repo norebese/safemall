@@ -18,7 +18,7 @@ const SearchResult = () => {
                                 <div className="col-md-8" id={styles.arange}>
                                     <Card.Body>
                                         <Card.Title>{shop.shopNameKor}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">{shop.domainName}</Card.Subtitle>
+                                        <Card.Subtitle id={styles.dm} className="mb-2 text-muted">{shop.domainName}</Card.Subtitle>
                                     </Card.Body>
                                     <div className={styles.status}>
                                         <Card.Text>{shop.businessState}</Card.Text>

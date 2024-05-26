@@ -89,6 +89,7 @@ function ReportList() {
                   <span>{report.Title}</span>
                   <span>{report.createdAt}</span>
                   <span>{report.Author}</span>
+                  <span>{report.State ? '완료' : '처리중'}</span>
                 </Link>
               ))}
           {showMoreButton && (
