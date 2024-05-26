@@ -18,16 +18,6 @@ function SignUp() {
         }
     }, [isLoggedIn, navigate]);
 
-    const handleGoogleLogin = () => {
-        // Google 로그인 로직 추가
-        console.log('Google 로그인 클릭됨');
-    };
-
-    const handleNaverLogin = () => {
-        // Naver 로그인 로직 추가
-        console.log('Naver 로그인 클릭됨');
-    };
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
