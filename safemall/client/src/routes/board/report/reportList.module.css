@@ -61,12 +61,12 @@
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    padding: 0 25px;
+    padding: 0 25px 85px 25px;
 }
 
 .noticeheader, .noticeitem {
     display: grid;
-    grid-template-columns: 0.5fr 3fr 2fr 1fr; /* Adjust column ratios */
+    grid-template-columns: 0.5fr 3fr 2fr 1fr 1.2fr; /* Adjust column ratios */
     gap: 10px; /* Gap between grid items */
     padding: 10px 20px;
     align-items: center;

@@ -73,8 +73,9 @@ class ReportService{
     async editReport(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
       if (!formData.Comments) {
-        formData.Comments = 0;
-        console.log('formData updated:', formData);
+        formData.State = 0;
+      }else if(formData.Comments){
+        formData.State = 1;
       }
       try {
         const response = await fetch(`${this.baseUrl}board/report/${no}`, {
