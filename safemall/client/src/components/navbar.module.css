@@ -22,3 +22,7 @@
 #navitemB{
     margin-left: 5px;
 }
+
+#arrange{
+    justify-content: space-around;
+}
