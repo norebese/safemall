@@ -30,7 +30,7 @@ function SuggestDetail() {
     console.log(isLoggedIn)
     if(isLoggedIn === false){
       alert('로그인 필요')
-      navigate('/auth/login')
+      navigate('/auth/login/0')
     }
   }, [isLoggedIn]);
 

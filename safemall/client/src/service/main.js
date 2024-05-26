@@ -30,8 +30,9 @@ class MainService{
       async getSearchResult(keyword) {
         console.log('keyword: ', keyword)
         // urlPattern인지 확인하는 함수이다. 한글 및 urlPattern이 아니면 false를 반환
-        const isDomain = (input) => { 
-          const urlPattern = /^(?!:\/\/)([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/;
+        const isDomain = (input) => {
+          console.log('URL 검사기 실행')
+          const urlPattern = /^(https?:\/\/)?([\w-]+\.)*[\w-]+\.[a-z]{2,}(\/[\w-./?%&=]*)?$/i;
           return urlPattern.test(input);
         };
         const iskey = isDomain(keyword) //검사 실행
@@ -44,7 +45,7 @@ class MainService{
           let mainDomain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n]+)/im)[1];
           mainDomain = mainDomain.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0]
           console.log('MainDomain: ',mainDomain)
-          encodedKeyword = encodeURIComponent(mainDomain);
+          encodedKeyword = btoa(mainDomain);
           type = 'domainName'
         }else{
           // 검색어와 타입을 정해줌
@@ -60,7 +61,7 @@ class MainService{
         });
         const responseData = await response.json();
         const data = responseData.result; // 실제 데이터는 response.data에 있음
-      
+        console.log(data.result)
         // console.log(data); 
         return data;
       }

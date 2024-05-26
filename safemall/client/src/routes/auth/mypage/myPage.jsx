@@ -12,17 +12,15 @@ export default function MyPage(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(`isLoggedIn1: ${isLoggedIn}`)
         if(isLoggedIn === false){
             alert('로그인 필요')
-            navigate('/auth/login/0')
+            navigate('/auth/login/1')
         }else if(isLoggedIn === true){
             const fetchData = async () => {
             const mypageService = new MypageService();
             const fetchedData = await mypageService.getMypageList();
             setNickname(fetchedData.nickname);
             setDate([fetchedData.createdAt.split('T')[0], fetchedData.updatedAt.split('T')[0]])
-            // const myPageList = await mypageService.getPostList(fetchedData.contentsId);
             setPostlist(fetchedData.contentsId)
         };
         fetchData();}
@@ -38,14 +36,13 @@ export default function MyPage(){
         <div className={styles.title}>
             <span>게시판명</span><span>제목</span><span>작성일</span>
         </div>
-    
         <div className={styles.mypageitem}>
             {postlist.map((post) => (
-                <div className={styles.mypageRow}  key={post.postNo}>
+                <div className={styles.mypageRow} key={post.postNo}>
                     <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`}>
-                        <span>{post.boardTypeKor}</span>
-                        <span>{post.Title}</span>
-                        <span>{post.createdAt.split('T')[0]}</span>
+                        <p>{post.boardTypeKor}</p>
+                        <p>{post.Title}</p>
+                        <p>{post.createdAt.split('T')[0]}</p>
                     </Link>
                 </div>
             ))}

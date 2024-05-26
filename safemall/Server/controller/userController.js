@@ -78,12 +78,11 @@ export async function Mypage(req, res, next) {
     }
     const postPromises = user.dataValues.contentsId.map(async (v) => {
       const post = await boardData.getPostList(v.boardType, v.postNo);
-      return { ...v, boardTypeKor: post.boardtype, Title: post.Title, createdAt: post.createdAt };
+      return { ...v, boardTypeKor: post.boardtype, Title: post.Title, createdAt: post.createdAt ? post.createdAt.toISOString().split('T')[0] : '' };
     });
 
     const contentsId = await Promise.all(postPromises);
     console.log(contentsId);
-
     const data = {
       email: user.dataValues.email,
       nickname: user.dataValues.nickname,
