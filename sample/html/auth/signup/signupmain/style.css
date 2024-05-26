@@ -1,0 +1,60 @@
+body, html{
+    padding: 0;
+    margin: 0;
+    width: 768px;
+    height: 1300px;
+}
+#container{
+    width: 100%;
+    text-align: center;
+}
+h2{
+    margin-top: 150px !important;
+    font-size: 64px !important;
+    margin-bottom:50px !important;
+}
+
+.googleAuthbtn{
+    width: 500px;
+    height: 100px;
+    margin: 20px;
+    /* background-color: rgba(72, 134, 245, 1); */
+    background-image: url('google.svg');
+    border-radius: 15px;
+    font-size: 32px;
+    color: white;
+}
+
+.googleAuthbtn>p{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.naverAuthbtn{
+    width: 500px;
+    height: 100px;
+    margin: 20px;
+    /* background-color: rgba(62, 203, 87, 1); */
+    background-image: url('./naver.svg');
+    border-radius: 15px;
+    font-size: 32px;
+    color: white;
+}
+
+.naverAuthbtn>p{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.returnpagebtn{
+    width: 320px;
+    height: 80px;
+    margin-top: 100px;
+    background-color: #1A2042;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    font-size: 32px;
+}
+
+
