@@ -11,9 +11,9 @@ class SuggestService{
 
     // 건의사항 게시판 리스트
     async getSuggestList(lastNo) {
-      console.log(lastNo)
+      console.log(`lastNo: ${lastNo}`)
       const queryParams = lastNo ? `?lastNo=${lastNo}` : '';
-      const response = await fetch(`${this.baseUrl}suggest${queryParams}`, {
+      const response = await fetch(`${this.baseUrl }board/suggest${queryParams}`, {
         method: 'GET',
         headers: this.headers,
       });
@@ -26,7 +26,7 @@ class SuggestService{
 
     // 건의사항 작성
     async submitSuggest(formData) {
-      const response = await fetch(`${this.baseUrl}suggest/createSuggest`, {
+      const response = await fetch(`${this.baseUrl}board/suggest/createSuggest`, {
         method: 'post',
         headers: this.headers,
         body: JSON.stringify(formData)
@@ -41,7 +41,7 @@ class SuggestService{
     // 건의사항 게시글 상세정보
     async getSuggestDetail(id) {
       console.log(id)
-      const response = await fetch(`${this.baseUrl}suggest/${id}`, {
+      const response = await fetch(`${this.baseUrl}board/suggest/${id}`, {
         method: 'GET',
         headers: this.headers,
       });

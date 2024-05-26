@@ -79,7 +79,7 @@ function MainPage() {
     ) : (
         cards.map(card => (
             <div key={card._id} className={styles.listcard}>
-            <span>{card.shopName}</span><span>( {card.Totalreport}/{card.Unprocess} )</span><br />
+            <span>{card.shopName}</span><span>( {card.Totalreport} / {card.Unprocess} )</span><br />
             <span className={styles.detail}>{card.MainItems}</span>
             </div>
         ))
@@ -91,7 +91,6 @@ function MainPage() {
         </div>
       )}
       <div className={styles.bottom}>
-
       </div>
     </div>
   );
