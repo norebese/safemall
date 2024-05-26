@@ -5,22 +5,22 @@ import styles from "./suggestList.module.css";
 
 function SuggestList() {
   const [suggestList, setSuggestList] = useState([]); 
-  const [loading, setLoading] = useState(true); // 로딩 상태 추가하면 데이터가 로드된 후에 실제 데이터를 표시해 해결가능
-  const [lastId, setLastId] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  const [lastNo, setLastNo] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
   const fetchSuggestList = async () => {
     try {
       const suggestService = new SuggestService();
-      const fetchedData = await suggestService.getSuggestList(lastId);
+      const fetchedData = await suggestService.getSuggestList(lastNo);
       setSuggestList(fetchedData);
       if (fetchedData.length > 0) {
-        setLastId(fetchedData[fetchedData.length - 1]._id);
+        setLastNo(fetchedData[fetchedData.length - 1].no);
       }
-      if (fetchedData.length % 5 !== 0) { //가져온 데이터가 3의 배수가 아니면 "더보기" 버튼을 숨김.
+      if (fetchedData.length % 5 !== 0) { 
         setShowMoreButton(false);
       }
-      setLoading(false); // 데이터 로드 완료 후 로딩 상태 변경
+      setLoading(false); 
     } catch (error) {
       console.error('Error fetching Suggest list:', error);
       setLoading(false); // 에러 발생 시에도 로딩 상태 변경
@@ -28,19 +28,19 @@ function SuggestList() {
   };
 
   const handleLoadMore = async () => {
-    if (lastId) {
+    if (lastNo) {
       try {
         const suggestService = new SuggestService();
-        const fetchedData = await suggestService.getSuggestList(lastId); // 페이징 처리
+        const fetchedData = await suggestService.getSuggestList(lastNo); // 페이징 처리
         if (fetchedData.length > 0) {
           setSuggestList([...suggestList, ...fetchedData]);
-          setLastId(fetchedData[fetchedData.length - 1]._id);
+          setLastNo(fetchedData[fetchedData.length - 1].no);
         }
-        if (fetchedData.length % 5 !== 0) { //가져온 데이터가 3의 배수가 아니면 "더보기" 버튼을 숨김.
+        if (fetchedData.length % 5 !== 0) { 
           setShowMoreButton(false);
         }
       } catch (error) {
-        console.error('Error fetching more Report list:', error);
+        console.error('Error fetching more Suggest list:', error);
       }
     }
   };
@@ -57,13 +57,13 @@ function SuggestList() {
   return (
     <div className={styles.content}>
       <header className={styles.appheader}>
-          <h1>건의사항</h1>
+          <h1>건의사항 게시판</h1>
           <div className={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
               <button className={styles.submit} type="submit">&#128269;</button>
           </div>
           <div className={styles.createBtnArea}>
-            <Link to="/suggest/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
+            <Link to="/board/report/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
           </div>
         </header>
           <div className={styles.notices}>
@@ -81,11 +81,12 @@ function SuggestList() {
             ) : (
               <>
               {suggestList.map((suggest) => (
-                <Link className={styles.noticeitem} to={`/suggest/${suggest._id}`}>
-                  <span>no</span>
+                <Link className={styles.noticeitem} to={`/board/report/${suggest.no}`}>
+                  <span>{suggest.no}</span>
                   <span>{suggest.Title}</span>
                   <span>{suggest.Date}</span>
-                  <span>{suggest.Writer}</span>
+                  <span>{suggest.Author}</span>
+                  <span>{suggest.State}</span>
                 </Link>
               ))}
           {showMoreButton && (
