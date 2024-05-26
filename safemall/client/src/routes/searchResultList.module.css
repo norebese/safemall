@@ -5,10 +5,15 @@
 
 .status{
     margin-right: 50px;
+    text-wrap: nowrap;
 }
 
 #width{
     width: 80% !important;
+}
+
+#dm{
+    overflow-wrap: anywhere;
 }
 
 .row{
