@@ -15,7 +15,7 @@ const SearchResult = () => {
                     <Link to={`/search/${shop._id}`} className="text-decoration-none">
                         <Card className="h-100">
                             <div className="row g-0">
-                                <div className="col-md-8" id={styles.arange}>
+                                <div className="col-md-15" id={styles.arange}>
                                     <Card.Body>
                                         <Card.Title>{shop.shopNameKor}</Card.Title>
                                         <Card.Subtitle id={styles.dm} className="mb-2 text-muted">{shop.domainName}</Card.Subtitle>
