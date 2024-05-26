@@ -56,7 +56,7 @@ function App() {
       </Route>
       
       <Route path='/auth'>
-        <Route path="login" element={<LoginPage/>}/>
+        <Route path="login/:state" element={<LoginPage/>}/>
         <Route path='mypage' element={<MyPage />} />
       </Route>
       
