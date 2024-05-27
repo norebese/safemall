@@ -28,7 +28,7 @@ function ReportForm() {
     console.log(isLoggedIn)
     if(isLoggedIn === false){
       alert('로그인 필요')
-      navigate('/auth/login/0')
+      navigate('/auth/login/1')
     }
   }, []);
   
