@@ -32,7 +32,7 @@ class MainService{
         // urlPattern인지 확인하는 함수이다. 한글 및 urlPattern이 아니면 false를 반환
         const isDomain = (input) => {
           console.log('URL 검사기 실행')
-          const urlPattern = /^(https?:\/\/)?([\w-]+\.)*[\w-]+\.[a-z]{2,}(\/[\w-./?%&=]*)?$/i;
+          const urlPattern = /^(https?:\/\/(www\.)?|www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/i;
           return urlPattern.test(input);
         };
         const iskey = isDomain(keyword) //검사 실행
@@ -67,8 +67,8 @@ class MainService{
       }
       
       //검색결과 상세페이지, 쇼핑몰 리스트의 id값으로 가져옴
-      async getSearchResultDetail(id) {
-        const response = await fetch(`${this.baseUrl}search/${id}`, {
+      async getSearchResultDetail(id, type) {
+        const response = await fetch(`${this.baseUrl}search/${id}?type=${type}`, {
           method: 'GET',
           headers: this.headers,
         });
