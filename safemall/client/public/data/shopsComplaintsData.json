@@ -1,10 +1,7 @@
 [
   {
     "no": 1,
-    "Year": 2022,
-    "YearNum": 536,
     "shopNameKor": "더키월드",
-    "shopNameEng": "",
     "MainItems": [
       "캐릭터 문구 및 식기",
       "키덜트토이 및 잡화"
@@ -21,10 +18,7 @@
   },
   {
     "no": 2,
-    "Year": 2022,
-    "YearNum": 535,
     "shopNameKor": "피규어바이",
-    "shopNameEng": "FIGURE BUY",
     "MainItems": [
       "캐릭터 피규어",
       "키덜트 토이"
@@ -41,10 +35,7 @@
   },
   {
     "no": 3,
-    "Year": 2022,
-    "YearNum": 541,
     "shopNameKor": "슈스톱",
-    "shopNameEng": "",
     "MainItems": [
       "운동화"
     ],
@@ -59,10 +50,7 @@
   },
   {
     "no": 4,
-    "Year": 2022,
-    "YearNum": 538,
     "shopNameKor": "스타일브이",
-    "shopNameEng": "",
     "MainItems": [
       "식품",
       "건강식품",
@@ -80,10 +68,7 @@
   },
   {
     "no": 5,
-    "Year": 2022,
-    "YearNum": 539,
     "shopNameKor": "애슬리트",
-    "shopNameEng": "",
     "MainItems": [
       "운동복",
       "요가복",
@@ -99,10 +84,7 @@
   },
   {
     "no": 6,
-    "Year": 2022,
-    "YearNum": 540,
     "shopNameKor": "트렌디슈즈",
-    "shopNameEng": "",
     "MainItems": [
       "운동화"
     ],
@@ -117,10 +99,7 @@
   },
   {
     "no": 7,
-    "Year": 2022,
-    "YearNum": 544,
     "shopNameKor": "맘앤마트",
-    "shopNameEng": "MOMNMART",
     "MainItems": [
       "식품",
       "건강식품",
@@ -138,10 +117,7 @@
   },
   {
     "no": 8,
-    "Year": 2022,
-    "YearNum": 543,
     "shopNameKor": "싹딜",
-    "shopNameEng": "",
     "MainItems": [
       "식품",
       "건강식품",
@@ -159,10 +135,7 @@
   },
   {
     "no": 9,
-    "Year": 2022,
-    "YearNum": 542,
     "shopNameKor": "뷰티히어로",
-    "shopNameEng": "",
     "MainItems": [
       "화장품",
       "건강보조식품",
@@ -179,10 +152,7 @@
   },
   {
     "no": 10,
-    "Year": 2022,
-    "YearNum": 537,
     "shopNameKor": "오시싸",
-    "shopNameEng": "",
     "MainItems": [
       "화장품",
       "여성의류 및 잡화",
@@ -199,10 +169,7 @@
   },
   {
     "no": 11,
-    "Year": 2022,
-    "YearNum": 532,
     "shopNameKor": "풀문",
-    "shopNameEng": "Fullmoon",
     "MainItems": [
       "명품브랜드 가방 및 잡화",
       "화장품"
@@ -217,10 +184,7 @@
   },
   {
     "no": 12,
-    "Year": 2022,
-    "YearNum": 531,
     "shopNameKor": "보네르",
-    "shopNameEng": "",
     "MainItems": [
       "여성의류",
       "아동의류 및 잡화"
@@ -235,10 +199,7 @@
   },
   {
     "no": 13,
-    "Year": 2022,
-    "YearNum": 534,
     "shopNameKor": "카라프",
-    "shopNameEng": "CARAFE/사크라스트라다",
     "MainItems": [
       "해외 명품브랜드 의류 및 잡화"
     ],
@@ -253,10 +214,7 @@
   },
   {
     "no": 14,
-    "Year": 2022,
-    "YearNum": 530,
     "shopNameKor": "반하루",
-    "shopNameEng": "",
     "MainItems": [
       "여성 의류 및 잡화"
     ],
@@ -270,10 +228,7 @@
   },
   {
     "no": 15,
-    "Year": 2022,
-    "YearNum": 533,
     "shopNameKor": "매니쉬",
-    "shopNameEng": "",
     "MainItems": [
       "남성의류 및 잡화"
     ],
@@ -287,10 +242,7 @@
   },
   {
     "no": 16,
-    "Year": 2023,
-    "YearNum": 547,
     "shopNameKor": "애슬리트",
-    "shopNameEng": "",
     "MainItems": [
       "운동복",
       "요가복",
@@ -306,10 +258,7 @@
   },
   {
     "no": 17,
-    "Year": 2023,
-    "YearNum": 554,
     "shopNameKor": "썸데이룩",
-    "shopNameEng": "",
     "MainItems": [
       "운동화"
     ],
@@ -324,10 +273,7 @@
   },
   {
     "no": 18,
-    "Year": 2023,
-    "YearNum": 553,
     "shopNameKor": "비나인숍",
-    "shopNameEng": "",
     "MainItems": [
       "운동화"
     ],
@@ -342,10 +288,7 @@
   },
   {
     "no": 19,
-    "Year": 2023,
-    "YearNum": 555,
     "shopNameKor": "센트베리",
-    "shopNameEng": "SCENTVERY",
     "MainItems": [
       "운동화"
     ],
@@ -360,10 +303,7 @@
   },
   {
     "no": 20,
-    "Year": 2023,
-    "YearNum": 552,
     "shopNameKor": "이엔지샵",
-    "shopNameEng": "ENZ샵 / ENZ SHOP",
     "MainItems": [
       "해외 명품브랜드 의류 및 잡화"
     ],
@@ -378,10 +318,7 @@
   },
   {
     "no": 21,
-    "Year": 2023,
-    "YearNum": 551,
     "shopNameKor": "시크헤라",
-    "shopNameEng": "",
     "MainItems": [
       "여성의류",
       "잡화",
@@ -400,10 +337,7 @@
   },
   {
     "no": 22,
-    "Year": 2023,
-    "YearNum": 556,
     "shopNameKor": "리빙꿀템",
-    "shopNameEng": "",
     "MainItems": [
       "여성 가방 및 잡화"
     ],
@@ -418,10 +352,7 @@
   },
   {
     "no": 23,
-    "Year": 2023,
-    "YearNum": 549,
     "shopNameKor": "에스디컬렉션",
-    "shopNameEng": "SD컬렉션",
     "MainItems": [
       "해외 명품브랜드 의류 및 잡화"
     ],
@@ -436,10 +367,7 @@
   },
   {
     "no": 24,
-    "Year": 2023,
-    "YearNum": 548,
     "shopNameKor": "피규어세상",
-    "shopNameEng": "Figure Sesang",
     "MainItems": [
       "캐릭터 피규어",
       "키덜트 토이"
@@ -455,10 +383,7 @@
   },
   {
     "no": 25,
-    "Year": 2023,
-    "YearNum": 545,
     "shopNameKor": "맘앤마트",
-    "shopNameEng": "MOMNMART",
     "MainItems": [
       "식품",
       "건강식품",
@@ -476,10 +401,7 @@
   },
   {
     "no": 26,
-    "Year": 2023,
-    "YearNum": 546,
     "shopNameKor": "슈즈오페라",
-    "shopNameEng": "",
     "MainItems": [
       "운동화"
     ],
@@ -494,10 +416,7 @@
   },
   {
     "no": 27,
-    "Year": 2024,
-    "YearNum": 558,
     "shopNameKor": "캐쉬메이커",
-    "shopNameEng": "",
     "MainItems": [
       "유튜브프리미엄 구독권"
     ],
@@ -512,10 +431,7 @@
   },
   {
     "no": 28,
-    "Year": 2024,
-    "YearNum": 557,
     "shopNameKor": "웁스",
-    "shopNameEng": "WHOOPS",
     "MainItems": [
       "식품",
       "건강식품",

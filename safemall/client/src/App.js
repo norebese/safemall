@@ -37,7 +37,7 @@ function App() {
       <Route path="/" element={<MainPage/>}/>
       <Route path="/search/:id" element={<SearchDetail />} />
       <Route path="/search/result" element={<SearchResultList />} />
-      <Route path="/search/complain/:id" element={<SearchComplain />} /> {/* New route for SearchComplain */}
+      <Route path="/search/complain/:id" element={<SearchComplain />} />
       {/* <Route path='/info' element={<Info />} /> */}
       
       <Route path='/board' >
