@@ -86,7 +86,7 @@ export async function searchDetail(req,res,next){
     console.log('data: ', data)
     const emptyMassage = '확인 불가'
     if(data){
-            if(type==0){
+        if(type==0){
             const date = data.dateMonitoring ? data.dateMonitoring.toISOString().split('T')[0] : emptyMassage;
             const date2 = data.dateInit ? data.dateInit.toISOString().split('T')[0] : emptyMassage;
             const date3 = data.dateSiteOpen ? data.dateSiteOpen.toISOString().split('T')[0] : emptyMassage;
@@ -98,42 +98,38 @@ export async function searchDetail(req,res,next){
             const detailPIS = data.detailPIS ? data.detailPIS : emptyMassage;
             const detailWithdrawal = data.detailWithdrawal ? data.detailWithdrawal : emptyMassage;
             const PSS = data.PSS ? data.PSS : emptyMassage;
-              
-        const socialUrls = await socialMediaScraper.getSocialMediaUrls(data.domainName);
-        // 각 플랫폼의 URL에 https://가 포함되어 있는지 체크하고, 없다면 추가
-        console.log('socialUrls:', socialUrls)
+            
+            const socialUrls = await socialMediaScraper.getSocialMediaUrls(data.domainName);
+            // 각 플랫폼의 URL에 https://가 포함되어 있는지 체크하고, 없다면 추가
+            console.log('socialUrls:', socialUrls)
+            
+            Object.entries(socialUrls).forEach(([platform, urls]) => {
+                socialUrls[platform] = urls.map(url => {
+                    // 빈 문자열 처리
+                    if (!url) {
+                    return null;
+                    }
+            
+                    // URL 형식이 올바른지 확인 후 수정
+                    if (!(url.startsWith('https://') || url.startsWith('http://'))) {
+                    url = `https://${url}`;
+                    }
+            
+                    // URL 유효성 검사 및 수정
+                    if (url.endsWith('.com/')) {
+                    return null; // .com/으로 끝나면 null 반환
+                    }
+            
+                    // 유효한 URL 반환
+                    return url;
+                })
+                .filter(url => url !== null); // null인 URL 제거
+                if (socialUrls[platform].length === 0) {
+                    delete socialUrls[platform];
+                }
+            });
         
-        Object.entries(socialUrls).forEach(([platform, urls]) => {
-            socialUrls[platform] = urls
-              .map(url => {
-                // 빈 문자열 처리
-                if (!url) {
-                  return null;
-                }
-          
-                // URL 형식이 올바른지 확인 후 수정
-                if (!(url.startsWith('https://') || url.startsWith('http://'))) {
-                  url = `https://${url}`;
-                }
-          
-                // URL 유효성 검사 및 수정
-                if (url.endsWith('.com/')) {
-                  return null; // .com/으로 끝나면 null 반환
-                }
-          
-                // 유효한 URL 반환
-                return url;
-              })
-              .filter(url => url !== null); // null인 URL 제거
-              if (socialUrls[platform].length === 0) {
-                delete socialUrls[platform];
-              }
-          });
-          
-        console.log('filteredSocialUrls:', socialUrls)
-        res.status(200).json({data: 
-            { ...data.toObject(), 
-              
+            console.log('filteredSocialUrls:', socialUrls)
             data = {
                 ...data.toObject(), 
                 dateMonitoring: date , 
@@ -148,9 +144,8 @@ export async function searchDetail(req,res,next){
                 detailWithdrawal,
                 PSS,
                 socialUrls
-            }});
-
-            res.status(200).json({data});
+            }
+        res.status(200).json({data});
         }else{
             const shopNameKor = data.shopNameKor ? data.shopNameKor : emptyMassage;
             const MainItems = data.MainItems ? data.MainItems : emptyMassage;
