@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import MainPage from './routes/mainPage';
 import SearchDetail from './routes/search';
+import Search from './routes/search';
+import SearchComplain from './routes/SearchComplain';
 import SearchResultList from './routes/searchResultList';
 import Info from './routes/info';
 
@@ -35,6 +37,7 @@ function App() {
       <Route path="/" element={<MainPage/>}/>
       <Route path="/search/:id" element={<SearchDetail />} />
       <Route path="/search/result" element={<SearchResultList />} />
+      <Route path="/search/complain/:id" element={<SearchComplain />} /> {/* New route for SearchComplain */}
       {/* <Route path='/info' element={<Info />} /> */}
       
       <Route path='/board' >

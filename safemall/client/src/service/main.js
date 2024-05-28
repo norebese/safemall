@@ -81,6 +81,10 @@ class MainService{
         console.log('data.scoreTotal: ', data.scoreTotal); 
         return data;
       }
+
+    
 }
 
 export default MainService;
+
+

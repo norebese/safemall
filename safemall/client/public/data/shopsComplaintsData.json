@@ -1,0 +1,535 @@
+[
+  {
+    "no": 1,
+    "Year": 2022,
+    "YearNum": 536,
+    "shopNameKor": "더키월드",
+    "shopNameEng": "",
+    "MainItems": [
+      "캐릭터 문구 및 식기",
+      "키덜트토이 및 잡화"
+    ],
+    "Totalreport": 1040,
+    "Unprocess": 39,
+    "domainName": "https://duckyworld.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "예약주문 후 배송예정일 지나 배송 지연됨.",
+      "배송지연으로 환급요청하였으나 처리 지연",
+      "주문상품 누락 및 오배송 후 처리가 원활하지 않음."
+    ]
+  },
+  {
+    "no": 2,
+    "Year": 2022,
+    "YearNum": 535,
+    "shopNameKor": "피규어바이",
+    "shopNameEng": "FIGURE BUY",
+    "MainItems": [
+      "캐릭터 피규어",
+      "키덜트 토이"
+    ],
+    "Totalreport": 72,
+    "Unprocess": 57,
+    "domainName": "http://figurebuy.com/",
+    "mainDamageContent": [
+      "주문 후 상당기간 배송지연",
+      "배송지연으로 인한 환급 요청하였으나 처리 지연",
+      "환급 시 10% 수수료 부당 청구 행위",
+      "업체와 연락이 원활하지 않음."
+    ]
+  },
+  {
+    "no": 3,
+    "Year": 2022,
+    "YearNum": 541,
+    "shopNameKor": "슈스톱",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 26,
+    "Unprocess": 26,
+    "domainName": "http://shoestop.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 4,
+    "Year": 2022,
+    "YearNum": 538,
+    "shopNameKor": "스타일브이",
+    "shopNameEng": "",
+    "MainItems": [
+      "식품",
+      "건강식품",
+      "화장품",
+      "전자기기 및 의류"
+    ],
+    "Totalreport": 746,
+    "Unprocess": 165,
+    "domainName": "https://stylev.co.kr/default.asp",
+    "mainDamageContent": [
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연",
+      "업체와 연락이 원활하지 않음"
+    ]
+  },
+  {
+    "no": 5,
+    "Year": 2022,
+    "YearNum": 539,
+    "shopNameKor": "애슬리트",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동복",
+      "요가복",
+      "스포츠레깅스"
+    ],
+    "Totalreport": 394,
+    "Unprocess": 251,
+    "domainName": "https://athletekorea.com/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 6,
+    "Year": 2022,
+    "YearNum": 540,
+    "shopNameKor": "트렌디슈즈",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 26,
+    "Unprocess": 26,
+    "domainName": "http://trendyshoes.co.kr/Home",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 7,
+    "Year": 2022,
+    "YearNum": 544,
+    "shopNameKor": "맘앤마트",
+    "shopNameEng": "MOMNMART",
+    "MainItems": [
+      "식품",
+      "건강식품",
+      "화장품",
+      "의류"
+    ],
+    "Totalreport": 221,
+    "Unprocess": 221,
+    "domainName": "https://momnmart.co.kr/default.asp",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 8,
+    "Year": 2022,
+    "YearNum": 543,
+    "shopNameKor": "싹딜",
+    "shopNameEng": "",
+    "MainItems": [
+      "식품",
+      "건강식품",
+      "화장품",
+      "전자기기 및 의류"
+    ],
+    "Totalreport": 165,
+    "Unprocess": 100,
+    "domainName": "https://www.ssakdeal.com/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 9,
+    "Year": 2022,
+    "YearNum": 542,
+    "shopNameKor": "뷰티히어로",
+    "shopNameEng": "",
+    "MainItems": [
+      "화장품",
+      "건강보조식품",
+      "식품"
+    ],
+    "Totalreport": 94,
+    "Unprocess": 94,
+    "domainName": "https://beautyhero.co.kr/default.asp",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 10,
+    "Year": 2022,
+    "YearNum": 537,
+    "shopNameKor": "오시싸",
+    "shopNameEng": "",
+    "MainItems": [
+      "화장품",
+      "여성의류 및 잡화",
+      "신발"
+    ],
+    "Totalreport": 90,
+    "Unprocess": 82,
+    "domainName": "https://jbgn.co.kr/default.asp",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 11,
+    "Year": 2022,
+    "YearNum": 532,
+    "shopNameKor": "풀문",
+    "shopNameEng": "Fullmoon",
+    "MainItems": [
+      "명품브랜드 가방 및 잡화",
+      "화장품"
+    ],
+    "Totalreport": 42,
+    "Unprocess": 42,
+    "domainName": "https://luxxdoll.com/index.html",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "배송지연으로 인한 환불 요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 12,
+    "Year": 2022,
+    "YearNum": 531,
+    "shopNameKor": "보네르",
+    "shopNameEng": "",
+    "MainItems": [
+      "여성의류",
+      "아동의류 및 잡화"
+    ],
+    "Totalreport": 26,
+    "Unprocess": 26,
+    "domainName": "https://cafe.naver.com/msmsbbb",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "배송지연으로 인한 환불 요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 13,
+    "Year": 2022,
+    "YearNum": 534,
+    "shopNameKor": "카라프",
+    "shopNameEng": "CARAFE/사크라스트라다",
+    "MainItems": [
+      "해외 명품브랜드 의류 및 잡화"
+    ],
+    "Totalreport": 174,
+    "Unprocess": 168,
+    "domainName": "https://sacrastrada.com/",
+    "mainDamageContent": [
+      "주문한 제품 지속적인 배송 지연",
+      "배송지연으로 환불 요청하였으나 처리지연",
+      "업체와 연락이 원활하지 않음"
+    ]
+  },
+  {
+    "no": 14,
+    "Year": 2022,
+    "YearNum": 530,
+    "shopNameKor": "반하루",
+    "shopNameEng": "",
+    "MainItems": [
+      "여성 의류 및 잡화"
+    ],
+    "Totalreport": 40,
+    "Unprocess": 40,
+    "domainName": "http://www.banharu.com",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "폐업으로 인해 환불요청 하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 15,
+    "Year": 2022,
+    "YearNum": 533,
+    "shopNameKor": "매니쉬",
+    "shopNameEng": "",
+    "MainItems": [
+      "남성의류 및 잡화"
+    ],
+    "Totalreport": 45,
+    "Unprocess": 45,
+    "domainName": "https://manish.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "배송지연으로 인한 환불 요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 16,
+    "Year": 2023,
+    "YearNum": 547,
+    "shopNameKor": "애슬리트",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동복",
+      "요가복",
+      "스포츠레깅스"
+    ],
+    "Totalreport": 439,
+    "Unprocess": 296,
+    "domainName": "https://athletekorea.com/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "배송지연으로 인한 환불 요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 17,
+    "Year": 2023,
+    "YearNum": 554,
+    "shopNameKor": "썸데이룩",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 12,
+    "Unprocess": 12,
+    "domainName": "https://somedaylook.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 18,
+    "Year": 2023,
+    "YearNum": 553,
+    "shopNameKor": "비나인숍",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 43,
+    "Unprocess": 43,
+    "domainName": "http://benignshop.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 19,
+    "Year": 2023,
+    "YearNum": 555,
+    "shopNameKor": "센트베리",
+    "shopNameEng": "SCENTVERY",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 29,
+    "Unprocess": 28,
+    "domainName": "http://scentvery.co.kr/overview",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 20,
+    "Year": 2023,
+    "YearNum": 552,
+    "shopNameKor": "이엔지샵",
+    "shopNameEng": "ENZ샵 / ENZ SHOP",
+    "MainItems": [
+      "해외 명품브랜드 의류 및 잡화"
+    ],
+    "Totalreport": 108,
+    "Unprocess": 108,
+    "domainName": "https://enzshop.com/",
+    "mainDamageContent": [
+      "주문한 제품 지속적인 배송 지연",
+      "배송지연으로 환불 요청하였으나 처리지연",
+      "업체와 연락이 원활하지 않음."
+    ]
+  },
+  {
+    "no": 21,
+    "Year": 2023,
+    "YearNum": 551,
+    "shopNameKor": "시크헤라",
+    "shopNameEng": "",
+    "MainItems": [
+      "여성의류",
+      "잡화",
+      "식품"
+    ],
+    "Totalreport": 75,
+    "Unprocess": 40,
+    "domainName": "http://www.chichera.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "제품 품절로 인한 구매한 더블마일리지 사용 불가",
+      "주문한 제품 지속적인 배송 지연",
+      "배송지연으로 환불 요청하였으나 처리지연",
+      "더블마일리지 잔액 환급처리 지연"
+    ]
+  },
+  {
+    "no": 22,
+    "Year": 2023,
+    "YearNum": 556,
+    "shopNameKor": "리빙꿀템",
+    "shopNameEng": "",
+    "MainItems": [
+      "여성 가방 및 잡화"
+    ],
+    "Totalreport": 20,
+    "Unprocess": 20,
+    "domainName": "https://nerdo.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "주문 후 상당기간 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 23,
+    "Year": 2023,
+    "YearNum": 549,
+    "shopNameKor": "에스디컬렉션",
+    "shopNameEng": "SD컬렉션",
+    "MainItems": [
+      "해외 명품브랜드 의류 및 잡화"
+    ],
+    "Totalreport": 58,
+    "Unprocess": 35,
+    "domainName": "https://sdcollection.shop/",
+    "mainDamageContent": [
+      "주문한 제품 지속적인 배송 지연",
+      "배송지연으로 환불 요청하였으나 처리지연",
+      "업체와 연락이 원활하지 않음."
+    ]
+  },
+  {
+    "no": 24,
+    "Year": 2023,
+    "YearNum": 548,
+    "shopNameKor": "피규어세상",
+    "shopNameEng": "Figure Sesang",
+    "MainItems": [
+      "캐릭터 피규어",
+      "키덜트 토이"
+    ],
+    "Totalreport": 51,
+    "Unprocess": 12,
+    "domainName": "http://figuresesang.com",
+    "mainDamageContent": [
+      "주문 후 상당기간 배송지연",
+      "배송지연으로 인한 환급 요청하였으나 처리 지연",
+      "업체와 연락이 원활하지 않음."
+    ]
+  },
+  {
+    "no": 25,
+    "Year": 2023,
+    "YearNum": 545,
+    "shopNameKor": "맘앤마트",
+    "shopNameEng": "MOMNMART",
+    "MainItems": [
+      "식품",
+      "건강식품",
+      "화장품",
+      "의류"
+    ],
+    "Totalreport": 253,
+    "Unprocess": 253,
+    "domainName": "https://momnmart.co.kr/default.asp",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜기간 배송지연",
+      "배송지연으로 환급요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 26,
+    "Year": 2023,
+    "YearNum": 546,
+    "shopNameKor": "슈즈오페라",
+    "shopNameEng": "",
+    "MainItems": [
+      "운동화"
+    ],
+    "Totalreport": 14,
+    "Unprocess": 12,
+    "domainName": "http://shoesopera.co.kr/",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "해외배송이라는 사유로 2달이상 배송지연",
+      "배송지연으로 주문취소 후 환급지연"
+    ]
+  },
+  {
+    "no": 27,
+    "Year": 2024,
+    "YearNum": 558,
+    "shopNameKor": "캐쉬메이커",
+    "shopNameEng": "",
+    "MainItems": [
+      "유튜브프리미엄 구독권"
+    ],
+    "Totalreport": 114,
+    "Unprocess": 109,
+    "domainName": "https://smartstore.naver.com/yundodook",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜 기간 배송 지연",
+      "배송 지연으로 환급 요청하였으나 처리 지연"
+    ]
+  },
+  {
+    "no": 28,
+    "Year": 2024,
+    "YearNum": 557,
+    "shopNameKor": "웁스",
+    "shopNameEng": "WHOOPS",
+    "MainItems": [
+      "식품",
+      "건강식품",
+      "화장품",
+      "전자제품",
+      "의류 및 신발"
+    ],
+    "Totalreport": 517,
+    "Unprocess": 81,
+    "domainName": "https://www.whoops.kr",
+    "mainDamageContent": [
+      "업체와 연락이 원활하지 않음",
+      "구매 후 오랜 기간 배송 지연",
+      "배송 지연으로 환급 요청하였으나 처리 지연"
+    ]
+  }
+]
