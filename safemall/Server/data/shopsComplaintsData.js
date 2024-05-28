@@ -17,10 +17,13 @@ const shopSchema = new mongoose.Schema({
   no: { type: Number, required: true, unique: true }, // 순번
   Year: { type: Date, required: true }, // 년도
   YearNum: { type: Number, required: true,  default: '' }, // 연번
-  shopName: { type: String, required: true, default: '' }, // 쇼핑몰명
+  shopNameKor: { type: String, required: true, default: '' }, // 쇼핑몰명국문
+  shopNameEng: { type: String, required: true, default: '' }, // 쇼핑몰명영문
   MainItems: { type: [String], required: true, default: [] }, // 취급품목
   Totalreport: { type: Number, required: true, default: 0 }, // 총 접수건
   Unprocess: { type: Number, required: true, default: 0 }, // 미처리건
+  domainName:{ type:String, required: true, default: ''},
+  mainDamageContent:{type: [String], required: true, default: []},
 }, { timestamps: true });
 useVirtualId(shopSchema)
 
@@ -60,4 +63,26 @@ export async function getAll(count){
     limitCount = 3 + parsedCount;
   }
   return Shop.find().sort({ _id: -1 }).limit(limitCount);
+}
+
+export async function getDetail(id){
+  return await Shop.findById(id)
+}
+
+export async function getByShopName(keyword) {
+  return await Shop.aggregate([
+    { $match: { shopNameKor: 
+      { $regex: keyword } } }, // 필터링 조건
+    ]);
+}
+
+export async function getByDomainName(keyword){
+  console.log(keyword)
+  const data = Shop.aggregate([{ 
+    $match: {domainName:{
+      $regex:keyword
+    }}
+    }
+  ])
+  return data
 }

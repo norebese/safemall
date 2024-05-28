@@ -11,8 +11,8 @@ const SearchResult = () => {
     return (
         <div className={styles.row}>
             {searchResults.map(shop => (
-                <div key={searchResults._id} className="col-md-4 mb-4" id={styles.width}>
-                    <Link to={`/search/${shop._id}`} className="text-decoration-none">
+                <div key={shop._id} className="col-md-4 mb-4" id={styles.width}>
+                    <Link to={`/search/${shop._id}?type=${shop.businessState === '피해신고 다발업체' ? 1 : 0}`} className="text-decoration-none">
                         <Card className="h-100">
                             <div className="row g-0">
                                 <div className="col-md-15" id={styles.arange}>

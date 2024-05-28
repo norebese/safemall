@@ -25,16 +25,40 @@ export async function search(req, res, next){
     console.log(shopType)
     console.log(keyword)
     if(shopType == 'shopName'){
-        const result = await shopListData.getByShopName(keyword)
-        console.log(result)
-        res.status(200).json({message:`쇼핑몰데이터 아이디(shopName): ${keyword}`,result})
+        let result = []
+        let list1 = await shopsComplaintsData.getByShopName(keyword)
+        if(list1) {
+            list1 = list1.map(item => ({
+                ...item,
+                businessState: '피해신고 다발업체'
+            }));
+        }
+        let list2 = await shopListData.getByShopName(keyword)
+        if(list2) {
+            result = [...list1,...list2]
+            res.status(200).json({result})}
+        else res.status(404).json({message:"조회결과 없음",result})
     }
     else if( shopType == 'domainName'){
         let url = Buffer.from(keyword, 'base64').toString('utf-8');
         console.log(url)
-        const result = await shopListData.getByDomainName(url)
-        console.log(result)
-        res.status(200).json({message:`쇼핑몰데이터 아이디(domainName): ${result}`, result})
+        let result = []
+        let list1 = await shopsComplaintsData.getByDomainName(url);
+        if(list1){
+            list1 = list1.map(item => ({
+                ...item,
+                businessState: '피해신고 다발업체'
+            }));
+        }
+        let list2 = await shopListData.getByDomainName(url)
+        console.log(list2)
+        if(list2){
+            console.log(`shops ${result}`)
+            result = [...list1,...list2]
+            console.log(result)
+            res.status(200).json({result})
+        }
+        else res.status(404).json({message:"조회결과 없음",result})
     }
     else if( shopType == 'comNum'){
         // const result =  shopListData.getByComNum(shopType, keyword)
@@ -45,28 +69,36 @@ export async function search(req, res, next){
     }
 }
 
+// http://safemall.com/search/:id?type=0
+
 // 상세페이지
 export async function searchDetail(req,res,next){
     const id = req.params;
-    console.log(id)
-    const data = await shopListData.getDetail(id.id);
+    const type = req.query.type;
+    console.log(type, id)
+    let data
+        
+    if(type == 1) // 피해다발 사이트 ObjectId
+        data = await shopsComplaintsData.getDetail(id.id);
+    else 
+        data = await shopListData.getDetail(id.id);
+
     console.log('data: ', data)
     const emptyMassage = '확인 불가'
     if(data){
-        const date = data.dateMonitoring ? data.dateMonitoring.toISOString().split('T')[0] : emptyMassage;
-        const date2 = data.dateInit ? data.dateInit.toISOString().split('T')[0] : emptyMassage;
-        const date3 = data.dateSiteOpen ? data.dateSiteOpen.toISOString().split('T')[0] : emptyMassage;
-        const businessType = data.businessType ? data.businessType : emptyMassage;
-        
-        const mainItems = data.mainItems[0] != '' ? data.mainItems : emptyMassage;
-        const possibleSW = data.possibleSW ? data.possibleSW : emptyMassage;
-        const detailPayment = data.detailPayment[0] != '' ? data.detailPayment[0] : emptyMassage;
-        const detailTermUse = data.detailTermUse ? data.detailTermUse : emptyMassage;
-        const detailPIS = data.detailPIS ? data.detailPIS : emptyMassage;
-        const detailWithdrawal = data.detailWithdrawal ? data.detailWithdrawal : emptyMassage;
-        const PSS = data.PSS ? data.PSS : emptyMassage;
-        
-        // 크롤링 기능 호출
+            if(type==0){
+            const date = data.dateMonitoring ? data.dateMonitoring.toISOString().split('T')[0] : emptyMassage;
+            const date2 = data.dateInit ? data.dateInit.toISOString().split('T')[0] : emptyMassage;
+            const date3 = data.dateSiteOpen ? data.dateSiteOpen.toISOString().split('T')[0] : emptyMassage;
+            const businessType = data.businessType ? data.businessType : emptyMassage;
+            const mainItems = data.mainItems[0] != '' ? data.mainItems : emptyMassage;
+            const possibleSW = data.possibleSW ? data.possibleSW : emptyMassage;
+            const detailPayment = data.detailPayment[0] != '' ? data.detailPayment[0] : emptyMassage;
+            const detailTermUse = data.detailTermUse ? data.detailTermUse : emptyMassage;
+            const detailPIS = data.detailPIS ? data.detailPIS : emptyMassage;
+            const detailWithdrawal = data.detailWithdrawal ? data.detailWithdrawal : emptyMassage;
+            const PSS = data.PSS ? data.PSS : emptyMassage;
+              
         const socialUrls = await socialMediaScraper.getSocialMediaUrls(data.domainName);
         // 각 플랫폼의 URL에 https://가 포함되어 있는지 체크하고, 없다면 추가
         console.log('socialUrls:', socialUrls)
@@ -101,6 +133,9 @@ export async function searchDetail(req,res,next){
         console.log('filteredSocialUrls:', socialUrls)
         res.status(200).json({data: 
             { ...data.toObject(), 
+              
+            data = {
+                ...data.toObject(), 
                 dateMonitoring: date , 
                 dateInit:date2, 
                 dateSiteOpen: date3,
@@ -114,6 +149,27 @@ export async function searchDetail(req,res,next){
                 PSS,
                 socialUrls
             }});
+
+            res.status(200).json({data});
+        }else{
+            const shopNameKor = data.shopNameKor ? data.shopNameKor : emptyMassage;
+            const MainItems = data.MainItems ? data.MainItems : emptyMassage;
+            const Totalreport = data.Totalreport ? data.Totalreport : emptyMassage;
+            const Unprocess = data.Unprocess ? data.Unprocess : emptyMassage;
+            const domainName = data.domainName ? data.domainName : emptyMassage;
+            const mainDamageContent = data.mainDamageContent ? data.mainDamageContent : emptyMassage;
+            const businessState = '피해신고 다발업체'
+            data = {
+                shopNameKor,
+                MainItems,
+                Totalreport,
+                Unprocess,
+                domainName,
+                mainDamageContent,
+                businessState
+            }
+            res.status(200).json({data});
+        }
     }else{
         res.status(404).json({message:`입력 실패`});
     }

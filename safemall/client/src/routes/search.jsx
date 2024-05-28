@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './search.module.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import MainService from '../service/main';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faYoutube, faBlogger } from '@fortawesome/free-brands-svg-icons';
@@ -29,7 +29,7 @@ export default function Search() {
         PSS: '',
     }); 
     const { id } = useParams();
-
+    const type = useLocation().search;
     const [showContent1, setShowContent1] = useState(true); 
     const [showContent2, setShowContent2] = useState(false); 
     const [showContent3, setShowContent3] = useState(false); 
@@ -54,10 +54,12 @@ export default function Search() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        console.log('type');
+        console.log(type[type.length - 1]);
         const fetchSearchDetail = async () => {
             try {
                 const maintService = new MainService();
-                const fetchedData = await maintService.getSearchResultDetail(id);
+                const fetchedData = await maintService.getSearchResultDetail(id, type[type.length - 1]);
                 setResult(fetchedData);
                 console.log(fetchedData);
             } catch (error) {
@@ -87,16 +89,19 @@ export default function Search() {
                     <form action="#">
                         <div className={styles.search}>
                             <input disabled={true} value={result.shopNameKor || ''} type="text" />&emsp;
-                            <button onClick={handleClick} type="submit" id={styles.linkBtn}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                            </svg>바로가기</button>
+                            <button onClick={handleClick} type="submit" id={styles.linkBtn}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                                </svg>
+                                바로가기
+                            </button>
                         </div>
                     </form>
                 </div>
 
                 <div className={styles.score}>
                     <span className={styles.number}>{result.scoreTotal} / 10</span>
-                    <hr></hr>
+                    <hr />
                     <span>평점</span>
                 </div>
 
@@ -106,9 +111,7 @@ export default function Search() {
 
                 <div className={styles.info}>
                     <div className={styles.tab}>
-                        <button className={styles.menu1} onClick={handleClick1}>
-                            쇼핑몰 정보
-                        </button>
+                        <button className={styles.menu1} onClick={handleClick1}>쇼핑몰 정보</button>
                         <button className={styles.menu2} onClick={handleClick2}>점수기준</button>
                         <button className={styles.menu3} onClick={handleClick3}>상세지표</button>
                     </div>
@@ -168,59 +171,63 @@ export default function Search() {
 
                     <div className={styles.content2} style={{ display: showContent2 ? 'block' : 'none' }}>
                         <table>
-                            <tr>
-                                <td className={styles.col}>사업자정보표시</td>
-                                <td className={styles.row}>{result.scoreBusinessInfo}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>청약철회</td>
-                                <td className={styles.row}>{result.scoreSW}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>결제방법</td>
-                                <td className={styles.row}>{result.scorePayment}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>이용약관평가</td>
-                                <td className={styles.row}>{result.scoreTermUse}</td>
-                            </tr>
-                            <tr>
-                                <td className={`${styles.lb} ${styles.col}`}>개인정보보안</td>
-                                <td className={`${styles.rb} ${styles.row}`}>{result.scorePIS}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td className={styles.col}>사업자정보표시</td>
+                                    <td className={styles.row}>{result.scoreBusinessInfo}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>청약철회</td>
+                                    <td className={styles.row}>{result.scoreSW}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>결제방법</td>
+                                    <td className={styles.row}>{result.scorePayment}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>이용약관평가</td>
+                                    <td className={styles.row}>{result.scoreTermUse}</td>
+                                </tr>
+                                <tr>
+                                    <td className={`${styles.lb} ${styles.col}`}>개인정보보안</td>
+                                    <td className={`${styles.rb} ${styles.row}`}>{result.scorePIS}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
                     <div className={styles.content3} style={{ display: showContent3 ? 'block' : 'none' }}>
                         <table>
-                            <tr>
-                                <td className={styles.col}>사이트개설년도</td>
-                                <td className={styles.row}>{result.dateSiteOpen}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>청약철회가능여부</td>
-                                <td className={styles.row}>{result.possibleSW}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>결제방법</td>
-                                <td className={styles.row}>{result.detailPayment}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>이용약관준수도</td>
-                                <td className={styles.row}>{result.detailTermUse}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>개인정보취급방침</td>
-                                <td className={styles.row}>{result.detailPIS}</td>
-                            </tr>
-                            <tr>
-                                <td className={styles.col}>회원탈퇴방법</td>
-                                <td className={styles.row}>{result.detailWithdrawal}</td>
-                            </tr>
-                            <tr>
-                                <td className={`${styles.lb} ${styles.col}`}>구매안전서비스</td>
-                                <td className={`${styles.rb} ${styles.row}`}>{result.PSS}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td className={styles.col}>사이트개설년도</td>
+                                    <td className={styles.row}>{result.dateSiteOpen}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>청약철회가능여부</td>
+                                    <td className={styles.row}>{result.possibleSW}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>결제방법</td>
+                                    <td className={styles.row}>{result.detailPayment}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>이용약관준수도</td>
+                                    <td className={styles.row}>{result.detailTermUse}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>개인정보취급방침</td>
+                                    <td className={styles.row}>{result.detailPIS}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.col}>회원탈퇴방법</td>
+                                    <td className={styles.row}>{result.detailWithdrawal}</td>
+                                </tr>
+                                <tr>
+                                    <td className={`${styles.lb} ${styles.col}`}>구매안전서비스</td>
+                                    <td className={`${styles.rb} ${styles.row}`}>{result.PSS}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
