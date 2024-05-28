@@ -106,12 +106,27 @@ body {
     font-weight: bold;
     font-size: 25px;
   } */
-  
+
+  .table{
+      margin-bottom: 50px;
+      /* border: 2px solid black; */
+  }
+
+  .moreBtn{
+    border: none;
+    background-color: none;
+    margin-left: auto;
+  }
+  .moreBtn:hover{
+    background-color: lightgray;
+  }
+
  .listcard{
     /* border: 1px solid black; */
     margin: 3% 10%;
     font-size: 25px;
-    padding: 2% 4%;
+    padding: 0% 4%;
+    padding-top: 1.5%;
     border-radius: 30px;
     line-height: 1.5;
     width: auto;
@@ -121,7 +136,14 @@ body {
     color: rgba(32, 39, 79, 1);
     transition: max-height 2s ease-in-out, opacity 2s ease-in-out;
     cursor: pointer;
+    position: relative;
  }
+
+ .arrow{
+  position: absolute;
+  right: 0;
+  padding-right: 5%;
+}
 
 
   .detailcard {
@@ -134,26 +156,48 @@ body {
     border-top: 2px dotted rgba(32, 39, 79, 1);
     border-bottom: 2px dotted rgba(32, 39, 79, 1);
     color: rgba(32, 39, 79, 1);
-    max-height: 500px;
-    /* opacity: 0; */
-    overflow: hidden;
-    
   }
+  
 
   
-  .listcard > span {
+  .listcard > p {
     margin-right: 1%;
     width: fit-content;
   }
   
+ 
   .detail {
     font-size: 20px;
   }
+
+.detailBtn{
+  text-align: center;
+  padding: 0 2%;
+}
+
+.directBtn {
+  width: 100%;
+  text-align: center;
+  padding: 1% 2%;
+  margin: 0 auto;
+  background-color: rgba(32, 39, 79, 1);
+  color: lightgray;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  font-size: 1em;
+  /* font-weight: bold; */
+}
+
+.directBtn:hover {
+  background-color: lightgray;
+  color : rgba(32, 39, 79, 1);
+}
   
-  .listcard:hover{
-    background-color: lightgray;
-  }
+.listcard:hover{
+  background-color: lightgray;
+}
   
+
   
   
   #more {

@@ -49,7 +49,7 @@ function SuggestList() {
           setShowMoreButton(false);
         }
       } catch (error) {
-        console.error('Error fetching more Report list:', error);
+        console.error('Error fetching more Suggest list:', error);
       }
     }
   };
@@ -65,7 +65,7 @@ function SuggestList() {
   return (
     <div className={styles.content}>
       <header className={styles.appheader}>
-          <h1>건의사항</h1>
+          <h1>건의사항 게시판</h1>
           <div className={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
               <button className={styles.submit} type="submit">&#128269;</button>

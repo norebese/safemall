@@ -11,13 +11,9 @@ function MainPage() {
   const [showMoreButton, setShowMoreButton] = useState(true);
   const [showDetailCard, setShowDetailCard] = useState(null);
 
-  // const handleClick = (card) => {
-  //   setShowDetailCard(card);
-  // };
   const handleClick = (card) => {
     setShowDetailCard((prev) => (prev && prev._id === card._id ? null : card));
   };
-  
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +27,12 @@ function MainPage() {
       navigate('/search/result', { state: { searchResults: fetchedData } });
     }
   };
-
+  async function btn(value){
+    console.log(value)
+    const maintService = new MainService();
+    const fetchedData = await maintService.getSearchResultDetail(value, '1');
+    navigate(`/search/${value}?type=1`);
+  }
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -87,26 +88,28 @@ function MainPage() {
     </div>
 ) : (
     cards.map(card => (
-        <div key={card._id} className={styles.listcard} onClick={() => handleClick(card)}>
-            <span>{card.shopNameKor}</span><span>( {card.Totalreport} / {card.Unprocess} )</span>
-            {showDetailCard && card._id === showDetailCard._id && (
-                // <div className={styles.detailcard}>
-                <div className={`${styles.detailcard}
-                ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
-                    {/* <p>상호 : {showDetailCard.company}</p> */}
-                    <p><b>[ 쇼핑몰명 ]</b> {showDetailCard.shopNameKor}</p>
-                    <p><b>[ 도메인명 ]</b> {showDetailCard.domainName}</p>
-                    {/* <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems}</p>
-                     */}
-                     <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (
-                      <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
-                    ))}</p>
-                    <p><b>[ 주요피해내용 ]</b><br></br> 1. {showDetailCard.mainDamageContent[0]}<br></br>
-                                   2. {showDetailCard.mainDamageContent[1]}<br></br>
-                                   3. {showDetailCard.mainDamageContent[2]}</p>
-                </div>
-            )}
+      <div key={card._id} className={styles.listcard}  >
+      <p>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span style={{fontSize:"45px"}} className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></p>
+      {showDetailCard && card._id === showDetailCard._id && (
+        <div className={`${styles.detailcard}
+          ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
+          <p><b>[ 쇼핑몰명 ]</b> {showDetailCard.shopNameKor}</p>
+          <p><b>[ 도메인명 ]</b> {showDetailCard.domainName}</p>
+           <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (
+            <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
+          ))}</p>
+        <p>
+          <b>[ 주요피해내용 ]</b><br /> 
+          {showDetailCard.mainDamageContent.map((content, index) => (
+            <span key={index}>{index + 1}. {content}<br /></span>
+          ))}
+        </p>
+        <div className={styles.detailBtn}>
+            <button className={styles.directBtn} onClick={()=>btn(card.id)}>바로가기</button>
         </div>
+      </div>
+    )}
+    </div>
     ))
 )}
 
