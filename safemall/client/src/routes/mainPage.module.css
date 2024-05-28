@@ -111,7 +111,7 @@ body {
     /* border: 1px solid black; */
     margin: 3% 10%;
     font-size: 25px;
-    padding: 1% 4%;
+    padding: 2% 4%;
     border-radius: 30px;
     line-height: 1.5;
     width: auto;
@@ -119,8 +119,27 @@ body {
     box-shadow: 5px 5px 10px gray;
     border: 1px solid lightgray;
     color: rgba(32, 39, 79, 1);
-    /* white-space: nowrap; */
+    transition: max-height 2s ease-in-out, opacity 2s ease-in-out;
+    cursor: pointer;
+ }
+
+
+  .detailcard {
+    margin: 5px 0;
+    font-size: 25px;
+    padding: 1% 1%;
+    line-height: 1.5;
+    width: 100%;
+    background-color: rgba(81, 80, 118, 0);
+    border-top: 2px dotted rgba(32, 39, 79, 1);
+    border-bottom: 2px dotted rgba(32, 39, 79, 1);
+    color: rgba(32, 39, 79, 1);
+    max-height: 500px;
+    /* opacity: 0; */
+    overflow: hidden;
+    
   }
+
   
   .listcard > span {
     margin-right: 1%;
@@ -134,6 +153,7 @@ body {
   .listcard:hover{
     background-color: lightgray;
   }
+  
   
   
   #more {
