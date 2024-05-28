@@ -8,7 +8,7 @@ class MainService{
           // 필요에 따라 인증 헤더나 기타 헤더 추가 가능
         };
       }
-      
+
       //위해 사이트 불러오기
       async getWarnList(count) {
         console.log(this.baseUrl)

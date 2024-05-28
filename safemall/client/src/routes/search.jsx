@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './search.module.css';
 import { useParams } from 'react-router-dom';
 import MainService from '../service/main';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faYoutube, faBlogger } from '@fortawesome/free-brands-svg-icons';
 
 export default function Search() {
     const [result, setResult] = useState({
@@ -70,7 +72,13 @@ export default function Search() {
         const url = result.domainName.startsWith('http') ? result.domainName : `http://${result.domainName}`;
         window.open(url, '_blank');
     };
-    
+
+    const platformIcons = {
+        facebook: faFacebook,
+        twitter: faTwitter,
+        instagram: faInstagram,
+        youtube: faYoutube,
+    };
 
     return (
         <>
@@ -79,7 +87,7 @@ export default function Search() {
                     <form action="#">
                         <div className={styles.search}>
                             <input disabled={true} value={result.shopNameKor || ''} type="text" />&emsp;
-                            <button onClick={handleClick} type="submit" id={styles.linkBtn}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <button onClick={handleClick} type="submit" id={styles.linkBtn}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
                             </svg>바로가기</button>
                         </div>
@@ -133,6 +141,23 @@ export default function Search() {
                                 <td className={styles.col}>취급품목</td>
                                 <td className={styles.row}>{result.mainItems}</td>
                             </tr>
+
+                            {result.socialUrls && Object.keys(result.socialUrls).length > 0 && (
+                                <tr>
+                                    <td className={styles.col}>SNS</td>
+                                    <td className={styles.row} id={styles.snsArea}>
+                                        {Object.entries(result.socialUrls).map(([platform, urls]) => (
+                                            <div key={platform}>
+                                                <a href={urls[0]} target="_blank" rel="noopener noreferrer">
+                                                    {/* 이미지 파일 경로를 public 폴더를 기준으로 지정 */}
+                                                    <img src={`/icons/${platform}.svg`} alt={`${platform} icon`} />
+                                                </a>
+                                            </div>
+                                        ))}
+                                    </td>
+                                </tr>
+                            )}
+
                             <tr>
                                 <td className={`${styles.lb} ${styles.col}`}>업소상태</td>
                                 <td className={`${styles.rb} ${styles.row}`}>{result.businessState}</td>

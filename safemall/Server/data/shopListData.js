@@ -90,3 +90,7 @@ export async function getByDomainName(domain){
 export async function getDetail(id) {
   return await Shop.findById(id)
 }
+
+export async function ShopList() {
+  return await Shop.find().limit(10);
+}

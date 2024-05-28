@@ -1,5 +1,8 @@
 import * as shopListData from '../data/shopListData.js'
 import * as shopsComplaintsData from '../data/shopsComplaintsData.js'
+import SocialMediaScraper from './snsCrawling.js';
+
+const socialMediaScraper = new SocialMediaScraper();
 
 // 메인페이지 호출
 export async function getMain(req, res, next){
@@ -63,7 +66,19 @@ export async function searchDetail(req,res,next){
         const detailWithdrawal = data.detailWithdrawal ? data.detailWithdrawal : emptyMassage;
         const PSS = data.PSS ? data.PSS : emptyMassage;
         
-        possibleSW
+        // 크롤링 기능 호출
+        const socialUrls = await socialMediaScraper.getSocialMediaUrls(data.domainName);
+        // 각 플랫폼의 URL에 https://가 포함되어 있는지 체크하고, 없다면 추가
+        console.log('socialUrls:', socialUrls)
+        Object.entries(socialUrls).forEach(([platform, urls]) => {
+            socialUrls[platform] = urls.map(url => {
+                if (!(url.startsWith('https') || url.startsWith('http'))) {
+                return `https://${url}`;
+              }
+              return url;
+            });
+          });
+        console.log('socialUrls:', socialUrls)
         res.status(200).json({data: 
             { ...data.toObject(), 
                 dateMonitoring: date , 
@@ -76,8 +91,20 @@ export async function searchDetail(req,res,next){
                 detailTermUse,
                 detailPIS,
                 detailWithdrawal,
-                PSS
+                PSS,
+                socialUrls
             }});
+    }else{
+        res.status(404).json({message:`입력 실패`});
+    }
+}
+
+
+export async function getShopList(req,res,next){
+    const data = await shopListData.ShopList();
+    console.log('data:', data)
+    if(data){
+        res.status(200).json({data});
     }else{
         res.status(404).json({message:`입력 실패`});
     }
