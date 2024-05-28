@@ -3,8 +3,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import MainPage from './routes/mainPage';
-import SearchDetail from './routes/search';
 import SearchResultList from './routes/searchResultList';
+import SearchDetail from './routes/search';
 import Info from './routes/info';
 
 import LoginPage from './routes/auth/loginPage';
