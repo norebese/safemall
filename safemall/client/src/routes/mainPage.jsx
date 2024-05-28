@@ -18,14 +18,21 @@ function MainPage() {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     console.log('검색어:', searchQuery);
+    let keyword = searchQuery.trim()
+    if(keyword == ''){  
+      alert('검색어를 입력하세요');
+      navigate('/');
+    }else{
+    console.log(typeof(keyword))
     const maintService = new MainService();
-    const fetchedData = await maintService.getSearchResult(searchQuery);
-    if (fetchedData.length === 0) {
+    const fetchedData = await maintService.getSearchResult(keyword);
+    if (fetchedData.length === 0 || fetchedData == false) {
       alert('검색 결과가 없습니다.');
+      navigate('/');
     } else {
       // 검색 결과를 service에서 받아와 검색결과페이지로 넘김(데이터는 state담아서 같이 넘김)
       navigate('/search/result', { state: { searchResults: fetchedData } });
-    }
+    }}
   };
   async function btn(value){
     console.log(value)

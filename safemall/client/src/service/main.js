@@ -29,6 +29,9 @@ class MainService{
       // 검색어 입력
       async getSearchResult(keyword) {
         console.log('keyword: ', keyword)
+        console.log(typeof(keyword))
+        keyword = keyword.trim();
+        
         // urlPattern인지 확인하는 함수이다. 한글 및 urlPattern이 아니면 false를 반환
         const isDomain = (input) => {
           console.log('URL 검사기 실행')
