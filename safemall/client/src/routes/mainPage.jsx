@@ -27,13 +27,11 @@ function MainPage() {
       navigate('/search/result', { state: { searchResults: fetchedData } });
     }
   };
-
-  const handleSearchSubmit2 = async (e) => {
-    e.preventDefault();
-    console.log('검색어:', searchQuery);
+  async function btn(value){
+    console.log(value)
     const maintService = new MainService();
-    const fetchedData = await maintService.getSearchResult(showDetailCard.domainName);
-    navigate('/search/result', { state: { searchResults: fetchedData } });
+    const fetchedData = await maintService.getSearchResultDetail(value, '1');
+    navigate(`/search/${value}?type=1`);
   }
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -91,7 +89,7 @@ function MainPage() {
 ) : (
     cards.map(card => (
       <div key={card._id} className={styles.listcard}  >
-      <p>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></p>
+      <p>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span style={{fontSize:"45px"}} className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></p>
       {showDetailCard && card._id === showDetailCard._id && (
         <div className={`${styles.detailcard}
           ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
@@ -100,17 +98,15 @@ function MainPage() {
            <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (
             <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
           ))}</p>
-          <p>
+        <p>
           <b>[ 주요피해내용 ]</b><br /> 
           {showDetailCard.mainDamageContent.map((content, index) => (
             <span key={index}>{index + 1}. {content}<br /></span>
           ))}
         </p>
-        <form onSubmit={handleSearchSubmit2} onClick={(e) => e.stopPropagation()}>
-          <div className={styles.detailBtn}>
-            <button type="submit" className={styles.directBtn}>바로가기</button>
-          </div>
-        </form>
+        <div className={styles.detailBtn}>
+            <button className={styles.directBtn} onClick={()=>btn(card.id)}>바로가기</button>
+        </div>
       </div>
     )}
     </div>
