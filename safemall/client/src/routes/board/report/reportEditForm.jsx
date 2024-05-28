@@ -63,7 +63,7 @@ function ReportEditForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.formheader}>
         <div>제보하기</div>
       </div>

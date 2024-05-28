@@ -9,6 +9,15 @@ function MainPage() {
   const [cards, setCards] = useState([]);
   const [count, setCount] = useState(0);
   const [showMoreButton, setShowMoreButton] = useState(true);
+  const [showDetailCard, setShowDetailCard] = useState(null);
+
+  // const handleClick = (card) => {
+  //   setShowDetailCard(card);
+  // };
+  const handleClick = (card) => {
+    setShowDetailCard((prev) => (prev && prev._id === card._id ? null : card));
+  };
+  
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -72,18 +81,34 @@ function MainPage() {
         <span className={styles.count}>( 총 접수건 / 미처리건 )</span>
       </div>
 
-    {!cards ? (
-        <div className={styles.noData}>
-            <p>등록된 사이트 없음.</p>
+      {!cards ? (
+    <div className={styles.noData}>
+        <p>등록된 사이트 없음.</p>
+    </div>
+) : (
+    cards.map(card => (
+        <div key={card._id} className={styles.listcard} onClick={() => handleClick(card)}>
+            <span>{card.shopNameKor}</span><span>( {card.Totalreport} / {card.Unprocess} )</span>
+            {showDetailCard && card._id === showDetailCard._id && (
+                // <div className={styles.detailcard}>
+                <div className={`${styles.detailcard}
+                ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
+                    {/* <p>상호 : {showDetailCard.company}</p> */}
+                    <p><b>[ 쇼핑몰명 ]</b> {showDetailCard.shopNameKor}</p>
+                    <p><b>[ 도메인명 ]</b> {showDetailCard.domainName}</p>
+                    {/* <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems}</p>
+                     */}
+                     <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (
+                      <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
+                    ))}</p>
+                    <p><b>[ 주요피해내용 ]</b><br></br> 1. {showDetailCard.mainDamageContent[0]}<br></br>
+                                   2. {showDetailCard.mainDamageContent[1]}<br></br>
+                                   3. {showDetailCard.mainDamageContent[2]}</p>
+                </div>
+            )}
         </div>
-    ) : (
-        cards.map(card => (
-            <div key={card._id} className={styles.listcard}>
-            <span>{card.shopName}</span><span>( {card.Totalreport}/{card.Unprocess} )</span><br />
-            <span className={styles.detail}>{card.MainItems}</span>
-            </div>
-        ))
-    )}
+    ))
+)}
 
       {showMoreButton && (
         <div id={styles.more}>
@@ -91,7 +116,6 @@ function MainPage() {
         </div>
       )}
       <div className={styles.bottom}>
-
       </div>
     </div>
   );

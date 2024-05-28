@@ -18,7 +18,9 @@ function ReportDetail() {
   const [formData, setFormData] = useState({
     Comments: ''
   });
-  console.log('isAdmin: ', isAdmin)
+  const [forDelete, setforDelete] = useState({
+    Comments: ''
+  });
 
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
@@ -26,10 +28,9 @@ function ReportDetail() {
   }
 
   useEffect(() => {
-    console.log(isLoggedIn)
-    if(!isLoggedIn){
+    if(isLoggedIn === false){
       alert('로그인 필요')
-      navigate('/auth/login')
+      navigate('/auth/login/1')
     }
   }, [isLoggedIn]);
 
@@ -69,12 +70,29 @@ function ReportDetail() {
       // 오류 처리 로직 추가 가능
     }
   };
+
+  const handleAnswerDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const reportService = new ReportService();
+      const response = await reportService.editReport(forDelete, no);
+      console.log('handleSubmit-response:', response)
+     if(response){
+       alert('삭제 되었습니다.');
+       window.location.reload();
+     }
+    } catch (error) {
+      console.error('Error submitting report:', error);
+      // 오류 처리 로직 추가 가능
+    }
+  };
   
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchReportDetail = async () => {
       try {
         const reportService = new ReportService();
+        console.log(`no: ${no}`)
         const fetchedData = await reportService.getReportDetail(no);
         console.log(fetchedData)
         setReport(fetchedData);
@@ -119,8 +137,12 @@ function ReportDetail() {
           <div id={styles.answercontainer}>
             <div id={styles.titlesection}>
               <div id={styles.answertitle}>관리자 답변:</div>
-              <div id={styles.answerdate}>{report.updatedAt}</div>
-              <div><button id={styles.AuthContextedit}>수정</button><button id="del">삭제</button></div>
+              <div id={styles.answerbtnmanager}>
+                <div id={styles.answerdate}>{report.updatedAt}</div>
+                {isAdmin === 'true' && (
+                  <div><button id={styles.del} onClick={handleAnswerDelete}>삭제</button></div>
+                )}
+              </div>
             </div>
             <div id={styles.answer} className={styles.contentcontent}>
               {report.Comments}
@@ -133,7 +155,11 @@ function ReportDetail() {
             <div className={styles.buttonarea} id={styles.answerbtn}>
             {values.map((v, idx) => (
               <Button id={styles.buttonId} key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-                답변하기
+                {report.Comments ? (
+                  '수정하기'
+                ) : (
+                  '답변하기'
+                )}
                 {typeof v === 'string' && `below ${v.split('-')[0]}`}
               </Button>
               ))}

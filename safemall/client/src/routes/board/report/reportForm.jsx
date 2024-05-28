@@ -26,9 +26,9 @@ function ReportForm() {
 
   useEffect(() => {
     console.log(isLoggedIn)
-    if(!isLoggedIn){
+    if(isLoggedIn === false){
       alert('로그인 필요')
-      navigate('/login')
+      navigate('/auth/login/1')
     }
   }, []);
   
@@ -61,7 +61,7 @@ function ReportForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.formheader}>
         <div>제보하기</div>
       </div>

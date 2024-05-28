@@ -1,25 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { AuthContext } from '../../../context/authContext';
 import styles from './myPage.module.css';
 import MypageService from '../../../service/myPage';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function MyPage(){
-    const [myPageList, setMypageList] = useState([]);
+    const [postlist, setPostlist] = useState([]);
     const [nickname, setNickname ] = useState('익명');
     const [date, setDate] = useState([]);
+    const { isLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchData = async () => {
+        if(isLoggedIn === false){
+            alert('로그인 필요')
+            navigate('/auth/login/1')
+        }else if(isLoggedIn === true){
+            const fetchData = async () => {
             const mypageService = new MypageService();
             const fetchedData = await mypageService.getMypageList();
             setNickname(fetchedData.nickname);
             setDate([fetchedData.createdAt.split('T')[0], fetchedData.updatedAt.split('T')[0]])
-            // const myPageList = await mypageService.getPostList(fetchedData.contentsId);
-            setMypageList(fetchedData.contentsId)
+            setPostlist(fetchedData.contentsId)
         };
-        fetchData();
-    }, []); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
-
-
+        fetchData();}
+    }, [isLoggedIn]); // 빈 배열을 두 번째 인수로 전달하여 컴포넌트가 마운트될 때 한 번만 실행
+    console.log(postlist)
     return(
     <>
         <div className={styles.container}>
@@ -30,13 +36,14 @@ export default function MyPage(){
         <div className={styles.title}>
             <span>게시판명</span><span>제목</span><span>작성일</span>
         </div>
-    
         <div className={styles.mypageitem}>
-            {myPageList.map((mypage) => (
-                <div className={styles.mypageRow}>
-                    <span>{mypage.boardtype}</span>
-                    <span>{mypage.Title}</span>
-                    <span>{mypage.createdAt.split('T')[0]}</span>
+            {postlist.map((post) => (
+                <div className={styles.mypageRow} key={post.postNo}>
+                    <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`}>
+                        <p>{post.boardTypeKor}</p>
+                        <p>{post.Title}</p>
+                        <p>{post.createdAt.split('T')[0]}</p>
+                    </Link>
                 </div>
             ))}
         </div>

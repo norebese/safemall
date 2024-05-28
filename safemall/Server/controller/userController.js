@@ -76,23 +76,23 @@ export async function Mypage(req, res, next) {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    console.log(user.dataValues)
-
     const postPromises = user.dataValues.contentsId.map(async (v) => {
-      return await boardData.getPostList(v.boardType, v.postNo);
+      const post = await boardData.getPostList(v.boardType, v.postNo);
+      return { ...v, boardTypeKor: post.boardtype, Title: post.Title, createdAt: post.createdAt ? post.createdAt.toISOString().split('T')[0] : '' };
     });
 
-    const postlist = await Promise.all(postPromises);
-
+    const contentsId = await Promise.all(postPromises);
+    console.log(contentsId);
     const data = {
-      email:user.dataValues.email,
-      nickname:user.dataValues.nickname,
-      isAdmin:user.dataValues.isAdmin,
-      createdAt:user.dataValues.createdAt,
-      updatedAt:user.dataValues.updatedAt,
-      contentsId:postlist
-    }
-    console.log(data)
+      email: user.dataValues.email,
+      nickname: user.dataValues.nickname,
+      isAdmin: user.dataValues.isAdmin,
+      createdAt: user.dataValues.createdAt,
+      updatedAt: user.dataValues.updatedAt,
+      contentsId
+    };
+    console.log(`data: `);
+    console.log(data);
     res.status(200).json({ data });
   } catch (error) {
     console.error('Error fetching user information:', error);

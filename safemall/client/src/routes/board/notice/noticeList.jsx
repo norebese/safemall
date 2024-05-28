@@ -81,7 +81,7 @@ function NoticeList() {
           ) : (
             <>
               {noticeList.map((notice) => (
-                <Link className={styles.noticeitem} to={`/notice/${notice._id}`}>
+                <Link className={styles.noticeitem} to={`/board/notice/${notice._id}`} key={notice.no}>
                   <span>no</span>
                   <span>{notice.Title}</span>
                   <span>{notice.Date}</span>

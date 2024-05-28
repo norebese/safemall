@@ -30,24 +30,24 @@ function OffcanvasExample() {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3" id={styles.navitem}>
                   <Nav.Link href="/">쇼핑몰 검색</Nav.Link>
-                  <Nav.Link href="/info">서비스 소개</Nav.Link>
+                  {/* <Nav.Link href="/info">서비스 소개</Nav.Link> */}
                   <hr className="divider" />
-                  <Nav.Link href="/board/notice">공지사항</Nav.Link>
+                  {/* <Nav.Link href="/board/notice">공지사항</Nav.Link>
                   <Nav.Link href="/board/prevent">피해예방</Nav.Link>
-                  <Nav.Link href="/board/coping">대처법</Nav.Link>
+                  <Nav.Link href="/board/coping">대처법</Nav.Link> */}
                   <Nav.Link href="/board/suggest">건의사항</Nav.Link>
                   <Nav.Link href="/board/report">제보</Nav.Link>
                 </Nav>
-                <Nav className="justify-content-end flex-grow-1 pe-3" id={styles.navitemB}>
+                <Nav className={`justify-content-end flex-grow-1 pe-3`} id={styles.navitemB}>
                 {isLoggedIn ? (
                     <>
                       <Nav.Link href="/auth/mypage" ><button>마이페이지</button></Nav.Link>
-                      <Nav.Link href="/auth/login" onClick={logout}><button>로그아웃</button></Nav.Link>
+                      <button onClick={logout}>로그아웃</button>
                     </>
                   ) : (
                     <>
-                      <Nav.Link href="/auth/login"><button>로그인</button></Nav.Link>
-                      <Nav.Link href="/auth/signup"><button>회원가입</button></Nav.Link>
+                      <Nav.Link href="/auth/login/1"><button>로그인</button></Nav.Link>
+                      <Nav.Link href="/auth/login/0"><button>회원가입</button></Nav.Link>
                     </>
                   )}
                 </Nav>

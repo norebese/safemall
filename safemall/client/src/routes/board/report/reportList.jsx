@@ -75,6 +75,7 @@ function ReportList() {
                 <span>제목</span>
                 <span>작성일</span>
                 <span>작성자</span>
+                <span>처리여부</span>
             </div>
             {reportList.length === 0 ? (
               <div className={styles.noData}>
@@ -83,11 +84,12 @@ function ReportList() {
             ) : (
               <>
               {reportList.map((report) => (
-                <Link className={styles.noticeitem} to={`/board/report/${report.no}`}>
+                <Link className={styles.noticeitem} to={`/board/report/${report.no}`} key={report.no}>
                   <span>{report.no}</span>
                   <span>{report.Title}</span>
                   <span>{report.createdAt}</span>
                   <span>{report.Author}</span>
+                  <span>{report.State ? '완료' : '처리중'}</span>
                 </Link>
               ))}
           {showMoreButton && (

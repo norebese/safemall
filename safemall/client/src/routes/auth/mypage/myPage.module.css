@@ -7,32 +7,35 @@
     border: 3px solid black;
 }
 
-.nickname{
+.nickname {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.recent{
+.recent {
     font-size: 2rem;
     border-bottom: 1px solid #ccc;
-
 }
 
-.title{
+.title {
     font-size: 1.5rem;
     font-weight: bold;
     align-items: center;
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 10px;
-    padding: 10px 80px;
-    border: 1px solid #ddd; 
+    padding: 10px 0;
+    border: 1px solid #ddd;
 }
 
+.title span {
+    flex: 1;
+    text-align: center;
+}
 
-.mypageitem{
+.mypageitem {
     font-size: 1rem;
     display: flex;
     flex-direction: column;
@@ -40,19 +43,27 @@
 
 .mypageRow {
     display: flex;
-    /* flex-direction: row;  */
-    /* justify-content: space-between;  */
+    justify-content: space-between;
     margin-bottom: 10px;
-    padding: 10px; 
-    border: 1px solid #ddd; /* 각 행을 구분하는 테두리 추가 */
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
-.mypageRow span {
-    flex: 1; /* 각 span을 동일한 너비로 설정 */
-    text-align: center; /* 각 span의 텍스트를 가운데 정렬 */
+.mypageRow a {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
 }
 
-.button{
+.mypageRow a p {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.button {
     font-size: 2rem;
     margin-top: 30px;
     margin-bottom: 80px;
@@ -60,6 +71,6 @@
 }
 
 .button > button {
-    margin:  30px;
+    margin: 30px;
     padding: 20px;
 }

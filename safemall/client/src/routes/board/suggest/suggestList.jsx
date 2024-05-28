@@ -5,38 +5,47 @@ import styles from "./suggestList.module.css";
 
 function SuggestList() {
   const [suggestList, setSuggestList] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [lastNo, setLastNo] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(true);
 
-  const fetchSuggestList = async () => {
+  const fetchSuggestList = async (reset = false) => {
     try {
       const suggestService = new SuggestService();
       const fetchedData = await suggestService.getSuggestList(lastNo);
-      setSuggestList(fetchedData);
-      if (fetchedData.length > 0) {
-        setLastNo(fetchedData[fetchedData.length - 1].no);
+      
+      if (fetchedData) {
+        if (reset) {
+          setSuggestList(fetchedData);
+        } else {
+          setSuggestList(prevList => [...prevList, ...fetchedData]);
+        }
+
+        if (fetchedData.length > 0) {
+          setLastNo(fetchedData[fetchedData.length - 1].no);
+        }
+
+        if (fetchedData.length % 5 !== 0) {
+          setShowMoreButton(false);
+        }
       }
-      if (fetchedData.length % 5 !== 0) { 
-        setShowMoreButton(false);
-      }
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
-      console.error('Error fetching Suggest list:', error);
-      setLoading(false); // 에러 발생 시에도 로딩 상태 변경
+      console.error('Error fetching Report list:', error);
+      setLoading(false);
     }
   };
 
   const handleLoadMore = async () => {
-    if (lastNo) {
+    if (lastNo !== null) {
       try {
         const suggestService = new SuggestService();
-        const fetchedData = await suggestService.getSuggestList(lastNo); // 페이징 처리
+        const fetchedData = await suggestService.getSuggestList(lastNo);
         if (fetchedData.length > 0) {
-          setSuggestList([...suggestList, ...fetchedData]);
+          setSuggestList(prevList => [...prevList, ...fetchedData]);
           setLastNo(fetchedData[fetchedData.length - 1].no);
         }
-        if (fetchedData.length % 5 !== 0) { 
+        if (fetchedData.length % 5 !== 0) {
           setShowMoreButton(false);
         }
       } catch (error) {
@@ -46,10 +55,9 @@ function SuggestList() {
   };
 
   useEffect(() => {
-    fetchSuggestList();
+    fetchSuggestList(true);
   }, []);
 
-  // 로딩 중에는 로딩 상태를 보여줌
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -63,43 +71,42 @@ function SuggestList() {
               <button className={styles.submit} type="submit">&#128269;</button>
           </div>
           <div className={styles.createBtnArea}>
-            <Link to="/board/report/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
+            <Link to="/board/suggest/create"><button className={styles.btn}>작성하기</button></Link>
           </div>
         </header>
-          <div className={styles.notices}>
-            <div className={styles.noticeheader}>
-                <span>No</span>
-                <span>제목</span>
-                <span>작성일</span>
-                <span>작성자</span>
-                <span>처리여부</span>
+        <div className={styles.notices}>
+          <div className={styles.noticeheader}>
+              <span>No</span>
+              <span>제목</span>
+              <span>작성일</span>
+              <span>작성자</span>
+              <span>처리여부</span>
+          </div>
+          {suggestList.length === 0 ? (
+            <div className={styles.noData}>
+              <p>등록된 건의사항 없습니다.</p>
             </div>
-            {suggestList.length === 0 ? (
-              <div className={styles.noData}>
-                <p>등록된 건의사항 없습니다.</p>
+          ) : (
+            <>
+            {suggestList.map((suggest, index) => (
+              <Link className={styles.noticeitem} to={`/board/suggest/${suggest.no}`} key={`${suggest.no}-${index}`}>
+                <span>{suggest.no}</span>
+                <span>{suggest.Title}</span>
+                <span>{suggest.createdAt.split('T')[0]}</span>
+                <span>{suggest.Author}</span>
+                <span>{suggest.State ? '완료' : '처리중'}</span>
+              </Link>
+            ))}
+            {showMoreButton && (
+              <div className={styles.loadmore}>
+                <button type="button" onClick={handleLoadMore}>더보기▼</button>
               </div>
-            ) : (
-              <>
-              {suggestList.map((suggest) => (
-                <Link className={styles.noticeitem} to={`/board/report/${suggest.no}`}>
-                  <span>{suggest.no}</span>
-                  <span>{suggest.Title}</span>
-                  <span>{suggest.Date}</span>
-                  <span>{suggest.Author}</span>
-                  <span>{suggest.State}</span>
-                </Link>
-              ))}
-          {showMoreButton && (
-            <div className={styles.loadmore}>
-              <button type="button" onClick={handleLoadMore}>더보기▼</button>
-            </div>
+            )}
+          </>
           )}
-        </>
-      )}
-      </div>
+        </div>
     </div>
   );
-  
 }
 
 export default SuggestList;

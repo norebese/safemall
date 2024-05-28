@@ -81,7 +81,10 @@ export async function getByShopName(keyword) {
 }
 
 export async function getByDomainName(domain){
-  return Shop.find({ domainName:domain})
+  console.log(domain)
+  const data =  Shop.find({ domainName:domain})
+  // console.log(data)
+  return data
 }
 
 export async function getDetail(id) {

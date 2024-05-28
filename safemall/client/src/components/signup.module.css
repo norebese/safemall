@@ -17,7 +17,7 @@ h1{
     margin-bottom: 100px !important;
 }
 
-.googleAuthbtn{
+/* .googleAuthbtn{
     width: 500px;
     height: 100px;
     margin: 20px;
@@ -48,7 +48,7 @@ h1{
 .naverAuthbtn>p{
     margin-top: 20px;
     margin-left: 50px;
-}
+} */
 
 .NewRegist{
     display: flex;
@@ -69,10 +69,19 @@ h1{
 .testLogin{
     display: flex;
     flex-direction: column;
+
+}
+
+.forminput{
+    width: 400px;
+    height: 70px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding-left: 20px;
 }
 
 .testLogin input::placeholder {
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .formactions button{
