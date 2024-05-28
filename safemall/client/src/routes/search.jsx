@@ -147,6 +147,7 @@ export default function Search() {
                                     <td className={styles.col}>SNS</td>
                                     <td className={styles.row} id={styles.snsArea}>
                                         {Object.entries(result.socialUrls).map(([platform, urls]) => (
+                                            
                                             <div key={platform}>
                                                 <a href={urls[0]} target="_blank" rel="noopener noreferrer">
                                                     {/* 이미지 파일 경로를 public 폴더를 기준으로 지정 */}
