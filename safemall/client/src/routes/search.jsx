@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './search.module.css';
 import { useParams, useLocation } from 'react-router-dom';
 import MainService from '../service/main';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faYoutube, faBlogger } from '@fortawesome/free-brands-svg-icons';
 
 export default function Search() {
     const [result, setResult] = useState({
@@ -72,7 +74,13 @@ export default function Search() {
         const url = result.domainName.startsWith('http') ? result.domainName : `http://${result.domainName}`;
         window.open(url, '_blank');
     };
-    
+
+    const platformIcons = {
+        facebook: faFacebook,
+        twitter: faTwitter,
+        instagram: faInstagram,
+        youtube: faYoutube,
+    };
 
     return (
         <>
@@ -116,32 +124,48 @@ export default function Search() {
 
                     <div className={styles.content1} style={{ display: showContent1 ? 'block' : 'none' }}>
                         <table>
-                            <tbody>
+                            <tr>
+                                <td className={styles.col}>쇼핑몰명</td>
+                                <td className={styles.row}>{result.shopNameKor}</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.col}>도메인명</td>
+                                <td className={styles.row}>{result.domainName}</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.col}>최초신고일자</td>
+                                <td className={styles.row}>{result.dateInit}</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.col}>영업형태</td>
+                                <td className={styles.row}> {result.businessType}</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.col}>취급품목</td>
+                                <td className={styles.row}>{result.mainItems}</td>
+                            </tr>
+
+                            {result.socialUrls && Object.keys(result.socialUrls).length > 0 && (
                                 <tr>
-                                    <td className={styles.col}>쇼핑몰명</td>
-                                    <td className={styles.row}>{result.shopNameKor}</td>
+                                    <td className={styles.col}>SNS</td>
+                                    <td className={styles.row} id={styles.snsArea}>
+                                        {Object.entries(result.socialUrls).map(([platform, urls]) => (
+                                            
+                                            <div key={platform}>
+                                                <a href={urls[0]} target="_blank" rel="noopener noreferrer">
+                                                    {/* 이미지 파일 경로를 public 폴더를 기준으로 지정 */}
+                                                    <img src={`/icons/${platform}.svg`} alt={`${platform} icon`} />
+                                                </a>
+                                            </div>
+                                        ))}
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td className={styles.col}>도메인명</td>
-                                    <td className={styles.row}>{result.domainName}</td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.col}>최초신고일자</td>
-                                    <td className={styles.row}>{result.dateInit}</td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.col}>영업형태</td>
-                                    <td className={styles.row}> {result.businessType}</td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.col}>취급품목</td>
-                                    <td className={styles.row}>{result.mainItems}</td>
-                                </tr>
-                                <tr>
-                                    <td className={`${styles.lb} ${styles.col}`}>업소상태</td>
-                                    <td className={`${styles.rb} ${styles.row}`}>{result.businessState}</td>
-                                </tr>
-                            </tbody>
+                            )}
+
+                            <tr>
+                                <td className={`${styles.lb} ${styles.col}`}>업소상태</td>
+                                <td className={`${styles.rb} ${styles.row}`}>{result.businessState}</td>
+                            </tr>
                         </table>
                     </div>
 

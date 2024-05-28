@@ -14,5 +14,7 @@ router.get('/search', mainController.search)
 
 router.get('/search/:id', mainController.searchDetail)
 
+router.get('/sns', mainController.getShopList)
+
 
 export default router

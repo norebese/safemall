@@ -32,7 +32,7 @@ function ReportDetail() {
       alert('로그인 필요')
       navigate('/auth/login/1')
     }
-  }, [isLoggedIn]);
+  }, []);
 
   const handleDelete = async (e) => {
     e.preventDefault();

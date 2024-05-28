@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ReportService from '../../../service/report';
 import styles from "./reportList.module.css";
+import { AuthContext } from '../../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function ReportList() {
+  const navigate = useNavigate();
   const [reportList, setReportList] = useState([]); 
   // 초기에 reportList가 비어있어서 조건부 렌더링이 "등록된 제보가 없습니다." 메시지를 먼저 보여줘 깜빡임 현상 발생
   const [loading, setLoading] = useState(true); // 로딩 상태 추가하면 데이터가 로드된 후에 실제 데이터를 표시해 해결가능
   const [lastNo, setLastNo] = useState(0);
   const [showMoreButton, setShowMoreButton] = useState(true);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const fetchReportList = async () => {
     try {
@@ -57,6 +61,15 @@ function ReportList() {
     return <div>Loading...</div>;
   }
 
+  const handleClick = (event) => {
+    // 여기서 필요한 조건을 확인하고 조건에 따라 페이지 이동을 막을 수 있습니다.
+      event.preventDefault(); // 링크 이동을 막습니다.
+      if(isLoggedIn === false){
+        alert('로그인 필요')
+        navigate('/auth/login/1')
+      }
+  }
+
   return (
     <div className={styles.content}>
       <header className={styles.appheader}>
@@ -84,7 +97,7 @@ function ReportList() {
             ) : (
               <>
               {reportList.map((report) => (
-                <Link className={styles.noticeitem} to={`/board/report/${report.no}`} key={report.no}>
+                <Link onClick={handleClick} className={styles.noticeitem} to={`/board/report/${report.no}`} key={report.no}>
                   <span>{report.no}</span>
                   <span>{report.Title}</span>
                   <span>{report.createdAt}</span>

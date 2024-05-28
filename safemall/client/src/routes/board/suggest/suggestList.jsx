@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import SuggestService from '../../../service/suggest';
 import styles from "./suggestList.module.css";
+import { AuthContext } from '../../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function SuggestList() {
+  const navigate = useNavigate();
   const [suggestList, setSuggestList] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [lastNo, setLastNo] = useState(null);
   const [showMoreButton, setShowMoreButton] = useState(true);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const fetchSuggestList = async (reset = false) => {
     try {
@@ -62,6 +66,14 @@ function SuggestList() {
     return <div>Loading...</div>;
   }
 
+  const handleClick = (event) => {
+      event.preventDefault(); // 링크 이동을 막습니다.
+      if(isLoggedIn === false){
+        alert('로그인 필요')
+        navigate('/auth/login/1')
+      }
+  }
+
   return (
     <div className={styles.content}>
       <header className={styles.appheader}>
@@ -89,7 +101,7 @@ function SuggestList() {
           ) : (
             <>
             {suggestList.map((suggest, index) => (
-              <Link className={styles.noticeitem} to={`/board/suggest/${suggest.no}`} key={`${suggest.no}-${index}`}>
+              <Link onClick={handleClick} className={styles.noticeitem} to={`/board/suggest/${suggest.no}`} key={`${suggest.no}-${index}`}>
                 <span>{suggest.no}</span>
                 <span>{suggest.Title}</span>
                 <span>{suggest.createdAt.split('T')[0]}</span>
