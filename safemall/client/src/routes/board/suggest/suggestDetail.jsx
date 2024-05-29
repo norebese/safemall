@@ -118,12 +118,12 @@ function SuggestDetail() {
           <span id={styles.writer}>작성자: {suggest.Author}</span>
           <span id={styles.viewCount}>조회수: {suggest.View}</span>
         </div>
-        <div className={styles.bodycontent}>
+        {/* <div className={styles.bodycontent}>
           <div className={styles.contenttitle}>제목</div>
           <div className={styles.contentcontent}>{suggest.Title}</div>
-        </div>
+        </div> */}
         <div className={styles.bodycontent}>
-          <div className={styles.contenttitle}>내용</div>
+          {/* <div className={styles.contenttitle}>내용</div> */}
           <div className={styles.contentcontent}>{suggest.Contents}</div>
         </div>
 
