@@ -58,8 +58,6 @@ export default function Searchshop() {
         console.log(type[type.length - 1]);
         const fetchSearchDetail = async () => {
             try {
-                setTimeout(() => {
-                }, 30000);
                 const maintService = new MainService();
                 const fetchedData = await maintService.getSearchResultDetail(id, type[type.length - 1]);
                 setResult(fetchedData);
@@ -147,11 +145,17 @@ export default function Searchshop() {
                                 </tr>
                                 <tr>
                                     <td className={styles.col}>영업형태</td>
-                                    <td className={styles.row}> {result.businessType}</td>
+                                    <td className={styles.row}>{result.businessType}</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.col}>취급품목</td>
-                                    <td className={styles.row}>{result.mainItems}</td>
+                                    <td className={styles.row}>
+                                        {result.mainItems.map((content, i)=>(
+                                            <React.Fragment key={i}> 
+                                                <span key={i}>{content} / </span>
+                                            </React.Fragment> 
+                                        ))}
+                                    </td>
                                 </tr>
 
                                 {result.socialUrls && Object.keys(result.socialUrls).length > 0 && (
@@ -234,8 +238,23 @@ export default function Searchshop() {
                                     <td className={styles.row}>{result.detailWithdrawal}</td>
                                 </tr>
                                 <tr>
-                                    <td className={`${styles.lb} ${styles.col}`}>구매안전서비스</td>
-                                    <td className={`${styles.rb} ${styles.row}`}>{result.PSS}</td>
+                                    <td className={styles.col}>구매안전서비스</td>
+                                    <td className={styles.row}>{result.PSS}</td>
+                                </tr>
+                                <tr>
+                                    <td className={`${styles.lb} ${styles.col}`}>
+                                        <p>초기화면</p>
+                                        <p>필수항목 표시</p>
+                                    </td>
+                                    <td className={`${styles.rb} ${styles.row}`}>
+                                        {
+                                            result.detailInitScreen.map((v,i)=>(
+                                                <React.Fragment key={i}>
+                                                    <span key={i}>{v} / </span>
+                                                </React.Fragment>
+                                            ))
+                                        }
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
