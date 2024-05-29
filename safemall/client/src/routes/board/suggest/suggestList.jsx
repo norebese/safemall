@@ -67,8 +67,8 @@ function SuggestList() {
   }
 
   const handleClick = (event) => {
-      event.preventDefault(); // 링크 이동을 막습니다.
-      if(isLoggedIn === false){
+    if(isLoggedIn === false){
+        event.preventDefault(); // 링크 이동을 막습니다.
         alert('로그인 필요')
         navigate('/auth/login/1')
       }

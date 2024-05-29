@@ -113,11 +113,13 @@ export default function Searchcomshop() {
                   <tr>
                     <td className={styles.col}>취급품목</td>
                     <td className={styles.row}>
-                      {result.MainItems}
-                      {/* {result.MainItems.map((content,i)=>{
-                        {console.log(i, content)}
-                        <div key={i}>{content}</div>
-                      })} */}
+                      {/* {result.MainItems} */}
+                      {result.MainItems.map((content, i) => (
+                        <React.Fragment key={i}> 
+                       <div key={i}>{content}</div>
+                       <hr />
+                       </React.Fragment> 
+                      ))}
                     </td>
                   </tr>
                   <tr>

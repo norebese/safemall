@@ -53,7 +53,7 @@ class SuggestService{
         });
         const responseData = await response.json();      
         console.log(responseData); // 데이터 확인
-        return responseData;
+        return responseData.data;
       }
 
       // 건의사항 게시글 삭제
@@ -73,8 +73,10 @@ class SuggestService{
     async editSuggest(formData, no) {
       tokenStorage.addTokenToHeaders(this.headers);
       if (!formData.Comments) {
-        formData.Comments = 0;
+        formData.State = 0;
         console.log('formData updated:', formData);
+      }else if(formData.Comments){
+        formData.State = 1;
       }
       try {
         const response = await fetch(`${this.baseUrl}board/suggest/${no}`, {

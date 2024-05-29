@@ -94,21 +94,29 @@
     justify-content: center;
     padding: 40px 0;
     align-items: center;
+    /* margin-bottom: 75px; */
+  }
+  .buttonarea2{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 40px 0;
+    align-items: center;
     margin-bottom: 75px;
   }
-  
   .buttonarea>svg{
     margin-left: 15px;
   }
   
   .button {
     height: 80px;
-    width: 360px;
+    width: 250px;
     padding: 10px;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
     font-size: 40px;
+    margin: 0 20px;
   }
 
   #buttonId{

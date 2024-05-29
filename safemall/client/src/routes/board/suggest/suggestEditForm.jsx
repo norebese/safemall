@@ -3,10 +3,12 @@ import SuggestService from '../../../service/suggest';
 import { useNavigate } from 'react-router-dom';
 import styles from './suggestForm.module.css';
 import { AuthContext } from '../../../context/authContext';
+import { useParams } from 'react-router-dom';
 
 function SuggestForm() {
   const navigate = useNavigate();
   const { isLoggedIn, nickname } = useContext(AuthContext);
+  const { no } = useParams();
   const [formData, setFormData] = useState({
     Title: '',
     Contents: ''
@@ -18,6 +20,22 @@ function SuggestForm() {
       alert('로그인 필요')
       navigate('/auth/login/1')
     }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const fetchReportDetail = async () => {
+        try {
+          const suggestService = new SuggestService();
+          const fetchedData = await suggestService.getSuggestDetail(no);
+          console.log('fetchedData: ', fetchedData)
+          setFormData(fetchedData);
+          
+        } catch (error) {
+          console.error('Error fetching Report list:', error);
+        }
+    }
+    fetchReportDetail()
   }, []);
 
   const handleChange = (e) => {
@@ -32,13 +50,13 @@ function SuggestForm() {
     e.preventDefault();
     try {
       const suggestService = new SuggestService();
-      const response = await suggestService.submitSuggest(formData);
+      const response = await suggestService.editSuggest(formData, no);
       // 제출 성공 시 사용자에게 알림 또는 리다이렉션 등 추가 작업 수행
       if(response.message == '인증에러'){
         navigate('/login');
       }else{
-        alert('건의사항 작성 성공');
-        navigate(`/board/suggest/${response.no}`);
+        alert('건의사항 수정 성공');
+        navigate(`/board/suggest/${no}`);
       }
 
     } catch (error) {
@@ -51,7 +69,7 @@ function SuggestForm() {
     <>
     <form onSubmit={handleSubmit}>
       <div className={styles.formheader}>
-        <div>건의사항 작성</div>
+        <div>건의사항 수정</div>
       </div>
       <div className={styles.formbody}>
         <div className={styles.bodycontainer}>
@@ -84,7 +102,7 @@ function SuggestForm() {
         
       </div>
       <div className={styles.formactions}>
-        <button type="submit" className={styles.formbutton}>제출</button>
+        <button type="submit" className={styles.formbutton}>수정</button>
       </div>
     </form>
     </>

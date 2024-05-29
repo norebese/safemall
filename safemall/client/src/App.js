@@ -22,6 +22,7 @@ import PreventionDetail from './routes/board/prevent/PreventionDetail';
 import SuggestList from './routes/board/suggest/suggestList';
 import SuggestForm from './routes/board/suggest/suggestForm';
 import SuggestDetail from './routes/board/suggest/suggestDetail';
+import SuggestEditForm from './routes/board/suggest/suggestEditForm'
 
 import ReportList from './routes/board/report/reportList';
 import ReportForm from './routes/board/report/reportForm';
@@ -46,7 +47,7 @@ function App() {
 
         <Route path="suggest" element={<SuggestList />} />
         <Route path="suggest/create" element={<SuggestForm />} />
-        <Route path="suggest/edit/:no" element={<SuggestForm />} />
+        <Route path="suggest/edit/:no" element={<SuggestEditForm/>} />
         <Route path="suggest/:no" element={<SuggestDetail />} />
 
         <Route path="report" element={<ReportList/>}/>

@@ -116,7 +116,7 @@ export async function searchDetail(req,res,next){
                     }
             
                     // URL 유효성 검사 및 수정
-                    if (url.endsWith('.com/')) {
+                    if (url.endsWith('.com/') || url.endsWith('.com')) {
                     return null; // .com/으로 끝나면 null 반환
                     }
             

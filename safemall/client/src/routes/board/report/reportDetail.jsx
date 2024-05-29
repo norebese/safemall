@@ -192,7 +192,7 @@ function ReportDetail() {
           <button className={styles.button} onClick={() => navigate('/board/report')}>목록</button>
         </div>
         {isLoggedIn && nickname === report.Author && (
-          <div className={styles.buttonarea}>
+          <div className={styles.buttonarea2}>
               <button className={styles.button} onClick={() => navigate(`/board/report/edit/${no}`)}>수정하기</button>
               <button className={styles.button} onClick={handleDelete}>삭제하기</button>
           </div>

@@ -63,8 +63,8 @@ function ReportList() {
 
   const handleClick = (event) => {
     // 여기서 필요한 조건을 확인하고 조건에 따라 페이지 이동을 막을 수 있습니다.
-      event.preventDefault(); // 링크 이동을 막습니다.
-      if(isLoggedIn === false){
+    if(isLoggedIn === false){
+        event.preventDefault(); // 링크 이동을 막습니다.
         alert('로그인 필요')
         navigate('/auth/login/1')
       }

@@ -107,7 +107,9 @@ export async function getSuggestDetail(req, res){
       res.status(304).json({message:"Post Number plz"})
     const data = await boardData.getBypostId('Suggest', req.params.no);
     if (data) {
-      res.status(200).json(data);
+      const date = data.createdAt ? data.createdAt.toISOString().split('T')[0] : '';
+      const update = data.updatedAt ? data.updatedAt.toISOString().split('T')[0] : '';
+      res.status(200).json({data: { ...data.toObject(), createdAt: date ,updatedAt: update }});
     } else {
       res.status(404).json({ message: 'Suggestion not found' });
     }
