@@ -191,11 +191,14 @@ function ReportDetail() {
         <div className={styles.buttonarea}>
           <button className={styles.button} onClick={() => navigate('/board/report')}>목록</button>
         </div>
-        {isLoggedIn && nickname === report.Author && (
+        {(nickname === report.Author || isAdmin == 'true') ?(
           <div className={styles.buttonarea2}>
-              <button className={styles.button} onClick={() => navigate(`/board/report/edit/${no}`)}>수정하기</button>
-              <button className={styles.button} onClick={handleDelete}>삭제하기</button>
+            <button className={styles.button} onClick={() => navigate(`/board/report/edit/${no}`)}>수정하기</button>
+            <button className={styles.button} onClick={handleDelete}>삭제하기</button>
           </div>
+        ):(
+        <>
+        </>
         )}
       </div>
     </div>
@@ -203,3 +206,4 @@ function ReportDetail() {
 }
 
 export default ReportDetail;
+

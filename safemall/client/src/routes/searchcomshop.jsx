@@ -80,7 +80,6 @@ export default function Searchcomshop() {
       <>
         <div className={styles.container}>
           <div className={styles.title}>
-            <form >
               <div className={styles.search}>
                 <input disabled={true} value={result.shopNameKor || ''} type="text" />&emsp;
                 <button onClick={handleClick} type="submit" id={styles.linkBtn}>
@@ -90,7 +89,6 @@ export default function Searchcomshop() {
                   바로가기
                 </button>
               </div>
-            </form>
           </div>
 
           <div className={styles.score}>
@@ -132,9 +130,8 @@ export default function Searchcomshop() {
                       {/* {result.MainItems} */}
                       {result.MainItems.map((content, i) => (
                         <React.Fragment key={i}> 
-                       <div key={i}>{content}</div>
-                       <hr />
-                       </React.Fragment> 
+                        <span key={i}>{content} / </span>
+                        </React.Fragment> 
                       ))}
                     </td>
                   </tr>

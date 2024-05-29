@@ -135,24 +135,29 @@ export async function editSuggest(req, res){
 // 건의사항 삭제
 export async function deleteSuggest(req, res){
   try {
-    console.log('건의사항 삭제 호출')
-    const post = await boardData.getBypostId('Suggest', req.params.no);
-    const result = await boardData.Deletepost('Suggest', req.params.no);
-    if (!result) 
-      res.status(404).json({ message: 'Suggestion not found' });
-    // users db의 
+    const postNo = req.params.no;
+    console.log('제보삭제 시작')
+    const post = await boardData.getBypostId('Suggest', postNo);
     const user = await userData.getByNickName(post.Author);
     const updatedContentsId = user.contentsId.filter(
-      content => !(content.boardType === 'Suggest' && content.postNo === postNo)
+      content =>!(content.boardType == 'Suggest' && content.postNo == postNo)
     );
     const updatedUser = {
       contentsId: updatedContentsId
     };
-    const updated = await userData.editUser(nickname, updatedUser);
-    if(!updated)
+    const updated = await userData.editUser(post.Author, updatedUser);
+    console.log(updated)
+    if(!updated){
+      console.log('에러처리', updated)
       throw new Error
-    res.redirect(303,`/board/suggest`);
+    }
+    const result = await boardData.Deletepost('Suggest', postNo);
+    if (!result){
+      res.status(404).json({ message: 'Report not found' });
+    }
+    res.redirect(303,`/board/Suggest`);
   } catch (e) {
+    console.log('에러발생 : ',e)
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
@@ -234,24 +239,29 @@ export async function editReport(req, res){
 // 제보 삭제
 export async function deleteReport(req, res){
   try {
-    const post = await boardData.getBypostId('Report', req.params.no);
-    const result = await boardData.Deletepost('Report', req.params.no);
-    console.log('result: ', result)
-    if (!result){
-      res.status(404).json({ message: 'Report not found' });
-    }
+    const postNo = req.params.no;
+    console.log('제보삭제 시작')
+    const post = await boardData.getBypostId('Report', postNo);
     const user = await userData.getByNickName(post.Author);
     const updatedContentsId = user.contentsId.filter(
-      content => !(content.boardType === 'Report' && content.postNo === postNo)
+      content =>!(content.boardType == 'Report' && content.postNo == postNo)
     );
     const updatedUser = {
       contentsId: updatedContentsId
     };
-    const updated = await userData.editUser(nickname, updatedUser);
-    if(!updated)
+    const updated = await userData.editUser(post.Author, updatedUser);
+    console.log(updated)
+    if(!updated){
+      console.log('에러처리', updated)
       throw new Error
+    }
+    const result = await boardData.Deletepost('Report', postNo);
+    if (!result){
+      res.status(404).json({ message: 'Report not found' });
+    }
     res.redirect(303,`/board/report`);
   } catch (e) {
+    console.log('에러발생 : ',e)
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };

@@ -48,8 +48,10 @@ export const AuthProvider = ({authService, children }) => {
         // 실제 로그아웃 로직
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('NICKNAME');
+        sessionStorage.removeItem('ISADMIN');
         setIsLoggedIn(false);
         setNickname('');
+        setisAdmin(false)
         navigate('/auth/login/1')
         window.location.reload();
 

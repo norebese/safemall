@@ -185,12 +185,14 @@ function SuggestDetail() {
         <div className={styles.buttonarea1}>
           <button className={styles.button} onClick={() => navigate('/board/suggest')}>목록</button>
         </div>
-        {isLoggedIn && nickname === suggest.Author && (
+        {(nickname === suggest.Author || isAdmin == 'true') ?(
           <div className={styles.buttonarea2}>
-              <button className={styles.button} onClick={() => navigate(`/board/suggest/edit/${no}`)}>수정하기</button>
-              <button className={styles.button} onClick={handleDelete}>삭제하기</button>
+            <button className={styles.button} onClick={() => navigate(`/board/suggest/edit/${no}`)}>수정하기</button>
+            <button className={styles.button} onClick={handleDelete}>삭제하기</button>
           </div>
-        )}
+        ):(
+        <>
+        </>)}
       </div>
     </div>
   );

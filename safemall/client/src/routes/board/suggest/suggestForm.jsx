@@ -38,7 +38,7 @@ function SuggestForm() {
         navigate('/login');
       }else{
         alert('건의사항 작성 성공');
-        navigate(`/board/suggest/${response.no}`);
+        navigate(`/board/suggest/${response.data.no}`);
       }
 
     } catch (error) {
@@ -49,7 +49,7 @@ function SuggestForm() {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.formheader}>
         <div>건의사항 작성</div>
       </div>

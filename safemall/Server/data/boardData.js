@@ -176,7 +176,6 @@ export async function getboardList(boardtype, lastNo) {
 export async function getBypostId(boardtype, postNo){
   try{
     const post = await isType(boardtype).findOne({no:postNo});
-    console.log(post)
     if (post) {
       post.View += 1; // 조회수 증가
       await post.save(); // 변경된 조회수 저장

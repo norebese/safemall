@@ -74,10 +74,10 @@ function ReportList() {
     <div className={styles.content}>
       <header className={styles.appheader}>
           <h1>제보 게시판</h1>
-          <div className={styles.searchbar}>
+          {/* <div className={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
               <button className={styles.submit} type="submit">&#128269;</button>
-          </div>
+          </div> */}
           <div className={styles.createBtnArea}>
             <Link to="/board/report/create" className={`${styles.btn} ${styles.createbtn}`}>작성하기</Link>
           </div>

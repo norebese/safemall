@@ -78,10 +78,10 @@ function SuggestList() {
     <div className={styles.content}>
       <header className={styles.appheader}>
           <h1>건의사항 게시판</h1>
-          <div className={styles.searchbar}>
+          {/* <div className={styles.searchbar}>
               <input type="search" placeholder="검색"></input>
               <button className={styles.submit} type="submit">&#128269;</button>
-          </div>
+          </div> */}
           <div className={styles.createBtnArea}>
             <Link to="/board/suggest/create"><button className={styles.btn}>작성하기</button></Link>
           </div>
