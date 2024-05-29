@@ -16,11 +16,15 @@ class SocialMediaScraper {
     this.headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     };
+    this.timeout = 2000;
   }
 
   async getSocialMediaUrls(url) {
     try {
-      const response = await axios.get(`https://${url}`);
+      const response = await axios.get(`https://${url}`, {
+        headers: this.headers,
+        timeout: this.timeout
+      });
       const html = response.data;
       const $ = cheerio.load(html);
       console.log('url:', url)

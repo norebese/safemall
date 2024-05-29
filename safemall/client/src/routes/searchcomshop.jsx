@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './search.module.css';
 import { useParams, useLocation } from 'react-router-dom';
 import MainService from '../service/main';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Searchcomshop() {
     const [result, setResult] = useState({
@@ -18,7 +19,8 @@ export default function Searchcomshop() {
     const type = useLocation().search;
     const [showContent1, setShowContent1] = useState(true); 
     const [showContent2, setShowContent2] = useState(false); 
-    const [showContent3, setShowContent3] = useState(false); 
+    const [showContent3, setShowContent3] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleClick1 = () => {
         setShowContent1(true); 
@@ -48,7 +50,9 @@ export default function Searchcomshop() {
                 const fetchedData = await maintService.getSearchResultDetail(id, type[type.length - 1]);
                 setResult(fetchedData);
                 console.log(fetchedData);
+                setLoading(false);
             } catch (error) {
+                setLoading(false);
                 console.error('Error fetching Report list:', error);
             }
         };
@@ -60,6 +64,18 @@ export default function Searchcomshop() {
         const url = result.domainName.startsWith('http') ? result.domainName : `http://${result.domainName}`;
         window.open(url, '_blank');
     };
+
+    if (loading) {
+      return (
+          <div className={styles.loadingArea}>
+              로딩중
+              <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+              </Spinner>
+          </div>
+        );
+    }
+
     return (
       <>
         <div className={styles.container}>
