@@ -135,7 +135,6 @@ body {
     border: 1px solid lightgray;
     color: rgba(32, 39, 79, 1);
     transition: max-height 2s ease-in-out, opacity 2s ease-in-out;
-    cursor: pointer;
     position: relative;
  }
 
@@ -144,6 +143,11 @@ body {
   top: 0;
   right: 0;
   padding-right: 5%;
+}
+
+.arrow:hover {
+  color: darkred;
+  cursor: pointer;
 }
 
 
@@ -192,10 +196,6 @@ body {
 .directBtn:hover {
   background-color: lightgray;
   color : rgba(32, 39, 79, 1);
-}
-  
-.listcard:hover{
-  background-color: lightgray;
 }
   
 

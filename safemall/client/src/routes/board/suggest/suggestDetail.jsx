@@ -107,7 +107,7 @@ function SuggestDetail() {
   
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.reportheader}>
         <div>건의사항 게시판</div>
       </div>

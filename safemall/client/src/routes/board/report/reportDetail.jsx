@@ -105,7 +105,7 @@ function ReportDetail() {
   }, []); 
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.reportheader}>
         <div>제보 게시판</div>
       </div>
