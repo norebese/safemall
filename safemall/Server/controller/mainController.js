@@ -93,11 +93,13 @@ export async function searchDetail(req,res,next){
             const businessType = data.businessType ? data.businessType : emptyMassage;
             const mainItems = data.mainItems[0] != '' ? data.mainItems : emptyMassage;
             const possibleSW = data.possibleSW ? data.possibleSW : emptyMassage;
-            const detailPayment = data.detailPayment[0] != '' ? data.detailPayment[0] : emptyMassage;
+            const detailPayment = data.detailPayment == [] ? data.detailPayment : emptyMassage;
             const detailTermUse = data.detailTermUse ? data.detailTermUse : emptyMassage;
             const detailPIS = data.detailPIS ? data.detailPIS : emptyMassage;
             const detailWithdrawal = data.detailWithdrawal ? data.detailWithdrawal : emptyMassage;
             const PSS = data.PSS ? data.PSS : emptyMassage;
+
+            console.log(detailPayment)
             
             const socialUrls = await socialMediaScraper.getSocialMediaUrls(data.domainName);
             // 각 플랫폼의 URL에 https://가 포함되어 있는지 체크하고, 없다면 추가

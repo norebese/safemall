@@ -251,13 +251,15 @@ export default function Searchshop() {
                                         <p>필수항목 표시</p>
                                     </td>
                                     <td className={`${styles.rb} ${styles.row}`}>
-                                        {
-                                            result.detailInitScreen.map((v,i)=>(
+                                        {Array.isArray(result.detailInitScreen) && result.detailInitScreen.length > 0 ? (
+                                            result.detailInitScreen.map((v, i) => (
                                                 <React.Fragment key={i}>
-                                                    <span key={i}>{v} / </span>
+                                                    <span>{v} / </span>
                                                 </React.Fragment>
                                             ))
-                                        }
+                                        ) : (
+                                            <span>확인 불가</span>
+                                        )}
                                     </td>
                                 </tr>
                             </tbody>

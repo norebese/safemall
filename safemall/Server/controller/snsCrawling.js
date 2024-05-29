@@ -45,7 +45,7 @@ class SocialMediaScraper {
 
       return socialUrls;
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error: 크롤링 실패');
       return {};
     }
   }

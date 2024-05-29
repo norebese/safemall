@@ -126,14 +126,17 @@ export default function Searchcomshop() {
                   </tr>
                   <tr>
                     <td className={styles.col}>취급품목</td>
-                    <td className={styles.row}>
-                      {/* {result.MainItems} */}
-                      {result.MainItems.map((content, i) => (
-                        <React.Fragment key={i}> 
-                        <span key={i}>{content} / </span>
-                        </React.Fragment> 
-                      ))}
-                    </td>
+                    {Array.isArray(result.MainItems) && result.MainItems.length > 0 ? (
+                          <td className={styles.row}>
+                              {result.MainItems.map((content, i) => (
+                                  <React.Fragment key={i}> 
+                                      <span>{content} / </span>
+                                  </React.Fragment> 
+                              ))}
+                          </td>
+                      ) : (
+                          <td className={styles.row}>{result.MainItems}</td>
+                      )}
                   </tr>
                   <tr>
                     <td className={`${styles.lb} ${styles.col}`}>업소상태</td>
@@ -175,14 +178,18 @@ export default function Searchcomshop() {
                   <tr>
                     <td className={`${styles.lb} ${styles.col}`}>주요피해내용</td>
                     <td className={`${styles.rb} ${styles.row}`}>
-                        {result.mainDamageContent.map((content, i)=>(
-                          // <></>와 동일한 기능을 하는 React.Fragment 태그 사용 ==> 해당 태그는 props를 받을 수 있음
-                          <React.Fragment key={i}> 
-                          <div >{content}</div>
-                          <hr />
-                          </React.Fragment>
-                        ))}
-                    </td>
+                      {Array.isArray(result.mainDamageContent) && result.mainDamageContent.length > 0 ? (
+                          result.mainDamageContent.map((content, i) => (
+                              <React.Fragment key={i}>
+                                  <div>{content}</div>
+                                  <hr />
+                              </React.Fragment>
+                          ))
+                      ) : (
+                          result.mainDamageContent // 배열이 아닌 경우 그대로 출력
+                      )}
+                  </td>
+
                   </tr>
                 </tbody>
               </table>
