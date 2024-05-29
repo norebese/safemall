@@ -131,11 +131,15 @@ export default function Search() {
                                 </tr>
                                 <tr>
                                     <td className={styles.col}>영업형태</td>
-                                    <td className={styles.row}> {result.businessType}</td>
+                                    <td className={styles.row}>{result.businessType}</td>
                                 </tr>
                                 <tr>
                                     <td className={styles.col}>취급품목</td>
-                                    <td className={styles.row}>{result.mainItems}</td>
+                                    <td className={styles.row}>
+                                    {result?.mainItems?.map((item, index) => (
+                                        <span key={index}>{item} {index !== result?.mainItems.length - 1 && ', '}</span>
+                                    ))}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td className={`${styles.lb} ${styles.col}`}>업소상태</td>

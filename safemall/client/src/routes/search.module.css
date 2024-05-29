@@ -144,9 +144,17 @@
     font-size: 30px;
     border: none;
 }
+.menuActive{
+    background-color: rgba(81, 80, 118, 0.3) !important;  
+    cursor: pointer;
+    color: rgba(81, 80, 118) !important;
+    font-weight: bold;
+}
 
 .menu1 {
     border-top-left-radius: 30px;
+    /* background-color: rgba(81, 80, 118, 0.3);
+    color: rgba(81, 80, 118); */
 }
 
 .menu3 {
@@ -156,9 +164,9 @@
 .menu1:hover, .menu2:hover, .menu3:hover{
         background-color: rgba(81, 80, 118, 0.3) !important;  
         cursor: pointer;
-        color: white !important;
+        color: rgba(81, 80, 118) !important;
+        font-weight: bold;
 }
-
 
 
 .content1, .content2, .content3 {

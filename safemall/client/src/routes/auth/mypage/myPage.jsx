@@ -47,11 +47,6 @@ export default function MyPage(){
                 </div>
             ))}
         </div>
-
-        <div className={styles.button}>
-        <button>회원정보 수정</button>
-        <button>회원탈퇴</button>
-        </div>
     </div>
     </>
     )

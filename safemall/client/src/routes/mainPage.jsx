@@ -89,10 +89,9 @@ function MainPage() {
 ) : (
     cards.map(card => (
       <div key={card._id} className={styles.listcard}  >
-      <p>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span style={{fontSize:"45px"}} className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></p>
+      <div className={styles.cardText}>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></div>
       {showDetailCard && card._id === showDetailCard._id && (
-        <div className={`${styles.detailcard}
-          ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
+         <div className={`${styles.detailcard} show`}>
           <p><b>[ 쇼핑몰명 ]</b> {showDetailCard.shopNameKor}</p>
           <p><b>[ 도메인명 ]</b> {showDetailCard.domainName}</p>
            <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (

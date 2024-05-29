@@ -20,7 +20,7 @@ function App() {
   }, [isLoggedIn, navigate]);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <header className={styles.Appheader}>
           {/* 조건부 렌더링을 사용하여 현재 페이지에 맞는 컴포넌트를 보여줍니다. */}
           {currentPage == 1 ? <Login /> : <SignUp />}

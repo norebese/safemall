@@ -103,12 +103,18 @@
   
   .button {
     height: 80px;
-    width: 360px;
+    width: 250px;
     padding: 10px;
     border-radius: 15px;
-    background-color: white;
-    cursor: pointer;
     font-size: 40px;
+    margin: 0 20px;
+    background-color: #1A2042;
+    color: white;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #e2e2e2;
   }
 
   #buttonId{
