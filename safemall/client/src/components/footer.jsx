@@ -9,7 +9,7 @@ function Footer() {
   console.log('isLoggedIn:', isLoggedIn)
   return (
     <>
-      {[false].map((expand) => (
+      {['sm'].map((expand) => (
         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3" id={styles.navArea} style={{position: 'fixed', width:'768px', height:'auto', zIndex: 1000, bottom: 0 }}>
           <Container fluid className={styles.Container} id={styles.arrange}>
             <Navbar.Brand className={styles.navbarBrand} href="/">

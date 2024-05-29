@@ -17,7 +17,8 @@ function OffcanvasExample() {
           <Container fluid className={styles.Container}>
             <Navbar.Brand className={styles.navbarBrand} href="/">SafeMall</Navbar.Brand>
             <Navbar.Toggle className={styles.Toggle} aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas className={styles.offcanvasNavbar}
+            <Navbar.Offcanvas 
+              className={styles.offcanvasNavbar}
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"

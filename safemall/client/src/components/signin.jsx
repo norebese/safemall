@@ -35,38 +35,36 @@ function SignIn() {
     };
 
     return (
-        <main>
-            <div className={styles.main}>
+        <main className={styles.container}>
+            <div className={styles.title}>
                 <h1>로그인</h1>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.testLogin}>
-                    <label htmlFor="email" className={styles.formlabel}>이메일: </label>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.inputdiv}>
+                    <label htmlFor="email" className={styles.label}>이메일: </label>
                     <input
                         type="email"
                         name="email"
-                        className={styles.forminput}
+                        className={styles.input}
                         placeholder="이메일을 입력해 주세요"
                         value={formData.email}
                         onChange={handleChange}
                         required
                         autoComplete="email"
                     />
-                    <label htmlFor="password" className={styles.formlabel}>비밀번호: </label>
+                    <label htmlFor="password" className={styles.label}>비밀번호: </label>
                     <input
                         type="password"
                         name="password"
-                        className={styles.forminput}
+                        className={styles.input}
                         placeholder="비밀번호를 입력해 주세요"
                         value={formData.password}
                         onChange={handleChange}
                         autoComplete="current-password"
                         required
                     />
-                    <div className={styles.NewRegist}>
-                        <button type="submit" className={styles.NewRegistbtn}>로그인</button>
-                    </div> 
                 </div>
+                <button type="submit" className={styles.submitbtn}>로그인</button>
             </form>
         </main>
     );

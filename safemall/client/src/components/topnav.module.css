@@ -1,0 +1,35 @@
+/* customStyles.module.css */
+.navbarCustom {
+  background-color: #1A2042 !important;
+  color: white !important;
+}
+
+.offcanvasHeaderCustom {
+  background-color: #1A2042 !important;
+  color: white !important;
+}
+
+.inbody{
+  width: 80% !important;
+}
+
+.offcanvasBodyCustom {
+  background-color: white !important;
+  color: #1A2042 !important;
+}
+
+.navLinkCustomTitle {
+  color: white !important;
+}
+.navLinkCustom {
+  color: #1A2042 !important;
+}
+
+.buttonCustom {
+  background-color: white !important;
+  color: #1A2042 !important;
+  width: 5em;
+  font-size: 1em;
+  border: 1px solid #1A2042 !important;
+  border-radius: 20px;
+}

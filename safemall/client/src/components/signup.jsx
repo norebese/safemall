@@ -37,48 +37,46 @@ function SignUp() {
     };
 
     return (
-        <main>
-            <div className={styles.main}>
+        <main className={styles.container}>
+            <div className={styles.title}>
                 <h1>회원가입</h1>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.testLogin}>
-                    <label htmlFor="email" className={styles.formlabel}>이메일: </label>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.inputdiv}>
+                    <label htmlFor="email" className={styles.label}>이메일: </label>
                     <input
                         type="email"
                         name="email"
-                        className={styles.forminput}
+                        className={styles.input}
                         placeholder="이메일을 입력해 주세요"
                         value={formData.email}
                         onChange={handleChange}
                         required
                         autoComplete="email"
                     />
-                    <label htmlFor="password" className={styles.formlabel}>비밀번호: </label>
+                    <label htmlFor="password" className={styles.label}>비밀번호: </label>
                     <input
                         type="password"
                         name="password"
-                        className={styles.forminput}
+                        className={styles.input}
                         placeholder="비밀번호를 입력해 주세요"
                         value={formData.password}
                         onChange={handleChange}
                         autoComplete="current-password"
                         required
                     />
-                    <label htmlFor="nickname" className={styles.formlabel}>닉네임: </label>
+                    <label htmlFor="nickname" className={styles.label}>닉네임: </label>
                     <input
                         type="text"
                         name="nickname"
-                        className={styles.forminput}
+                        className={styles.input}
                         placeholder="닉네임을 입력해 주세요"
                         value={formData.nickname}
                         onChange={handleChange}
                         required
                     />
-                    <div className={styles.NewRegist}>
-                        <button type="submit" className={styles.NewRegistbtn}>제출</button>
-                    </div> 
                 </div>
+                <button type="submit" className={styles.submitbtn}>제출</button>
             </form>
         </main>
     );
