@@ -149,13 +149,17 @@ export default function Searchshop() {
                                 </tr>
                                 <tr>
                                     <td className={styles.col}>취급품목</td>
-                                    <td className={styles.row}>
-                                        {result.mainItems.map((content, i)=>(
-                                            <React.Fragment key={i}> 
-                                                <span key={i}>{content} / </span>
-                                            </React.Fragment> 
-                                        ))}
-                                    </td>
+                                    {Array.isArray(result.mainItems) && result.mainItems.length > 0 ? (
+                                        <td className={styles.row}>
+                                            {result.mainItems.map((content, i) => (
+                                                <React.Fragment key={i}> 
+                                                    <span>{content} / </span>
+                                                </React.Fragment> 
+                                            ))}
+                                        </td>
+                                    ) : (
+                                        <td className={styles.row}>{result.mainItems}</td>
+                                    )}
                                 </tr>
 
                                 {result.socialUrls && Object.keys(result.socialUrls).length > 0 && (
