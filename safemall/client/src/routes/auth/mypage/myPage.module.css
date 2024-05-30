@@ -1,22 +1,22 @@
 .container {
     width: 768px;
     height: auto;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 20px;
-    border: 3px solid black;
-    padding-bottom: 350px;
+    padding-left: 5vw; /* 50px */
+    padding-right: 5vw; /* 50px */
+    padding-top: 2vh; /* 20px */
+    border: 0.1875em solid black; /* 3px */
+    padding-bottom: 35vh; /* 350px */
 }
 
 .nickname {
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 2vh; /* 20px */
 }
 
 .recent {
     font-size: 2rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.0625em solid #ccc; /* 1px */
 }
 
 .title {
@@ -26,9 +26,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px 0;
-    border: 1px solid #ddd;
+    margin-bottom: 1vh; /* 10px */
+    padding: 1vh 0; /* 10px 0 */
+    border: 0.0625em solid #ddd; /* 1px */
 }
 
 .title span {
@@ -45,9 +45,9 @@
 .mypageRow {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
+    margin-bottom: 1vh; /* 10px */
+    padding: 1vh; /* 10px */
+    border: 0.0625em solid #ddd; /* 1px */
 }
 
 .mypageRow a {
@@ -66,12 +66,12 @@
 
 .button {
     font-size: 2rem;
-    margin-top: 30px;
-    margin-bottom: 80px;
+    margin-top: 3vh; /* 30px */
+    margin-bottom: 8vh; /* 80px */
     text-align: center;
 }
 
 .button > button {
-    margin: 30px;
-    padding: 20px;
+    margin: 3vh; /* 30px */
+    padding: 2vh; /* 20px */
 }
