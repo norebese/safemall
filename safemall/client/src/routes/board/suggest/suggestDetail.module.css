@@ -7,15 +7,15 @@
   
   .innercontainer {
     background-color: #fff;
-    padding: 10px;
+    padding: 1.4%;
     text-align: left;
   }
   
   .reportheader {
-    margin-top: 80px;
-    padding: 40px 0 30px 0;
+    margin-top: 11%;
+    padding: 5.5% 0 4% 0;
     text-align: center;
-    font-size: 48px;
+    font-size: 3em;
     border-bottom: 1px solid gray;
   }
   
@@ -28,30 +28,30 @@
   
   .maintitle {
     color: #000;
-    font-size: 55px;
+    font-size: 3.4375em;
     font-weight: 500;
-    padding: 10px 20px;
+    padding: 1.4% 2.8%;
   }
   
   .dateinfo {
     color: #666;
-    margin: 0 30px;
+    margin: 0 4.2%;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+    padding-bottom: 2.1%;
   }
   
   .dateinfo span{
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: bold;
   }
   
   #date{
-    padding-right: 10px;
+    padding-right: 1.5%;
     border-right: 1px solid #666;
   }
   
   #writer{
-    padding-left: 10px;
+    padding-left: 1.5%;
   }
   
   #viewCount{
@@ -59,28 +59,28 @@
   }
   
   .bodycontent{
-    padding: 20px 0;
-    margin: 0px 20px;
+    padding: 2.8% 0;
+    margin: 0px 2.8%;
     border-bottom: 1px solid #ddd;
   }
   
   .contenttitle {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.8%;
     color: #333;
-    font-size: 40px;
-    padding-left: 5px;
+    font-size: 2.5em;
+    padding-left: 0.8%;
   }
   
   .contentcontent{
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 1.5%;
+    margin-bottom: 2.2%;
     border: none;
     background-color: #F1F3F5;
     border-radius: 10px;
     box-sizing: border-box;
-    font-size: 32px;
+    font-size: 2em;
     color: #6A6A6A;
   }
   
@@ -98,9 +98,9 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 30px 0;
+    padding: 5.6% 0;
     align-items: center;
-    margin-bottom: 75px;
+    margin-bottom: 10.5%;
   }
 
   .buttonarea2{
@@ -108,9 +108,9 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 30px 0;
+    padding: 5.6% 0;
     align-items: center;
-    margin-bottom: 75px;
+    margin-bottom: 10.5%;
   }
   
   .buttonarea>svg{
@@ -119,11 +119,11 @@
   
   .button {
     height: 80px;
-    width: 250px;
-    padding: 10px;
+    width: 40%;
+    padding: 1.4%;
     border-radius: 15px;
-    font-size: 40px;
-    margin: 0 20px;
+    font-size: 2.5em;
+    margin: 0 2.8%;
     background-color: white;
     /* color: white; */
     cursor: pointer;
@@ -131,12 +131,12 @@
 
   #buttonId{
     height: 80px;
-    width: 360px;
-    padding: 10px;
+    width: 50%;
+    padding: 1.4%;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 2.5em;
   }
 
   /* .button:hover {
@@ -159,7 +159,7 @@
     width: 120px;
     border-radius: 10px;
     border: none;
-    font-size: 25px;
+    font-size: 1.5625em;
     color: white;
     cursor: pointer;
   }
@@ -180,8 +180,8 @@
   }
   
   #answercontainer{
-    padding: 30px 10px 0px 10px;
-    margin: 0px 20px;
+    padding: 4.2% 1.5% 0px 1.5%;
+    margin: 0px 2.8%;
   }
   
   #titlesection{
@@ -194,14 +194,15 @@
     display: block;
     margin-bottom: 5px;
     color: red;
-    font-size: 40px;
-    padding-left: 10px;
-    margin-bottom: 10px;
+    font-size: 2.5em;
+    padding-left: 1.5%;
+    margin-bottom: 1.5%;
   }
   
   #answerdate{
-    font-size: 20px;
-    margin-right: 10px;
+    width: 120px;
+    font-size: 1.25em;
+    margin-right: 4%;
   }
   
   #writeanswer{
@@ -257,11 +258,11 @@
   .formtextarea {
     width: 100%;
     height: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 1.5%;
+    margin-bottom: 2.4%;
     border: none;
     background-color: #F1F3F5;
     border-radius: 10px;
     box-sizing: border-box;
-    font-size: 32px;
+    font-size: 2em;
   }

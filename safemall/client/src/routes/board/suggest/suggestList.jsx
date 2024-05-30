@@ -88,7 +88,7 @@ function SuggestList() {
         </header>
         <div className={styles.notices}>
           <div className={styles.noticeheader}>
-              <span>No</span>
+              <span>No </span>
               <span>제목</span>
               <span>작성일</span>
               <span>작성자</span>

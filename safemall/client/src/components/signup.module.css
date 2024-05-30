@@ -45,3 +45,7 @@
     color: white;
     border-radius: 15px;
 }
+.submitbtnArea{
+    display: flex;
+    justify-content: center;
+}

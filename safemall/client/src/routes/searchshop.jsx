@@ -66,7 +66,7 @@ export default function Searchshop() {
                 
                 setLoading(false);
             } catch (error) {
-                // setLoading(false);
+                setLoading(false);
                 console.error('Error fetching Report list:', error);
             }
         };

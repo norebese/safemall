@@ -76,7 +76,9 @@ function SignUp() {
                         required
                     />
                 </div>
-                <button type="submit" className={styles.submitbtn}>제출</button>
+                <div className={styles.submitbtnArea}>
+                    <button type="submit" className={styles.submitbtn}>제출</button>
+                </div>
             </form>
         </main>
     );

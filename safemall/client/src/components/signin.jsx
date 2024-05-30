@@ -64,7 +64,9 @@ function SignIn() {
                         required
                     />
                 </div>
-                <button type="submit" className={styles.submitbtn}>로그인</button>
+                <div className={styles.submitbtnArea}>
+                    <button type="submit" className={styles.submitbtn}>로그인</button>
+                </div>
             </form>
         </main>
     );
