@@ -69,9 +69,9 @@ function MainPage() {
   return (
     <div id={styles.container}>
       <div id={styles.title}>
-      
         <h1><img src={process.env.PUBLIC_URL + '/cart.svg'} width = '300px'/><br /> SAFE MALL.</h1>
       </div>
+      
       <form onSubmit={handleSearchSubmit}>
         <div id={styles.search}>
           <input
@@ -79,44 +79,60 @@ function MainPage() {
             placeholder="상호명 또는 URL 입력"
             value={searchQuery}
             onChange={handleInputChange}
-          />&emsp;
+          />
           <button type="submit">🔍</button>
         </div>
       </form>
 
       <div id={styles.site}>
-        <span className={styles.list}>🚨 피해 다발 사이트</span>
-        <span className={styles.count}>( 총 접수건 / 미처리건 )</span>
+        <div className={styles.list}>🚨 피해 다발 사이트</div>
+        <div className={styles.count}>( 총 접수건 / 미처리건 )</div>
       </div>
 
       {!cards ? (
     <div className={styles.noData}>
-        <p>등록된 사이트 없음.</p>
+      <p>등록된 사이트 없음.</p>
     </div>
 ) : (
     cards.map(card => (
-      <div key={card._id} className={styles.listcard}  >
-      <p>{card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) <span style={{fontSize:"45px"}} className={styles.arrow} onClick={() => handleClick(card)}> ▼</span></p>
-      {showDetailCard && card._id === showDetailCard._id && (
-        <div className={`${styles.detailcard}
-          ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
-          <p><b>[ 쇼핑몰명 ]</b> {showDetailCard.shopNameKor}</p>
-          <p><b>[ 도메인명 ]</b> {showDetailCard.domainName}</p>
-           <p><b>[ 취급품목 ]</b><br></br>{showDetailCard.MainItems.map((item, index) => (
-            <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
-          ))}</p>
-        <p>
-          <b>[ 주요피해내용 ]</b><br /> 
-          {showDetailCard.mainDamageContent.map((content, index) => (
-            <span key={index}>{index + 1}. {content}<br /></span>
-          ))}
-        </p>
-        <div className={styles.detailBtn}>
-            <button className={styles.directBtn} onClick={()=>btn(card.id)}>바로가기</button>
+      <div key={card._id} className={styles.listcard}>
+        <div className={styles.listTitle}>
+          {card.shopNameKor} ( {card.Totalreport} / {card.Unprocess}) 
+          <span  className={styles.arrow} onClick={() => handleClick(card)}> ▼</span>
         </div>
+        {showDetailCard && card._id === showDetailCard._id && (
+          <div className={`${styles.detailcards}
+              ${ showDetailCard && card._id === showDetailCard._id ? 'show' : ''}`}>
+              <div className={styles.detailcard}>
+                <div className={styles.cardlabel}>[ 쇼핑몰명 ]</div>
+                <div className={styles.cardValue}>{showDetailCard.shopNameKor}</div>
+              </div>
+              <div className={styles.detailcard}>
+                <div className={styles.cardlabel}>[ 도메인명 ]</div>
+                <div className={styles.cardValue}>{showDetailCard.domainName}</div>
+              </div>
+              <div className={styles.detailcard}>
+                <div className={styles.cardlabel}>[ 취급품목 ]</div>
+                <div className={styles.cardValue}>
+                  {showDetailCard.MainItems.map((item, index) => (
+                  <span key={index}>{item} {index !== showDetailCard.MainItems.length - 1 && ', '}</span>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.detailcard}>
+                <div className={styles.cardlabel}>[ 주요피해내용 ]</div>
+                <div className={styles.cardValue}>
+                  {showDetailCard.mainDamageContent.map((content, index) => (
+                  <span key={index}>{index + 1}. {content}<br /></span>
+                  ))}
+                </div>
+              </div>
+            <div className={styles.detailcard}>
+                <button className={styles.directBtn} onClick={()=>btn(card.id)}>바로가기</button>
+            </div>
+          </div>
+        )} 
       </div>
-    )}
-    </div>
     ))
 )}
 

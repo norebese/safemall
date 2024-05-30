@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from "./components/navbar.jsx";
 import Topnav from './components/Topnav.js'
-import Footer from './components/footer.jsx';
+import BottomNav from './components/bottomnav.js'
 import { AuthProvider } from './context/authContext.js';
 import TokenStorage from './db/token.js';
 import AuthService from './service/authService.js';
@@ -23,10 +22,9 @@ root.render(
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossOrigin="anonymous"
       />
-      {/* <Navbar /> */}
       <Topnav />
       <App />
-      {/* <Footer /> */}
+      <BottomNav />
     </AuthProvider>
   </BrowserRouter>
 );
