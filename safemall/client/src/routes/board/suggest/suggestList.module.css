@@ -45,11 +45,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Emphasize shadow on focus */
 }
 
-.appheader h1 {
-    margin-bottom: 100px; /* Add margin below h1 tag */
-    margin-top: 150px;
-}
-
 .searchbar {
     margin-top: 20px; /* Add margin above search bar */
 }
@@ -60,6 +55,7 @@
 }
 .appheader h1 {
     margin-bottom: 16%; /* Add margin below h1 tag */
+    margin-top: 24%;
     font-size: 2.5em;
 }
 .noData {
