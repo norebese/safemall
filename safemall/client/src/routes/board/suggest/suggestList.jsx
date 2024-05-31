@@ -78,10 +78,6 @@ function SuggestList() {
     <div className={styles.content}>
       <header className={styles.appheader}>
           <h1>건의사항 게시판</h1>
-          {/* <div className={styles.searchbar}>
-              <input type="search" placeholder="검색"></input>
-              <button className={styles.submit} type="submit">&#128269;</button>
-          </div> */}
           <div className={styles.createBtnArea}>
             <Link to="/board/suggest/create"><button className={styles.btn}>작성하기</button></Link>
           </div>
@@ -103,7 +99,7 @@ function SuggestList() {
             {suggestList.map((suggest, index) => (
               <Link onClick={handleClick} className={styles.noticeitem} to={`/board/suggest/${suggest.no}`} key={`${suggest.no}-${index}`}>
                 <span>{suggest.no}</span>
-                <span>{suggest.Title}</span>
+                <span className={styles.title}>{suggest.Title}</span>
                 <span>{suggest.createdAt.split('T')[0]}</span>
                 <span>{suggest.Author}</span>
                 <span>{suggest.State ? '완료' : '처리중'}</span>
@@ -111,7 +107,7 @@ function SuggestList() {
             ))}
             {showMoreButton && (
               <div className={styles.loadmore}>
-                <button type="button" onClick={handleLoadMore}>더보기▼</button>
+                <button className={styles.moreBtn} onClick={handleLoadMore}>더보기▼</button>
               </div>
             )}
           </>

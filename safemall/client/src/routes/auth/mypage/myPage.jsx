@@ -29,8 +29,8 @@ export default function MyPage(){
     return(
     <>
         <div className={styles.container}>
-        <div className={styles.nickname}>{nickname}</div>
-        <div>{date[0]} ( {date[1]} )</div>
+        <div className={styles.nickname}>{nickname}
+        <span className={styles.date}>  (가입날짜 : {date[0]})</span></div>
         <div className={styles.recent}>최근 작성글</div>
 
         <div className={styles.title}>

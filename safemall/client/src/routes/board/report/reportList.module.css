@@ -154,7 +154,7 @@ div.notices .noticeitem a {
     color: white !important;
     border: none;
     border-radius: 8px; /* Rounded corners for the button */
-    font-size: 16px; /* Text size */
+    font-size: 25px; /* Text size */
     cursor: pointer; /* Cursor indicates clickable */
     margin-right: 20px; /* Space from the search bar */
     transition: background-color 0.3s; /* Smooth background color transition */
@@ -166,9 +166,32 @@ div.notices .noticeitem a {
 
 .noData {
     text-align: center;
-    font-size: 40px
+    font-size: 40px;
+    margin-top: 40px;
 }
 
 .noticeheader span:not(:last-child) {
     border-right: 1px solid black;
   }
+
+  .title {
+    width: 250px;
+    white-space: nowrap; /* 한 줄로 유지 */
+    overflow: hidden; /* 텍스트가 넘어가면 숨김 */
+    text-overflow: ellipsis; /* 넘어가는 부분에 ... 표시 */
+}
+
+.moreBtn {
+    padding: 10px 20px;
+    background-color: #1A2042;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    margin-bottom: 100px;
+}
+
+.moreBtn:hover {
+    background-color: lightgray;
+}

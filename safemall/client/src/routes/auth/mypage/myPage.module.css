@@ -4,19 +4,19 @@
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 20px;
-    border: 3px solid black;
     padding-bottom: 350px;
 }
 
 .nickname {
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .recent {
     font-size: 2rem;
     border-bottom: 1px solid #ccc;
+    margin: 20px auto;
 }
 
 .title {
@@ -48,6 +48,8 @@
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ddd;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .mypageRow a {
@@ -74,4 +76,9 @@
 .button > button {
     margin: 30px;
     padding: 20px;
+}
+
+.date{
+    font-size: 1.3rem;
+    color: grey;
 }

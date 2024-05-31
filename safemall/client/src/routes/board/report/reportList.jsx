@@ -99,7 +99,7 @@ function ReportList() {
               {reportList.map((report) => (
                 <Link onClick={handleClick} className={styles.noticeitem} to={`/board/report/${report.no}`} key={report.no}>
                   <span>{report.no}</span>
-                  <span>{report.Title}</span>
+                  <span className={styles.title}>{report.Title}</span>
                   <span>{report.createdAt}</span>
                   <span>{report.Author}</span>
                   <span>{report.State ? '완료' : '처리중'}</span>
@@ -107,7 +107,7 @@ function ReportList() {
               ))}
           {showMoreButton && (
             <div className={styles.loadmore}>
-              <button type="button" onClick={handleLoadMore}>더보기▼</button>
+              <button className={styles.moreBtn} type="button" onClick={handleLoadMore}>더보기▼</button>
             </div>
           )}
         </>
