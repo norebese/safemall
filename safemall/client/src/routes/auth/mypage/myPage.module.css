@@ -82,3 +82,8 @@
     font-size: 1.3rem;
     color: grey;
 }
+
+.myTitle{
+    width: 250px;
+    white-space: nowrap;
+}

@@ -41,7 +41,7 @@ export default function MyPage(){
                 <div className={styles.mypageRow} key={post.postNo}>
                     <Link to={`/board/${post.boardType.toLowerCase()}/${post.postNo}`}>
                         <p>{post.boardTypeKor}</p>
-                        <p>{post.Title}</p>
+                        <p className={styles.myTitle}>{post.Title}</p>
                         <p>{post.createdAt.split('T')[0]}</p>
                     </Link>
                 </div>

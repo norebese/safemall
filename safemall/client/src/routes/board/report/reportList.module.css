@@ -161,7 +161,7 @@ div.notices .noticeitem a {
 }
 
 .btn.createbtn:hover {
-    background-color: #357ABD; /* Darker shade on hover */
+    background-color: lightgray; /* Darker shade on hover */
 }
 
 .noData {

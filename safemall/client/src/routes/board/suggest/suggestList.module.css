@@ -151,6 +151,8 @@ div.notices .noticeitem a {
     cursor: pointer;
     font-size: 25px;
     margin-bottom: 100px;
+    transition: background-color 0.3s;
+
 }
 
 .moreBtn:hover {
@@ -171,6 +173,7 @@ div.notices .noticeitem a {
     font-size: 25px; /* Text size */
     cursor: pointer; /* Cursor indicates clickable */
     margin-right: 20px; /* Space from the search bar */
+    transition: background-color 0.3s;
 }
 
 .btn:hover {

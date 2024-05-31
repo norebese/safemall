@@ -161,9 +161,9 @@ body {
     border-top: 2px dotted rgba(32, 39, 79, 1);
     border-bottom: 2px dotted rgba(32, 39, 79, 1);
     color: rgba(32, 39, 79, 1);
+    max-height: 0; /* Hidden by default */
   }
   
-
   
   .listcard > p {
     margin-right: 1%;
