@@ -1,11 +1,11 @@
 # safemall
-
+쇼핑몰 신뢰도 검색기
 
 ## 기술 스택
 `Front-End` 
 
-<img src="https://img.shields.io/badge/html5-000000?style=flat-square&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/javascript-3178C6?style=flat-square&logo=javascript&logoColor=white"/>
+### html5
+### javascript
 
 `Back-end`
 
