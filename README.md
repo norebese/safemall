@@ -4,8 +4,8 @@
 ## 기술 스택
 `Front-End` 
 
-### html5
-### javascript
+html5
+javascript
 
 `Back-end`
 
