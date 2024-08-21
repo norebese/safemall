@@ -9,8 +9,7 @@ SafeMall은 쇼핑 중 사기 사이트를 식별하는 데 도움을 주는 도
 <img src="src/main/webapp/resources/images/readme images/sea api.png" height="300">
 
 ## ⏱개발 기간
-* 언제부터 언제까지
-  *2024년 4월 25일 ~ 2024년 5월 30일
+ * 2024년 4월 25일 ~ 2024년 5월 30일
 
 ## 👨‍👨‍👦‍👦팀원 구성
 * 김보미
