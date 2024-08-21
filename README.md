@@ -4,6 +4,9 @@
 ## 🎣프로젝트 소개
 SafeMall은 쇼핑 중 사기 사이트를 식별하는 데 도움을 주는 도구입니다.
 
+## IA (Information Architecture)
+<img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/IA.jpeg" height="300">
+
 ## 주요 기능 및 특징
 ### 피해 다발 사이트 정보 제공: 공공데이터를 활용하여 실시간으로 피해 다발 사이트 명단을 제공합니다.
 <img src="src/main/webapp/resources/images/readme images/sea api.png" height="300">
@@ -37,7 +40,7 @@ html5, javascript, react
 1. 터미널에서 아래 명령어를 입력해 `Server` 폴더 위치로 이동합니다.
 
     ```bash
-    cd Server
+    cd safemall\Server
     ```
 
 2. 터미널에서 아래 명령어를 입력해 가상환경을 설치합니다. 이미 설치되어있으면 다음 단계로 넘어갑니다.
@@ -79,7 +82,7 @@ html5, javascript, react
 1. 터미널에서 아래 명령어를 입력해 `client` 폴더 위치로 이동합니다.
 
     ```bash
-    cd client
+    cd safemall\client
     ```
 2. 아래 명령어를 입력하서 npm을 설치합니다. 이미 설치되어있으면 다음 단계로 넘어갑니다.
 
