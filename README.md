@@ -2,7 +2,7 @@
 쇼핑몰 신뢰도 검색기
 
 ## 🎣프로젝트 소개
-SafeMall은 쇼핑 중 사기 사이트를 미리 식별하고 경고함으로써 온라인 쇼핑몰 사기 피해를 줄이는 데 도움을 주는 도구입니다.
+SafeMall은 쇼핑 중 사기 사이트를 미리 식별하고 경고함으로써 온라인 쇼핑몰 사기 피해를 줄이는 데 도움을 주는 프로젝트입니다.
 
 ## IA (Information Architecture)
 <img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/IA.jpeg" height="300">
