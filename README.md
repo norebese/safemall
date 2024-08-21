@@ -8,8 +8,14 @@ SafeMall은 쇼핑 중 사기 사이트를 식별하는 데 도움을 주는 도
 <img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/IA.jpeg" height="300">
 
 ## 주요 기능 및 특징
-### 피해 다발 사이트 정보 제공: 공공데이터를 활용하여 실시간으로 피해 다발 사이트 명단을 제공합니다.
-<img src="src/main/webapp/resources/images/readme images/sea api.png" height="300">
+### 메인화면 & 상세조회 화면
+<img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/main.jpeg" height="300">
+
+### 피해 다발 사이트 검색 화면
+<img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/search1.jpeg" height="300">
+
+### 제보, 건의 게시판
+<img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/report.jpeg" height="300">
 
 ## ⏱개발 기간
  * 2024년 4월 25일 ~ 2024년 5월 30일
@@ -23,13 +29,7 @@ SafeMall은 쇼핑 중 사기 사이트를 식별하는 데 도움을 주는 도
 
 
 ## 기술 스택
-`Front-End` 
-
-html5, javascript, react
-
-`Back-end`
-
-
+<img src="https://github.com/norebese/safemall/blob/master/sample/readmeimg/tools.jpeg" height="300">
 
 `Communication`
 <img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white">
